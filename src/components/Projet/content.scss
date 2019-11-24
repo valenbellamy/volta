@@ -1,0 +1,126 @@
+.toggle__button {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 3;
+  opacity: 0;
+  button {
+    border: none;
+    outline: none;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1;
+    transition: all 0.4s ease;
+    &:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+  }
+  .open,
+  .close {
+    transform: translate(0%, 0%);
+    transition: all 0.4s ease 0.3s;
+  }
+  .open {
+    opacity: 1;
+  }
+  .close {
+    opacity: 0;
+  }
+  &.translate--btn {
+    .open,
+    .close {
+      transform: translate(0%, -100%);
+    }
+    .open {
+      opacity: 0;
+    }
+    .close {
+      opacity: 1;
+    }
+  }
+}
+
+.info {
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // width: 100vw;
+  // height: 40vh;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 2rem 1rem 1rem 1rem;
+  transform: translate(0%, 0%);
+  transition: all 0.7s cubic-bezier(0.8, 0.01, 0.2, 0.99);
+  z-index: 3;
+  &.visible {
+    transform: translate(0%, -100%);
+  }
+}
+
+.info__logo {
+  a {
+    color: black;
+    font-size: 2rem;
+  }
+}
+
+.info__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 500px;
+  padding-right: 1.5rem;
+}
+
+.mbm {
+  margin-bottom: 1.5rem;
+}
+
+.info__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 280px;
+}
+
+.info__content__title {
+  font-size: 1.5rem;
+}
+
+.info__content div p {
+  font-size: 1.2rem;
+}
+
+.info__link {
+  line-height: 1;
+  align-self: flex-end;
+  color: black;
+  font-size: 1.3rem;
+  a {
+    color: black;
+    font-size: 1.3rem;
+    transition: all 0.4s ease;
+    &:hover {
+      color: #cccccc;
+    }
+  }
+}
+
+.info__link--dropdown {
+  position: relative;
+}
+
+.info__link--dropdown:hover .dropdown {
+  transform: translate3d(0px, -100%, 0px);
+}
+
+.info__link--dropdown:hover .dropdown .dropdown__item {
+  opacity: 1;
+}
