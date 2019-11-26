@@ -14,63 +14,63 @@ const Slider = () => {
       img1: file(relativePath: { eq: "photo-1.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
       img2: file(relativePath: { eq: "photo-2.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
       img3: file(relativePath: { eq: "photo-3.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
       img4: file(relativePath: { eq: "photo-4.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
       img5: file(relativePath: { eq: "photo-5.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
       img6: file(relativePath: { eq: "photo-6.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
       img7: file(relativePath: { eq: "photo-7.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
       img8: file(relativePath: { eq: "photo-8.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
       img9: file(relativePath: { eq: "photo-9.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
@@ -116,7 +116,6 @@ const Slider = () => {
       var obj = data[key]
       var currentWidth =
         obj.childImageSharp.fluid.aspectRatio * (windowHeight * 1 - 16 * 2)
-      console.log(currentWidth)
       acc += currentWidth
     }
     acc = acc - windowWidth + (size - 1) * margin + 2 * gutter
@@ -171,56 +170,48 @@ const Slider = () => {
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img1.childImageSharp.fluid}
-            loading="eager"
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img2.childImageSharp.fluid}
-            loading="eager"
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img3.childImageSharp.fluid}
-            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img4.childImageSharp.fluid}
-            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img5.childImageSharp.fluid}
-            loading="eager"
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img6.childImageSharp.fluid}
-            loading="eager"
+            fluid={data.img1.childImageSharp.fluid}
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img7.childImageSharp.fluid}
-            loading="eager"
+          />
+          <Img
+            imgStyle={{ width: "auto", position: "relative" }}
+            placeholderStyle={{ width: "100%", position: "absolute" }}
+            fluid={data.img3.childImageSharp.fluid}
+          />
+
+          <Img
+            imgStyle={{ width: "auto", position: "relative" }}
+            placeholderStyle={{ width: "100%", position: "absolute" }}
+            fluid={data.img5.childImageSharp.fluid}
+          />
+          <Img
+            imgStyle={{ width: "auto", position: "relative" }}
+            placeholderStyle={{ width: "100%", position: "absolute" }}
+            fluid={data.img6.childImageSharp.fluid}
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img8.childImageSharp.fluid}
-            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img9.childImageSharp.fluid}
-            loading="eager"
           />
         </animated.div>
       ))}
