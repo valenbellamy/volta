@@ -49,7 +49,7 @@ const Content = () => {
       </div>
       <div className={`info anime-js ${visible ? "visible" : ""}`}>
         <div className="info__logo">
-          <Link to="/">Volta Archi</Link>
+          <Link to="/">volta.archi</Link>
         </div>
         <div className="info__nav">
           <div className="info__link info__link--dropdown">

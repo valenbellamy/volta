@@ -51,7 +51,7 @@ const Content = () => {
   return (
     <main>
       <div className="logo">
-        <Link to="/">Volta Archi</Link>
+        <Link to="/">volta.archi</Link>
       </div>
       <div className="bg-image">
         <div className={`bg-image__wrapper ${index === 0 ? "active" : ""}`}>

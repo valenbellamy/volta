@@ -87,6 +87,9 @@ const Slider = () => {
   const [translateHorizontal, setTranslateHorizontal] = useState(0)
   const [currentTranslate, setCurrentTranslate] = useState(0)
 
+  const [width, setWidth] = useState(window.innerWidth)
+  const [height, setHeight] = useState(window.innerHeight)
+
   useEffect(() => {
     anime(
       {
@@ -116,6 +119,7 @@ const Slider = () => {
       var obj = data[key]
       var currentWidth =
         obj.childImageSharp.fluid.aspectRatio * (windowHeight * 1 - 16 * 2)
+      console.log(currentWidth)
       acc += currentWidth
     }
     acc = acc - windowWidth + (size - 1) * margin + 2 * gutter
@@ -171,46 +175,55 @@ const Slider = () => {
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img1.childImageSharp.fluid}
+            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img2.childImageSharp.fluid}
+            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img3.childImageSharp.fluid}
+            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img4.childImageSharp.fluid}
+            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img5.childImageSharp.fluid}
+            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img6.childImageSharp.fluid}
+            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img7.childImageSharp.fluid}
+            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img8.childImageSharp.fluid}
+            loading="eager"
           />
           <Img
             imgStyle={{ width: "auto", position: "relative" }}
             placeholderStyle={{ width: "100%", position: "absolute" }}
             fluid={data.img9.childImageSharp.fluid}
+            loading="eager"
           />
         </animated.div>
       ))}

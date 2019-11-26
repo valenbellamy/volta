@@ -5,19 +5,22 @@ import anime from "animejs/lib/anime.es.js"
 
 const Content = () => {
   useEffect(() => {
-    anime({
-      targets: ".anime-text",
-      opacity: 1,
-      translateY: [80, 0],
-      easing: "easeOutExpo",
-      duration: 1000,
-      delay: (el, i) => 100 * i,
-    })
+    anime(
+      {
+        targets: ".anime-text",
+        opacity: 1,
+        translateY: [100, 0],
+        easing: "easeOutExpo",
+        duration: 1000,
+        delay: (el, i) => 120 * i,
+      },
+      200
+    )
   })
   return (
     <>
       <div className="logo--dark">
-        <Link to="/">Volta Archi</Link>
+        <Link to="/">volta.archi</Link>
       </div>
       <div className="content">
         <div className="content__blk">
