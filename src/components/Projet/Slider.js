@@ -87,9 +87,6 @@ const Slider = () => {
   const [translateHorizontal, setTranslateHorizontal] = useState(0)
   const [currentTranslate, setCurrentTranslate] = useState(0)
 
-  const [width, setWidth] = useState(window.innerWidth)
-  const [height, setHeight] = useState(window.innerHeight)
-
   useEffect(() => {
     anime(
       {
