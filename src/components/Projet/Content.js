@@ -56,7 +56,7 @@ const Content = () => {
             réalisations
             <div className="dropdown" id="dropdown">
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item dropdown__item--dark"
                 data-index="0"
               >
@@ -64,7 +64,7 @@ const Content = () => {
                 <span className="dropdown__item__category">commercial</span>
               </Link>
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item dropdown__item--dark"
                 data-index="1"
               >
@@ -74,7 +74,7 @@ const Content = () => {
                 </span>
               </Link>
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item dropdown__item--dark"
                 data-index="2"
               >
@@ -82,7 +82,7 @@ const Content = () => {
                 <span className="dropdown__item__category">commercial</span>
               </Link>
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item dropdown__item--dark"
                 data-index="3"
               >
@@ -92,7 +92,7 @@ const Content = () => {
                 </span>
               </Link>
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item dropdown__item--dark"
                 data-index="4"
               >

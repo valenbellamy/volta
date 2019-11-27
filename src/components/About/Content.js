@@ -65,42 +65,27 @@ const Content = () => {
           <li className="navbar__link navbar__link--dark navbar__link--dropdown">
             réalisations
             <div className="dropdown" id="dropdown">
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
+              <Link to="" className="dropdown__item dropdown__item--dark">
                 <span className="dropdown__item__title">plantes</span>
                 <span className="dropdown__item__category">commercial</span>
               </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
+              <Link to="" className="dropdown__item dropdown__item--dark">
                 <span className="dropdown__item__title">miromesnil</span>
                 <span className="dropdown__item__category">
                   archi intérieure
                 </span>
               </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
+              <Link to="" className="dropdown__item dropdown__item--dark">
                 <span className="dropdown__item__title">jean-moulin</span>
                 <span className="dropdown__item__category">commercial</span>
               </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
+              <Link to="" className="dropdown__item dropdown__item--dark">
                 <span className="dropdown__item__title">saint-jacques</span>
                 <span className="dropdown__item__category">
                   archi intérieure
                 </span>
               </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
+              <Link to="" className="dropdown__item dropdown__item--dark">
                 <span className="dropdown__item__title">flaine</span>
                 <span className="dropdown__item__category">
                   archi intérieure

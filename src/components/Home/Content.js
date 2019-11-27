@@ -77,7 +77,7 @@ const Content = () => {
             réalisations
             <div className="dropdown" id="dropdown">
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item"
                 onMouseEnter={() => setActiveItem(0)}
               >
@@ -85,7 +85,7 @@ const Content = () => {
                 <span className="dropdown__item__category">commercial</span>
               </Link>
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item"
                 onMouseEnter={() => setActiveItem(1)}
               >
@@ -95,7 +95,7 @@ const Content = () => {
                 </span>
               </Link>
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item"
                 onMouseEnter={() => setActiveItem(2)}
               >
@@ -103,7 +103,7 @@ const Content = () => {
                 <span className="dropdown__item__category">commercial</span>
               </Link>
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item"
                 onMouseEnter={() => setActiveItem(3)}
               >
@@ -113,7 +113,7 @@ const Content = () => {
                 </span>
               </Link>
               <Link
-                to="/projet"
+                to="#"
                 className="dropdown__item"
                 onMouseEnter={() => setActiveItem(4)}
               >
