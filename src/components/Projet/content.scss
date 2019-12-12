@@ -1,9 +1,6 @@
 .toggle__button {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  z-index: 3;
-  opacity: 0;
+  position: relative;
+  opacity: 1;
   button {
     border: none;
     outline: none;
@@ -49,25 +46,27 @@
   // left: 0;
   // width: 100vw;
   // height: 40vh;
-  position: relative;
+  position: absolute;
+  bottom: 1.5rem;
   width: 100%;
+  height: 190px;
   overflow: hidden;
   display: flex;
   justify-content: space-between;
   background-color: white;
-  padding: 2rem 1rem 1rem 1rem;
-  transform: translate(0%, 0%);
-  transition: all 0.7s cubic-bezier(0.8, 0.01, 0.2, 0.99);
+  padding: 0rem 1rem;
   z-index: 3;
-  &.visible {
-    transform: translate(0%, -100%);
-  }
 }
 
 .info__logo {
-  a {
-    color: black;
-    font-size: 2rem;
+  width: 9rem;
+  svg {
+    height: 2rem;
+    path,
+    polygon,
+    rect {
+      fill: black;
+    }
   }
 }
 
@@ -75,7 +74,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 500px;
+  width: 700px;
   padding-right: 1.5rem;
 }
 
@@ -96,6 +95,10 @@
 
 .info__content div p {
   font-size: 1.2rem;
+}
+
+.infot__content div span {
+  font-size: 1rem;
 }
 
 .info__link {

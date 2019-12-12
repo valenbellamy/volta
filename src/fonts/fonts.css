@@ -1,0 +1,8 @@
+@font-face {
+  font-family: Lausanne;
+  font-weight: 300;
+  font-style: normal;
+  src: url("Lausanne-300.woff2") format("woff2"),
+    url("Lausanne-300.woff") format("woff");
+  font-display: swap;
+}

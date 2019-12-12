@@ -9,7 +9,8 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import "./reset.css"
-import "./styles/index.scss"
+import "../fonts/fonts.css"
+import "../styles/index.scss"
 
 const Layout = ({ children }) => {
   return <>{children}</>

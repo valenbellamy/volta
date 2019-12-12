@@ -110,12 +110,15 @@ const Slider = () => {
     let acc = 0
     let margin = 8
     let gutter = 16
+    let heightInfos = 190
+    let blank = 48
     let size = Object.keys(data).length
     for (let key in data) {
       if (!data.hasOwnProperty(key)) continue
       var obj = data[key]
       var currentWidth =
-        obj.childImageSharp.fluid.aspectRatio * (windowHeight * 1 - 16 * 2)
+        obj.childImageSharp.fluid.aspectRatio *
+        (windowHeight - heightInfos - blank - gutter * 2)
       acc += currentWidth
     }
     acc = acc - windowWidth + (size - 1) * margin + 2 * gutter
