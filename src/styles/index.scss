@@ -35,10 +35,18 @@ p {
 
 .logo--dark {
   position: relative;
-  padding: 2rem 0rem 0rem 2rem;
+  padding: 2vw 0rem 0rem 2vw;
   a {
     font-size: 3.5rem;
     color: black;
+  }
+  svg {
+    width: 10vw;
+    rect,
+    polygon,
+    path {
+      fill: black;
+    }
   }
 }
 
@@ -61,10 +69,10 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  height: 12rem;
-  padding-left: 12.5rem;
-  padding-bottom: 1.5rem;
-  padding-right: 1.5rem;
+  height: 190px;
+  padding-left: 12vw;
+  padding-bottom: 2vw;
+  padding-right: 2vw;
 }
 
 .navbar__link {
@@ -77,6 +85,11 @@ p {
     transition: all 0.4s ease;
     &:hover {
       color: #cccccc;
+    }
+  }
+  &.is-active {
+    a {
+      color: #ccc;
     }
   }
 }
@@ -104,8 +117,9 @@ p {
   transform: translate3d(0px, 100%, 0px);
   display: flex;
   flex-wrap: wrap;
-  width: 700px;
+  width: 55vw;
   padding-bottom: 1rem;
+  padding-right: 1.5rem;
   will-change: transform;
 }
 

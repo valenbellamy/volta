@@ -122,7 +122,7 @@ const Content = () => {
           </div>
         </div>
 
-        <div className="info__link">
+        <div className="info__link info__link--special">
           <Link to="/a-propos">à propos</Link>
         </div>
       </div>

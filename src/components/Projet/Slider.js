@@ -158,7 +158,7 @@ const Slider = () => {
 
   return (
     <animated.div
-      className="slider"
+      className={`slider ${down ? "active" : ""}`}
       onMouseDown={mouseDown}
       onMouseLeave={mouseLeave}
       onMouseUp={mouseUp}

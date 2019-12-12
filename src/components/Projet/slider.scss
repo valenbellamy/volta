@@ -2,7 +2,10 @@
   width: 100%;
   height: calc(100vh - 238px);
   overflow-x: hidden;
-  cursor: pointer;
+  &.active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+  }
 }
 
 .slider__inner {
@@ -14,7 +17,6 @@
   flex-wrap: nowrap;
   background-color: white;
   padding: 1rem 0rem;
-  cursor: pointer;
   transform: scale(1, 1);
   .gatsby-image-wrapper {
     position: relative;

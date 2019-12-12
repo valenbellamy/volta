@@ -54,15 +54,15 @@
 
 .logo {
   position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
+  top: 2vw;
+  left: 2vw;
   z-index: 2;
   a {
     font-size: 3.5rem;
     color: white;
   }
   svg {
-    height: 3rem;
+    width: 10vw;
     polygon,
     path,
     rect {
