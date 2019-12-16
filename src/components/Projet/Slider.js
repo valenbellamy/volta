@@ -116,7 +116,7 @@ const Slider = ({ photos }) => {
                 imgStyle={{ width: "auto", position: "relative" }}
                 placeholderStyle={{ width: "100%", position: "absolute" }}
                 fluid={photo.fluid}
-                fadeIn="false"
+                loading="eager"
               />
             ))}
         </animated.div>
