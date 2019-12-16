@@ -109,16 +109,16 @@ const Slider = ({ photos }) => {
           className="slider__inner"
           style={{ transform: props.x.interpolate(trans) }}
         >
-          {photos.map((photo, index) => (
-            <Img
-              key={index}
-              imgStyle={{ width: "auto", position: "relative" }}
-              placeholderStyle={{ width: "100%", position: "absolute" }}
-              fluid={photo.fluid}
-              fadeIn="false"
-              onLoad={() => console.log("loaded")}
-            />
-          ))}
+          {photos &&
+            photos.map((photo, index) => (
+              <Img
+                key={index}
+                imgStyle={{ width: "auto", position: "relative" }}
+                placeholderStyle={{ width: "100%", position: "absolute" }}
+                fluid={photo.fluid}
+                fadeIn="false"
+              />
+            ))}
         </animated.div>
       ))}
     </animated.div>
