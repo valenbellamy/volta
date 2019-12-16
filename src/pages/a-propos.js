@@ -5,7 +5,7 @@ import Content from "../components/About/Content"
 
 const About = () => (
   <Layout>
-    <SEO title="A propos de Volta" />
+    <SEO title="A propos de Volta Architecture" />
     <main>
       <Content />
     </main>

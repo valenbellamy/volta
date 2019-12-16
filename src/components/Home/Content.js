@@ -15,6 +15,8 @@ const Content = () => {
             catgorie
             slug
             couverture {
+              id
+              description
               fluid {
                 ...GatsbyContentfulFluid
               }
@@ -58,7 +60,10 @@ const Content = () => {
             key={edge.node.id}
             className={`bg-image__wrapper ${index === i ? "active" : ""}`}
           >
-            <Img fluid={edge.node.couverture.fluid} />
+            <Img
+              fluid={edge.node.couverture.fluid}
+              alt={edge.node.couverture.description}
+            />
           </div>
         ))}
         <div className="bg"></div>

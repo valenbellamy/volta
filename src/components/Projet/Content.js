@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import Dropdown from "../Dropdown/Dropdown"
 import "./content.scss"
 import anime from "animejs/lib/anime.es.js"
 
@@ -61,7 +62,8 @@ const Content = ({ info }) => {
         <div className="info__nav">
           <div className="info__link info__link--dropdown">
             réalisations
-            <div className="dropdown" id="dropdown">
+            <Dropdown />
+            {/* <div className="dropdown" id="dropdown">
               {data.allContentfulProjet.edges.map((edge, i) => (
                 <Link
                   key={edge.node.id}
@@ -76,7 +78,7 @@ const Content = ({ info }) => {
                   </span>
                 </Link>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="info__content">

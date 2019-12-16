@@ -18,7 +18,6 @@ const Slider = ({ photos }) => {
   const [rightLimit, setRightLimit] = useState(0)
   const [translateHorizontal, setTranslateHorizontal] = useState(0)
   const [currentTranslate, setCurrentTranslate] = useState(0)
-
   useEffect(() => {
     anime(
       {
@@ -26,7 +25,7 @@ const Slider = ({ photos }) => {
         opacity: [0, 1],
         easing: "easeOutExpo",
         duration: 1200,
-        delay: (el, i) => 200 * i,
+        delay: (el, i) => 100 * i,
       },
       0
     )
@@ -110,9 +109,10 @@ const Slider = ({ photos }) => {
           style={{ transform: props.x.interpolate(trans) }}
         >
           {photos &&
-            photos.map((photo, index) => (
+            photos.map(photo => (
               <Img
-                key={index}
+                key={photo.id}
+                alt={photo.description}
                 imgStyle={{ width: "auto", position: "relative" }}
                 placeholderStyle={{ width: "100%", position: "absolute" }}
                 fluid={photo.fluid}

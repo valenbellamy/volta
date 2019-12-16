@@ -32,7 +32,7 @@ export const query = graphql`
 const Projet = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Projet Volta" />
+      <SEO title={data.contentfulProjet.titre} />
       <main className="project">
         <Slider photos={data.contentfulProjet.photos} />
         <Content info={data.contentfulProjet} />
