@@ -1,9 +1,24 @@
 import React, { useEffect } from "react"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import "./content.scss"
 import anime from "animejs/lib/anime.es.js"
 
 const Content = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 12) {
+        edges {
+          node {
+            id
+            titre
+            catgorie
+            slug
+          }
+        }
+      }
+    }
+  `)
+
   useEffect(() => {
     anime(
       {
@@ -73,7 +88,7 @@ const Content = () => {
           </p>
         </div>
       </div>
-      <div className="content">
+      <div className="content mbm">
         <div className="content__blk">
           <p className="fs-sm anime-text">
             Contact <br />
@@ -88,47 +103,20 @@ const Content = () => {
           <li className="navbar__link navbar__link--dark navbar__link--dropdown">
             réalisations
             <div className="dropdown" id="dropdown">
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
-                <span className="dropdown__item__title">plantes</span>
-                <span className="dropdown__item__category">commercial</span>
-              </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
-                <span className="dropdown__item__title">miromesnil</span>
-                <span className="dropdown__item__category">
-                  archi intérieure
-                </span>
-              </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
-                <span className="dropdown__item__title">jean-moulin</span>
-                <span className="dropdown__item__category">commercial</span>
-              </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
-                <span className="dropdown__item__title">saint-jacques</span>
-                <span className="dropdown__item__category">
-                  archi intérieure
-                </span>
-              </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-              >
-                <span className="dropdown__item__title">flaine</span>
-                <span className="dropdown__item__category">
-                  archi intérieure
-                </span>
-              </Link>
+              {data.allContentfulProjet.edges.map((edge, i) => (
+                <Link
+                  key={edge.node.id}
+                  to={`/${edge.node.slug}`}
+                  className="dropdown__item dropdown__item--dark"
+                >
+                  <span className="dropdown__item__title">
+                    {edge.node.titre}
+                  </span>
+                  <span className="dropdown__item__category">
+                    {edge.node.catgorie}
+                  </span>
+                </Link>
+              ))}
             </div>
           </li>
           <li className="navbar__link navbar__link--dark is-active">

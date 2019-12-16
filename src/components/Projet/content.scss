@@ -49,7 +49,7 @@
   position: absolute;
   bottom: 2vw;
   width: 100%;
-  height: 190px;
+  height: 210px;
   overflow: hidden;
   display: flex;
   justify-content: flex-start;
@@ -79,9 +79,9 @@
   padding-right: 1.5rem;
 }
 
-.mbm {
-  margin-bottom: 1.5rem;
-}
+// .mbm {
+//   margin-bottom: 1.5rem;
+// }
 
 .info__content {
   display: flex;
@@ -90,16 +90,22 @@
   width: 23vw;
 }
 
-.info__content__title {
-  font-size: 1.5rem;
-}
-
 .info__content div p {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .info__content div span {
-  font-size: 1rem;
+  font-size: 0.8rem;
+}
+
+.info__content__title {
+  h1 {
+    font-size: 1.4rem;
+    span {
+      font-size: 0.8rem;
+      vertical-align: middle;
+    }
+  }
 }
 
 .info__link {

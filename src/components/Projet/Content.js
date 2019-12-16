@@ -1,22 +1,36 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import "./content.scss"
 import anime from "animejs/lib/anime.es.js"
 
-const Content = () => {
-  const [visible, setVisible] = useState(false)
+const Content = ({ info }) => {
+  // const [visible, setVisible] = useState(false)
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 12) {
+        edges {
+          node {
+            id
+            titre
+            catgorie
+            slug
+          }
+        }
+      }
+    }
+  `)
 
   useEffect(() => {
-    setTimeout(() => {
-      setVisible(true)
-    })
-    anime({
-      targets: ".toggle__button",
-      opacity: 1,
-      duration: 400,
-      easing: "easeInOutExpo",
-      delay: 300,
-    })
+    // setTimeout(() => {
+    //   setVisible(true)
+    // })
+    // anime({
+    //   targets: ".toggle__button",
+    //   opacity: 1,
+    //   duration: 400,
+    //   easing: "easeInOutExpo",
+    //   delay: 300,
+    // })
   }, [])
 
   return (
@@ -48,76 +62,44 @@ const Content = () => {
           <div className="info__link info__link--dropdown">
             réalisations
             <div className="dropdown" id="dropdown">
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-                data-index="0"
-              >
-                <span className="dropdown__item__title">plantes</span>
-                <span className="dropdown__item__category">commercial</span>
-              </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-                data-index="1"
-              >
-                <span className="dropdown__item__title">miromesnil</span>
-                <span className="dropdown__item__category">
-                  archi intérieure
-                </span>
-              </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-                data-index="2"
-              >
-                <span className="dropdown__item__title">jean-moulin</span>
-                <span className="dropdown__item__category">commercial</span>
-              </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-                data-index="3"
-              >
-                <span className="dropdown__item__title">saint-jacques</span>
-                <span className="dropdown__item__category">
-                  archi intérieure
-                </span>
-              </Link>
-              <Link
-                to="/projet"
-                className="dropdown__item dropdown__item--dark"
-                data-index="4"
-              >
-                <span className="dropdown__item__title">flaine</span>
-                <span className="dropdown__item__category">
-                  archi intérieure
-                </span>
-              </Link>
+              {data.allContentfulProjet.edges.map((edge, i) => (
+                <Link
+                  key={edge.node.id}
+                  to={`/${edge.node.slug}`}
+                  className="dropdown__item dropdown__item--dark"
+                >
+                  <span className="dropdown__item__title">
+                    {edge.node.titre}
+                  </span>
+                  <span className="dropdown__item__category">
+                    {edge.node.catgorie}
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
         <div className="info__content">
-          <div className="info__content__title mbm">
+          <div className="info__content__title">
             <h1>
-              Flaine <span>2018</span>
+              {info.titre} <span>{info.date}</span>
             </h1>
           </div>
-          <div className="mbm">
-            <p>Réhabilitation d'un appartement montagne.</p>
+          <div>
+            <p>{info.description}</p>
           </div>
           <div>
             <div>
-              <span>Maîtrise d'ouvrage: privé</span>
+              <span>Maîtrise d'ouvrage: {info.maitrise}</span>
             </div>
             <div>
-              <span>Surface: 50 m²</span>
+              <span>Surface: {info.surface}</span>
             </div>
             <div>
-              <span>Lieu: Flaine, France</span>
+              <span>Lieu: {info.lieu}</span>
             </div>
             <div>
-              <span>Mission: mission complète conception/réalisation</span>
+              <span>Mission: {info.mission}</span>
             </div>
           </div>
         </div>

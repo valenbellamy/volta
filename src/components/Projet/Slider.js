@@ -8,75 +8,7 @@ import { animated, useTrail } from "react-spring"
 const fast = { tension: 600, friction: 100 }
 const trans = x => `translate3d(-${x}px,0,0)`
 
-const Slider = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      img1: file(relativePath: { eq: "photo-1.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      img2: file(relativePath: { eq: "photo-2.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      img3: file(relativePath: { eq: "photo-3.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      img4: file(relativePath: { eq: "photo-4.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      img5: file(relativePath: { eq: "photo-5.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      img6: file(relativePath: { eq: "photo-6.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      img7: file(relativePath: { eq: "photo-7.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      img8: file(relativePath: { eq: "photo-8.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      img9: file(relativePath: { eq: "photo-9.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-    }
-  `)
-
+const Slider = ({ photos }) => {
   const [trail, set] = useTrail(1, () => ({
     x: 0,
     config: fast,
@@ -110,17 +42,24 @@ const Slider = () => {
     let acc = 0
     let margin = 8
     let gutter = 16
-    let heightInfos = 190
+    let heightInfos = 210
     let blank = 48
-    let size = Object.keys(data).length
-    for (let key in data) {
-      if (!data.hasOwnProperty(key)) continue
-      var obj = data[key]
+    let size = photos.length
+    //let size = Object.keys(data).length
+    // for (let key in data) {
+    //   if (!data.hasOwnProperty(key)) continue
+    //   var obj = data[key]
+    //   var currentWidth =
+    //     obj.childImageSharp.fluid.aspectRatio *
+    //     (windowHeight - heightInfos - blank - gutter * 2)
+    //   acc += currentWidth
+    // }
+    photos.map(photo => {
       var currentWidth =
-        obj.childImageSharp.fluid.aspectRatio *
+        photo.fluid.aspectRatio *
         (windowHeight - heightInfos - blank - gutter * 2)
       acc += currentWidth
-    }
+    })
     acc = acc - windowWidth + (size - 1) * margin + 2 * gutter
     setRightLimit(acc)
   }
@@ -170,52 +109,16 @@ const Slider = () => {
           className="slider__inner"
           style={{ transform: props.x.interpolate(trans) }}
         >
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img2.childImageSharp.fluid}
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img4.childImageSharp.fluid}
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img1.childImageSharp.fluid}
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img7.childImageSharp.fluid}
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img3.childImageSharp.fluid}
-          />
-
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img5.childImageSharp.fluid}
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img6.childImageSharp.fluid}
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img8.childImageSharp.fluid}
-          />
-          <Img
-            imgStyle={{ width: "auto", position: "relative" }}
-            placeholderStyle={{ width: "100%", position: "absolute" }}
-            fluid={data.img9.childImageSharp.fluid}
-          />
+          {photos.map((photo, index) => (
+            <Img
+              key={index}
+              imgStyle={{ width: "auto", position: "relative" }}
+              placeholderStyle={{ width: "100%", position: "absolute" }}
+              fluid={photo.fluid}
+              fadeIn="false"
+              onLoad={() => console.log("loaded")}
+            />
+          ))}
         </animated.div>
       ))}
     </animated.div>
