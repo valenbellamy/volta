@@ -6,7 +6,7 @@
   cursor: grab;
   cursor: -webkit-grab;
   @media (max-width: 768px) {
-    height: calc(100vh - 229px - 56px);
+    height: calc(100vh - 229px);
   }
   &.active {
     cursor: grabbing;
