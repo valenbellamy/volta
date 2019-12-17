@@ -9,6 +9,18 @@ const fast = { tension: 600, friction: 100 }
 const trans = x => `translate3d(-${x}px,0,0)`
 
 const Slider = ({ photos }) => {
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     cursor: file(relativePath: { eq: "cursor.png" }) {
+  //       childImageSharp {
+  //         fixed(width: 50) {
+  //           ...GatsbyImageSharpFixed
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+
   const [trail, set] = useTrail(1, () => ({
     x: 0,
     config: fast,
@@ -35,7 +47,7 @@ const Slider = ({ photos }) => {
     computeWidth()
     window.addEventListener("resize", computeWidth)
     return () => window.removeEventListener("resize", computeWidth)
-  }, [])
+  }, [computeWidth])
 
   const computeWidth = () => {
     let windowHeight = window.innerHeight
@@ -71,21 +83,21 @@ const Slider = ({ photos }) => {
     e.preventDefault()
     setDown(true)
     if (
-      e.type == "touchstart" ||
-      e.type == "touchmove" ||
-      e.type == "touchend" ||
-      e.type == "touchcancel"
+      e.type === "touchstart" ||
+      e.type === "touchmove" ||
+      e.type === "touchend" ||
+      e.type === "touchcancel"
     ) {
       var touch = e.changedTouches[0]
       setStartX(touch.pageX)
     } else if (
-      e.type == "mousedown" ||
-      e.type == "mouseup" ||
-      e.type == "mousemove" ||
-      e.type == "mouseover" ||
-      e.type == "mouseout" ||
-      e.type == "mouseenter" ||
-      e.type == "mouseleave"
+      e.type === "mousedown" ||
+      e.type === "mouseup" ||
+      e.type === "mousemove" ||
+      e.type === "mouseover" ||
+      e.type === "mouseout" ||
+      e.type === "mouseenter" ||
+      e.type === "mouseleave"
     ) {
       setStartX(e.pageX)
     }
@@ -104,15 +116,15 @@ const Slider = ({ photos }) => {
     if (!down) return
     e.preventDefault()
     if (
-      e.type == "touchstart" ||
-      e.type == "touchmove" ||
-      e.type == "touchend" ||
-      e.type == "touchcancel"
+      e.type === "touchstart" ||
+      e.type === "touchmove" ||
+      e.type === "touchend" ||
+      e.type === "touchcancel"
     ) {
       var touch = e.changedTouches[0]
       let x = touch.pageX
       let walk = x - startX
-      let current = currentTranslate - walk
+      let current = currentTranslate - walk * 5
       if (current >= rightLimit) {
         current = rightLimit
       }
@@ -122,17 +134,17 @@ const Slider = ({ photos }) => {
       setTranslateHorizontal(Math.floor(current))
       set({ x: translateHorizontal })
     } else if (
-      e.type == "mousedown" ||
-      e.type == "mouseup" ||
-      e.type == "mousemove" ||
-      e.type == "mouseover" ||
-      e.type == "mouseout" ||
-      e.type == "mouseenter" ||
-      e.type == "mouseleave"
+      e.type === "mousedown" ||
+      e.type === "mouseup" ||
+      e.type === "mousemove" ||
+      e.type === "mouseover" ||
+      e.type === "mouseout" ||
+      e.type === "mouseenter" ||
+      e.type === "mouseleave"
     ) {
       let x = e.pageX
       let walk = x - startX
-      let current = currentTranslate - walk
+      let current = currentTranslate - walk * 1.8
       if (current >= rightLimit) {
         current = rightLimit
       }
@@ -155,6 +167,7 @@ const Slider = ({ photos }) => {
       onTouchStart={mouseDown}
       onTouchEnd={mouseUp}
       onTouchMove={mouseMove}
+      //style={{ cursor: `url(${data.cursor.childImageSharp.fixed.src})` }}
     >
       {trail.map((props, index) => (
         <animated.div
