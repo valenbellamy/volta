@@ -125,7 +125,7 @@ const Slider = ({ photos }) => {
     ) {
       var touch = e.changedTouches[0]
       x = touch.pageX
-      speed = 300
+      speed = 10
     } else if (
       e.type === "mousedown" ||
       e.type === "mouseup" ||
