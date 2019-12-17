@@ -78,11 +78,17 @@ p {
 .navbar__link {
   font-size: 1.3rem;
   color: white;
+  @media (max-width: 1199.98px) {
+    font-size: 1.1rem;
+  }
   a {
     color: white;
     font-size: 1.3rem;
     line-height: 1;
     transition: all 0.4s ease;
+    @media (max-width: 1199.98px) {
+      font-size: 1.1rem;
+    }
     &:hover {
       color: #cccccc;
     }
@@ -130,6 +136,9 @@ p {
   opacity: 0;
   will-change: opacity;
   text-decoration: none;
+  &:focus {
+    opacity: 1;
+  }
   &:hover {
     .dropdown__item__title,
     .dropdown__item__category {
@@ -140,6 +149,9 @@ p {
     color: white;
     font-size: 1.3rem;
     transition: all 0.4s ease;
+    @media (max-width: 1199.98px) {
+      font-size: 1.1rem;
+    }
   }
   .dropdown__item__category {
     color: white;
@@ -147,6 +159,11 @@ p {
     vertical-align: middle;
     padding-left: 0.4rem;
     transition: all 0.4s ease;
+    @media (max-width: 1199.98px) {
+      font-size: 0.7rem;
+      display: block;
+      padding-left: 0rem;
+    }
   }
 }
 

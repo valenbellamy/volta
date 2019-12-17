@@ -62,7 +62,7 @@
   width: 12vw;
   padding-left: 1rem;
   svg {
-    height: 2rem;
+    height: 3vw;
     path,
     polygon,
     rect {
@@ -92,6 +92,9 @@
 
 .info__content div p {
   font-size: 1rem;
+  @media (max-width: 991.98px) {
+    font-size: 0.9rem;
+  }
 }
 
 .info__content div span {
@@ -113,10 +116,16 @@
   align-self: flex-end;
   color: black;
   font-size: 1.3rem;
+  @media (max-width: 1199.98px) {
+    font-size: 1.1rem;
+  }
   a {
     color: black;
     font-size: 1.3rem;
     transition: all 0.4s ease;
+    @media (max-width: 1199.98px) {
+      font-size: 1.1rem;
+    }
     &:hover {
       color: #cccccc;
     }
