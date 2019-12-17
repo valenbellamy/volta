@@ -157,6 +157,17 @@ p {
     padding-right: 0.5rem;
     width: 60vw;
   }
+  @media (max-width: 767.98px) {
+    width: 100vw;
+    max-height: 70vh;
+    overflow: auto;
+    padding: 2rem 0rem;
+  }
+  &.dropdown__bg--sm {
+    @media (max-width: 767.98px) {
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+  }
 }
 
 .dropdown__item {

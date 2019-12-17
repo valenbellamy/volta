@@ -20,7 +20,7 @@ const Dropdown = () => {
 
   return (
     <>
-      <div className="dropdown" id="dropdown">
+      <div className="dropdown dropdown__bg--sm" id="dropdown">
         {data.allContentfulProjet.edges.map((edge, i) => (
           <Link
             key={edge.node.id}
