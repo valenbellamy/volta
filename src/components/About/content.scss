@@ -3,10 +3,23 @@
   justify-content: space-between;
   padding: 0rem 2vw;
   margin-top: 2rem;
+  @media (max-width: 767.98px) {
+    display: block;
+    padding: 0rem 2rem;
+  }
+}
+
+.content__sm--pb {
+  @media (max-width: 767.98px) {
+    padding-bottom: 6rem;
+  }
 }
 
 .content__blk {
   width: 45%;
+  @media (max-width: 767.98px) {
+    width: 100%;
+  }
 }
 
 .content h1 {

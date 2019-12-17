@@ -74,7 +74,7 @@ const Content = () => {
           </p>
         </div>
       </div>
-      <div className="content mbm">
+      <div className="content content__sm--pb mbm">
         <div className="content__blk">
           <p className="fs-sm anime-text">
             Contact <br />

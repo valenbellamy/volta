@@ -57,16 +57,19 @@
   top: 2vw;
   left: 2vw;
   z-index: 2;
-  a {
-    font-size: 3.5rem;
-    color: white;
-  }
   svg {
     width: 10vw;
+    @media (max-width: 767.98px) {
+      width: 25vw;
+    }
     polygon,
     path,
     rect {
       fill: #fff;
     }
+  }
+  @media (max-width: 767.98px) {
+    top: 2rem;
+    left: 2rem;
   }
 }
