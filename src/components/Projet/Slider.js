@@ -64,13 +64,15 @@ const Slider = ({ photos }) => {
     // let blank = 0
     let size = photos.length
 
-    if (window.innerWidth > 769) {
+    if (window.innerWidth > 768) {
       heightInfos = 210
       blank = 48
+    } else if (window.innerWidth > 576 && window.innerWidth < 768) {
+      heightInfos = 229
+      blank = 0
     } else {
       heightInfos = 229
-      // blank = -56
-      blank = 0
+      blank = -56
     }
 
     photos.map(photo => {
