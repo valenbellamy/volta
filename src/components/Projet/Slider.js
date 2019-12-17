@@ -33,6 +33,8 @@ const Slider = ({ photos }) => {
 
   useLayoutEffect(() => {
     computeWidth()
+    window.addEventListener("resize", computeWidth)
+    return () => window.removeEventListener("resize", computeWidth)
   }, [])
 
   const computeWidth = () => {
@@ -41,18 +43,20 @@ const Slider = ({ photos }) => {
     let acc = 0
     let margin = 8
     let gutter = 16
-    let heightInfos = 210
-    let blank = 48
+    let heightInfos = 0
+    let blank = 0
+    // let heightInfos = 229
+    // let blank = 0
     let size = photos.length
-    //let size = Object.keys(data).length
-    // for (let key in data) {
-    //   if (!data.hasOwnProperty(key)) continue
-    //   var obj = data[key]
-    //   var currentWidth =
-    //     obj.childImageSharp.fluid.aspectRatio *
-    //     (windowHeight - heightInfos - blank - gutter * 2)
-    //   acc += currentWidth
-    // }
+
+    if (window.innerWidth > 769) {
+      heightInfos = 210
+      blank = 48
+    } else {
+      heightInfos = 229
+      blank = 0
+    }
+
     photos.map(photo => {
       var currentWidth =
         photo.fluid.aspectRatio *
@@ -66,7 +70,25 @@ const Slider = ({ photos }) => {
   const mouseDown = e => {
     e.preventDefault()
     setDown(true)
-    setStartX(e.pageX)
+    if (
+      e.type == "touchstart" ||
+      e.type == "touchmove" ||
+      e.type == "touchend" ||
+      e.type == "touchcancel"
+    ) {
+      var touch = e.changedTouches[0]
+      setStartX(touch.pageX)
+    } else if (
+      e.type == "mousedown" ||
+      e.type == "mouseup" ||
+      e.type == "mousemove" ||
+      e.type == "mouseover" ||
+      e.type == "mouseout" ||
+      e.type == "mouseenter" ||
+      e.type == "mouseleave"
+    ) {
+      setStartX(e.pageX)
+    }
     setCurrentTranslate(translateHorizontal)
   }
 
@@ -81,17 +103,46 @@ const Slider = ({ photos }) => {
   const mouseMove = e => {
     if (!down) return
     e.preventDefault()
-    let x = e.pageX
-    let walk = x - startX
-    let current = currentTranslate - walk
-    if (current >= rightLimit) {
-      current = rightLimit
+    if (
+      e.type == "touchstart" ||
+      e.type == "touchmove" ||
+      e.type == "touchend" ||
+      e.type == "touchcancel"
+    ) {
+      var touch = e.changedTouches[0]
+      let x = touch.pageX
+      let walk = x - startX
+      let current = currentTranslate - walk
+      if (current >= rightLimit) {
+        current = rightLimit
+      }
+      if (current < 0) {
+        current = 0
+      }
+      setTranslateHorizontal(Math.floor(current))
+      set({ x: translateHorizontal })
+    } else if (
+      e.type == "mousedown" ||
+      e.type == "mouseup" ||
+      e.type == "mousemove" ||
+      e.type == "mouseover" ||
+      e.type == "mouseout" ||
+      e.type == "mouseenter" ||
+      e.type == "mouseleave"
+    ) {
+      let x = e.pageX
+      let walk = x - startX
+      let current = currentTranslate - walk
+      if (current >= rightLimit) {
+        current = rightLimit
+      }
+      if (current < 0) {
+        current = 0
+      }
+      setTranslateHorizontal(Math.floor(current))
+      set({ x: translateHorizontal })
     }
-    if (current < 0) {
-      current = 0
-    }
-    setTranslateHorizontal(Math.floor(current))
-    set({ x: translateHorizontal })
+    //let x = e.pageX
   }
 
   return (
@@ -101,6 +152,9 @@ const Slider = ({ photos }) => {
       onMouseLeave={mouseLeave}
       onMouseUp={mouseUp}
       onMouseMove={mouseMove}
+      onTouchStart={mouseDown}
+      onTouchEnd={mouseUp}
+      onTouchMove={mouseMove}
     >
       {trail.map((props, index) => (
         <animated.div

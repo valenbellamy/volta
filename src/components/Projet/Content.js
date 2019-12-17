@@ -4,21 +4,6 @@ import Dropdown from "../Dropdown/Dropdown"
 import "./content.scss"
 
 const Content = ({ info }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 12) {
-        edges {
-          node {
-            id
-            titre
-            catgorie
-            slug
-          }
-        }
-      }
-    }
-  `)
-
   return (
     <>
       <div className="info anime-js">
