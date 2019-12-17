@@ -127,6 +127,9 @@ p {
   padding-bottom: 1rem;
   padding-right: 1.5rem;
   will-change: transform;
+  @media (max-width: 991.98px) {
+    padding-right: 0.5rem;
+  }
 }
 
 .dropdown__item {
@@ -136,6 +139,9 @@ p {
   opacity: 0;
   will-change: opacity;
   text-decoration: none;
+  @media (max-width: 991.98px) {
+    flex: 0 50%;
+  }
   &:focus {
     opacity: 1;
   }
@@ -163,6 +169,10 @@ p {
       font-size: 0.7rem;
       display: block;
       padding-left: 0rem;
+    }
+    @media (max-width: 991.98px) {
+      display: inline-block;
+      padding-left: 0.3rem;
     }
   }
 }
