@@ -2,10 +2,11 @@
   width: 100%;
   height: calc(100vh - 258px);
   overflow-x: hidden;
+  //height: calc(var(--vh, 1vh) * 100);
   cursor: grab;
   cursor: -webkit-grab;
   @media (max-width: 768px) {
-    height: calc(100% - 229px);
+    height: calc(100vh - 229px);
   }
   &.active {
     cursor: grabbing;

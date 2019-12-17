@@ -51,6 +51,9 @@ const Slider = ({ photos }) => {
 
   const computeWidth = () => {
     let windowHeight = window.innerHeight
+    //let vh = window.innerHeight * 0.01
+    // Then we set the value in the --vh custom property to the root of the document
+    //document.documentElement.style.setProperty("--vh", `${vh}px`)
     let windowWidth = window.innerWidth
     let acc = 0
     let margin = 8
@@ -125,7 +128,7 @@ const Slider = ({ photos }) => {
     ) {
       var touch = e.changedTouches[0]
       x = touch.pageX
-      speed = 4
+      speed = 3
     } else if (
       e.type === "mousedown" ||
       e.type === "mouseup" ||
