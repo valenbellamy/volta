@@ -69,7 +69,8 @@ const Slider = ({ photos }) => {
       blank = 48
     } else {
       heightInfos = 229
-      blank = -56
+      // blank = -56
+      blank = 0
     }
 
     photos.map(photo => {

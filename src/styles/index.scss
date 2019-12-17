@@ -19,10 +19,12 @@ body {
 }
 
 main.project {
-  height: 100vh;
+  //height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   overflow: hidden;
   @media (max-width: 767.98px) {
-    height: calc(100vh - 56px);
+    //height: calc(100vh - 56px);
+    // height: calc(var(--vh, 1vh) * 100 - 56px);
     overflow: hidden;
   }
 }
