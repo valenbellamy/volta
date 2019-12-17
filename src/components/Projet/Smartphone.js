@@ -1,28 +1,12 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Dropdown from "../Dropdown/Dropdown"
-import "./content.scss"
+import { Link } from "gatsby"
+import "./smartphone.scss"
 
-const Content = ({ info }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 12) {
-        edges {
-          node {
-            id
-            titre
-            catgorie
-            slug
-          }
-        }
-      }
-    }
-  `)
-
+const Smartphone = ({ info }) => {
   return (
     <>
-      <div className="info anime-js">
-        <div className="info__logo hidden--sm-block">
+      <div className="info--sm info--visible-sm">
+        <div className="info__logo">
           <Link to="/">
             <svg x="0px" y="0px" viewBox="300 450 3800 1250">
               <polygon points="767.3,1482.39 510.3,836.39 330.3,836.39 650.3,1628.39 884.3,1628.39 1204.3,836.39 1024.3,836.39 " />
@@ -44,22 +28,16 @@ const Content = ({ info }) => {
             </svg>
           </Link>
         </div>
-        <div className="info__nav">
-          <div className="info__link info__link--dropdown">
-            réalisations
-            <Dropdown />
-          </div>
-        </div>
-        <div className="info__content hidden--sm-flex">
-          <div className="info__content__title">
-            <h1>
-              {info.titre} <span>{info.date}</span>
-            </h1>
-          </div>
+        <div className="info__content">
           <div>
+            <div className="info__content__title">
+              <h1>
+                {info.titre} <span>{info.date}</span>
+              </h1>
+            </div>
             <p>{info.description}</p>
           </div>
-          <div>
+          <div className="info__content--sm">
             <div>
               <span>Maîtrise d'ouvrage: {info.maitrise}</span>
             </div>
@@ -74,13 +52,9 @@ const Content = ({ info }) => {
             </div>
           </div>
         </div>
-
-        <div className="info__link info__link--special">
-          <Link to="/a-propos">à propos</Link>
-        </div>
       </div>
     </>
   )
 }
 
-export default Content
+export default Smartphone

@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Content from "../components/Projet/Content"
+import Smartphone from "../components/Projet/Smartphone"
 
 import Slider from "../components/Projet/Slider"
 
@@ -34,6 +35,7 @@ const Projet = ({ data }) => {
     <Layout>
       <SEO title={data.contentfulProjet.titre} />
       <main className="project">
+        <Smartphone info={data.contentfulProjet} />
         <Slider photos={data.contentfulProjet.photos} />
         <Content info={data.contentfulProjet} />
       </main>

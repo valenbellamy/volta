@@ -1,0 +1,14 @@
+.info--visible-sm {
+  display: block;
+  height: 176px;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.info__content--sm {
+  padding-left: 0.5rem;
+}
