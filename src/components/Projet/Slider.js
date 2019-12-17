@@ -47,7 +47,7 @@ const Slider = ({ photos }) => {
     computeWidth()
     window.addEventListener("resize", computeWidth)
     return () => window.removeEventListener("resize", computeWidth)
-  }, [computeWidth])
+  }, [])
 
   const computeWidth = () => {
     let windowHeight = window.innerHeight
