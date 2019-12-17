@@ -115,6 +115,8 @@ const Slider = ({ photos }) => {
   const mouseMove = e => {
     if (!down) return
     e.preventDefault()
+    let x = 0
+    let speed = 1
     if (
       e.type === "touchstart" ||
       e.type === "touchmove" ||
@@ -122,17 +124,8 @@ const Slider = ({ photos }) => {
       e.type === "touchcancel"
     ) {
       var touch = e.changedTouches[0]
-      let x = touch.pageX
-      let walk = x - startX
-      let current = currentTranslate - walk * 5
-      if (current >= rightLimit) {
-        current = rightLimit
-      }
-      if (current < 0) {
-        current = 0
-      }
-      setTranslateHorizontal(Math.floor(current))
-      set({ x: translateHorizontal })
+      x = touch.pageX
+      speed = 30
     } else if (
       e.type === "mousedown" ||
       e.type === "mouseup" ||
@@ -142,19 +135,19 @@ const Slider = ({ photos }) => {
       e.type === "mouseenter" ||
       e.type === "mouseleave"
     ) {
-      let x = e.pageX
-      let walk = x - startX
-      let current = currentTranslate - walk * 1.8
-      if (current >= rightLimit) {
-        current = rightLimit
-      }
-      if (current < 0) {
-        current = 0
-      }
-      setTranslateHorizontal(Math.floor(current))
-      set({ x: translateHorizontal })
+      x = e.pageX
+      speed = 1.8
     }
-    //let x = e.pageX
+    let walk = x - startX
+    let current = currentTranslate - walk * speed
+    if (current >= rightLimit) {
+      current = rightLimit
+    }
+    if (current < 0) {
+      current = 0
+    }
+    setTranslateHorizontal(Math.floor(current))
+    set({ x: translateHorizontal })
   }
 
   return (
