@@ -17,7 +17,7 @@
 .slider__inner {
   position: relative;
   height: 100%;
-  width: auto;
+  //width: auto;
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap;
@@ -39,6 +39,9 @@
   }
   .gatsby-image-wrapper:last-child {
     margin-right: 1rem;
+  }
+  @media all and (max-width: 1024px) {
+    overflow-x: scroll;
   }
 }
 

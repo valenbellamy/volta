@@ -30,6 +30,8 @@ const Slider = ({ photos }) => {
   const [rightLimit, setRightLimit] = useState(0)
   const [translateHorizontal, setTranslateHorizontal] = useState(0)
   const [currentTranslate, setCurrentTranslate] = useState(0)
+
+  const [slideWidth, setSlideWidth] = useState("auto")
   useEffect(() => {
     anime(
       {
@@ -44,7 +46,13 @@ const Slider = ({ photos }) => {
   }, [])
 
   useLayoutEffect(() => {
-    computeWidth()
+    if (typeof window.orientation !== "undefined") {
+      setSlideWidth(window.innerWidth - 16)
+    } else {
+      console.log("test 2")
+      computeWidth()
+    }
+
     // window.addEventListener("resize", computeWidth)
     // return () => window.removeEventListener("resize", computeWidth)
   }, [])
@@ -76,6 +84,7 @@ const Slider = ({ photos }) => {
         (windowHeight - heightInfos - blank - gutter * 2)
       acc += currentWidth
     })
+    console.log(acc)
     acc = acc - windowWidth + (size - 1) * margin + 2 * gutter
     setRightLimit(acc)
   }
@@ -83,25 +92,7 @@ const Slider = ({ photos }) => {
   const mouseDown = e => {
     e.preventDefault()
     setDown(true)
-    if (
-      e.type === "touchstart" ||
-      e.type === "touchmove" ||
-      e.type === "touchend" ||
-      e.type === "touchcancel"
-    ) {
-      var touch = e.changedTouches[0]
-      setStartX(touch.pageX)
-    } else if (
-      e.type === "mousedown" ||
-      e.type === "mouseup" ||
-      e.type === "mousemove" ||
-      e.type === "mouseover" ||
-      e.type === "mouseout" ||
-      e.type === "mouseenter" ||
-      e.type === "mouseleave"
-    ) {
-      setStartX(e.pageX)
-    }
+    setStartX(e.pageX)
     setCurrentTranslate(translateHorizontal)
   }
 
@@ -116,29 +107,9 @@ const Slider = ({ photos }) => {
   const mouseMove = e => {
     if (!down) return
     e.preventDefault()
-    let x = 0
-    let speed = 1
-    if (
-      e.type === "touchstart" ||
-      e.type === "touchmove" ||
-      e.type === "touchend" ||
-      e.type === "touchcancel"
-    ) {
-      var touch = e.changedTouches[0]
-      x = touch.pageX
-      speed = 3
-    } else if (
-      e.type === "mousedown" ||
-      e.type === "mouseup" ||
-      e.type === "mousemove" ||
-      e.type === "mouseover" ||
-      e.type === "mouseout" ||
-      e.type === "mouseenter" ||
-      e.type === "mouseleave"
-    ) {
-      x = e.pageX
-      speed = 1.8
-    }
+    //let x = 0
+    let speed = 1.8
+    let x = e.pageX
     let walk = x - startX
     let current = currentTranslate - walk * speed
     if (current >= rightLimit) {
@@ -158,16 +129,16 @@ const Slider = ({ photos }) => {
       onMouseLeave={mouseLeave}
       onMouseUp={mouseUp}
       onMouseMove={mouseMove}
-      onTouchStart={mouseDown}
-      onTouchEnd={mouseUp}
-      onTouchMove={mouseMove}
+      // onTouchStart={mouseDown}
+      // onTouchEnd={mouseUp}
+      // onTouchMove={mouseMove}
       //style={{ cursor: `url(${data.cursor.childImageSharp.fixed.src})` }}
     >
       {trail.map((props, index) => (
         <animated.div
           key={index}
           className="slider__inner"
-          style={{ transform: props.x.interpolate(trans) }}
+          style={{ transform: props.x.interpolate(trans), width: slideWidth }}
         >
           {photos &&
             photos.map(photo => (
