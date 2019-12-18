@@ -57,14 +57,12 @@ const Slider = ({ photos }) => {
     let gutter = 16
     let heightInfos = 0
     let blank = 0
-    // let heightInfos = 229
-    // let blank = 0
     let size = photos.length
 
     if (window.innerWidth > 768) {
       heightInfos = 210
       blank = 48
-    } else if (window.innerWidth > 576 && window.innerWidth < 768) {
+    } else if (window.innerWidth > 576 && window.innerWidth <= 768) {
       heightInfos = 229
       blank = 0
     } else {

@@ -14,6 +14,8 @@ const Layout = ({ children }) => {
 
   const setHeight = () => {
     let vh = window.innerHeight * 0.01
+    let vh2 = window.outerHeight * 0.01
+    console.log(vh * 100, vh2 * 100)
     // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty("--vh", `${vh}px`)
   }
