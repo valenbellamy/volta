@@ -45,8 +45,8 @@ const Slider = ({ photos }) => {
 
   useLayoutEffect(() => {
     computeWidth()
-    window.addEventListener("resize", computeWidth)
-    return () => window.removeEventListener("resize", computeWidth)
+    // window.addEventListener("resize", computeWidth)
+    // return () => window.removeEventListener("resize", computeWidth)
   }, [])
 
   const computeWidth = () => {
