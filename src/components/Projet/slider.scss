@@ -40,7 +40,7 @@
   .gatsby-image-wrapper:last-child {
     margin-right: 1rem;
   }
-  @media all and (max-width: 1024px) {
+  &.not-desktop {
     overflow-x: scroll;
   }
 }

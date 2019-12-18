@@ -32,6 +32,7 @@ const Slider = ({ photos }) => {
   const [currentTranslate, setCurrentTranslate] = useState(0)
 
   const [slideWidth, setSlideWidth] = useState("auto")
+  const [desktop, setDesktop] = useState(null)
   useEffect(() => {
     anime(
       {
@@ -48,8 +49,9 @@ const Slider = ({ photos }) => {
   useLayoutEffect(() => {
     if (typeof window.orientation !== "undefined") {
       setSlideWidth(window.innerWidth - 16)
+      setDesktop(false)
     } else {
-      console.log("test 2")
+      setDesktop(true)
       computeWidth()
     }
 
@@ -84,7 +86,6 @@ const Slider = ({ photos }) => {
         (windowHeight - heightInfos - blank - gutter * 2)
       acc += currentWidth
     })
-    console.log(acc)
     acc = acc - windowWidth + (size - 1) * margin + 2 * gutter
     setRightLimit(acc)
   }
@@ -137,7 +138,7 @@ const Slider = ({ photos }) => {
       {trail.map((props, index) => (
         <animated.div
           key={index}
-          className="slider__inner"
+          className={`slider__inner ${desktop ? "" : "not-desktop"}`}
           style={{ transform: props.x.interpolate(trans), width: slideWidth }}
         >
           {photos &&
