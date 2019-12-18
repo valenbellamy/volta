@@ -53,10 +53,9 @@ const Slider = ({ photos }) => {
     } else {
       setDesktop(true)
       computeWidth()
+      window.addEventListener("resize", computeWidth)
+      return () => window.removeEventListener("resize", computeWidth)
     }
-
-    // window.addEventListener("resize", computeWidth)
-    // return () => window.removeEventListener("resize", computeWidth)
   }, [])
 
   const computeWidth = () => {
@@ -65,20 +64,9 @@ const Slider = ({ photos }) => {
     let acc = 0
     let margin = 8
     let gutter = 16
-    let heightInfos = 0
-    let blank = 0
+    let heightInfos = 210
+    let blank = 48
     let size = photos.length
-
-    if (window.innerWidth > 768) {
-      heightInfos = 210
-      blank = 48
-    } else if (window.innerWidth > 576 && window.innerWidth <= 768) {
-      heightInfos = 229
-      blank = 0
-    } else {
-      heightInfos = 229
-      blank = -56
-    }
 
     photos.map(photo => {
       var currentWidth =
@@ -108,7 +96,6 @@ const Slider = ({ photos }) => {
   const mouseMove = e => {
     if (!down) return
     e.preventDefault()
-    //let x = 0
     let speed = 1.8
     let x = e.pageX
     let walk = x - startX
@@ -130,10 +117,6 @@ const Slider = ({ photos }) => {
       onMouseLeave={mouseLeave}
       onMouseUp={mouseUp}
       onMouseMove={mouseMove}
-      // onTouchStart={mouseDown}
-      // onTouchEnd={mouseUp}
-      // onTouchMove={mouseMove}
-      //style={{ cursor: `url(${data.cursor.childImageSharp.fixed.src})` }}
     >
       {trail.map((props, index) => (
         <animated.div

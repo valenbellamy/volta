@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import "./content.scss"
@@ -26,6 +26,20 @@ const Content = () => {
       }
     }
   `)
+
+  useEffect(() => {
+    const limit = 8
+    // const id = setTimeout(() => setCurrent(next), time);
+    // return () => clearTimeout(id);
+    const timer = setTimeout(() => {
+      if (index === limit - 1) {
+        setIndex(0)
+      } else {
+        setIndex(index + 1)
+      }
+    }, 4000)
+    return () => clearTimeout(timer)
+  }, [index])
 
   const setActiveItem = item => {
     setIndex(item)
@@ -66,6 +80,7 @@ const Content = () => {
             />
           </div>
         ))}
+
         <div className="bg"></div>
       </div>
       <nav className="navbar navbar--fixed">
