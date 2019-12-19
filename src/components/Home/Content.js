@@ -5,6 +5,7 @@ import "./content.scss"
 
 const Content = () => {
   const [index, setIndex] = useState(0)
+  const [open, setOpen] = useState(false)
   const data = useStaticQuery(graphql`
     query {
       allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 12) {
@@ -29,8 +30,6 @@ const Content = () => {
 
   useEffect(() => {
     const limit = 8
-    // const id = setTimeout(() => setCurrent(next), time);
-    // return () => clearTimeout(id);
     const timer = setTimeout(() => {
       if (index === limit - 1) {
         setIndex(0)
@@ -85,7 +84,12 @@ const Content = () => {
       </div>
       <nav className="navbar navbar--fixed">
         <ul className="navbar__nav">
-          <li className="navbar__link navbar__link--dropdown">
+          <li
+            className={`navbar__link navbar__link--dropdown ${
+              open ? "open" : ""
+            }`}
+            onClick={() => setOpen(!open)}
+          >
             réalisations
             <div className="dropdown" id="dropdown">
               {data.allContentfulProjet.edges.map((edge, i) => (

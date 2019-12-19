@@ -1,10 +1,12 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Dropdown from "../Dropdown/Dropdown"
 import "./content.scss"
 import anime from "animejs/lib/anime.es.js"
 
 const Content = () => {
+  const [open, setOpen] = useState(false)
+
   useEffect(() => {
     anime(
       {
@@ -17,7 +19,7 @@ const Content = () => {
       },
       200
     )
-  })
+  }, [])
   return (
     <>
       <div className="logo--dark">
@@ -86,7 +88,12 @@ const Content = () => {
       </div>
       <nav className="navbar">
         <ul className="navbar__nav">
-          <li className="navbar__link navbar__link--dark navbar__link--dropdown">
+          <li
+            className={`navbar__link navbar__link--dark navbar__link--dropdown ${
+              open ? "open" : ""
+            }`}
+            onClick={() => setOpen(!open)}
+          >
             réalisations
             <Dropdown />
           </li>

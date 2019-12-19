@@ -1,9 +1,11 @@
-import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import React, { useState } from "react"
+import { Link } from "gatsby"
 import Dropdown from "../Dropdown/Dropdown"
 import "./content.scss"
 
 const Content = ({ info }) => {
+  const [open, setOpen] = useState(false)
+
   return (
     <>
       <div className="info anime-js">
@@ -30,7 +32,10 @@ const Content = ({ info }) => {
           </Link>
         </div>
         <div className="info__nav">
-          <div className="info__link info__link--dropdown">
+          <div
+            className={`info__link info__link--dropdown ${open ? "open" : ""}`}
+            onClick={() => setOpen(!open)}
+          >
             réalisations
             <Dropdown />
           </div>

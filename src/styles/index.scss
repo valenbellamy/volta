@@ -143,16 +143,17 @@ p {
 
 .navbar__link--dropdown {
   position: relative;
+  cursor: pointer;
 }
 
-.navbar__link--dropdown:hover .dropdown {
+.navbar__link--dropdown.open .dropdown {
   transform: translate3d(0px, -100%, 0px);
   @media (max-width: 767.98px) {
     transform: translate3d(0px, -100%, 0px);
   }
 }
 
-.navbar__link--dropdown:hover .dropdown .dropdown__item {
+.navbar__link--dropdown.open .dropdown .dropdown__item {
   opacity: 1;
 }
 

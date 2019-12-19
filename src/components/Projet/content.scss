@@ -185,13 +185,14 @@
 
 .info__link--dropdown {
   position: relative;
+  cursor: pointer;
 }
 
-.info__link--dropdown:hover .dropdown {
+.info__link--dropdown.open .dropdown {
   transform: translate3d(0px, -100%, 0px);
 }
 
-.info__link--dropdown:hover .dropdown .dropdown__item {
+.info__link--dropdown.open .dropdown .dropdown__item {
   opacity: 1;
 }
 
