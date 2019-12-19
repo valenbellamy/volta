@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react"
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import "./slider.scss"
@@ -9,18 +9,6 @@ const fast = { tension: 600, friction: 100 }
 const trans = x => `translate3d(-${x}px,0,0)`
 
 const Slider = ({ photos }) => {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     cursor: file(relativePath: { eq: "cursor.png" }) {
-  //       childImageSharp {
-  //         fixed(width: 50) {
-  //           ...GatsbyImageSharpFixed
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
   const [trail, set] = useTrail(1, () => ({
     x: 0,
     config: fast,
@@ -33,6 +21,7 @@ const Slider = ({ photos }) => {
 
   const [slideWidth, setSlideWidth] = useState("auto")
   const [desktop, setDesktop] = useState(null)
+
   useEffect(() => {
     anime(
       {
@@ -93,19 +82,27 @@ const Slider = ({ photos }) => {
     setDown(false)
   }
 
+  let dragSpeed = 1.8
   const mouseMove = e => {
     if (!down) return
     e.preventDefault()
-    let speed = 1.8
     let x = e.pageX
     let walk = x - startX
-    let current = currentTranslate - walk * speed
-    if (current >= rightLimit) {
-      current = rightLimit
-    }
-    if (current < 0) {
-      current = 0
-    }
+    let current = currentTranslate - walk * dragSpeed
+    current = Math.min(rightLimit, current)
+    current = Math.max(0, current)
+    setTranslateHorizontal(Math.floor(current))
+    set({ x: translateHorizontal })
+  }
+
+  const isFirefox = typeof InstallTrigger !== "undefined"
+  let scrollSpeed = isFirefox ? 40 * 1.8 : 1 * 1.8
+  const scrollUpdate = e => {
+    let delta = e.deltaY ? Math.floor(e.deltaY) : Math.floor(e.deltaX)
+    setCurrentTranslate(translateHorizontal)
+    let current = currentTranslate + delta * scrollSpeed
+    current = Math.min(rightLimit, current)
+    current = Math.max(0, current)
     setTranslateHorizontal(Math.floor(current))
     set({ x: translateHorizontal })
   }
@@ -117,6 +114,7 @@ const Slider = ({ photos }) => {
       onMouseLeave={mouseLeave}
       onMouseUp={mouseUp}
       onMouseMove={mouseMove}
+      onWheel={scrollUpdate}
     >
       {trail.map((props, index) => (
         <animated.div
