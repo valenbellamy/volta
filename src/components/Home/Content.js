@@ -5,6 +5,8 @@ import "./content.scss"
 
 const Content = () => {
   const [index, setIndex] = useState(0)
+  const [hover, setHover] = useState(false)
+  const [clicked, setClicked] = useState(false)
   const [open, setOpen] = useState(false)
   const data = useStaticQuery(graphql`
     query {
@@ -68,6 +70,14 @@ const Content = () => {
     return () => clearTimeout(timer)
   }, [index])
 
+  useEffect(() => {
+    if (clicked || hover) {
+      setOpen(true)
+    } else {
+      setOpen(false)
+    }
+  }, [clicked, hover])
+
   const setActiveItem = item => {
     setIndex(item)
   }
@@ -126,7 +136,9 @@ const Content = () => {
             className={`navbar__link navbar__link--dropdown ${
               open ? "open" : ""
             }`}
-            onClick={() => setOpen(!open)}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            onClick={() => setClicked(!clicked)}
           >
             réalisations
             <div className="dropdown" id="dropdown">
