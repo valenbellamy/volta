@@ -6,6 +6,37 @@ import anime from "animejs/lib/anime.es.js"
 
 const Content = () => {
   const [open, setOpen] = useState(false)
+  const data = useStaticQuery(graphql`
+    query {
+      contentfulVolta {
+        titre1
+        paragraphe1 {
+          paragraphe1
+        }
+        titre2
+        paragraphe2 {
+          paragraphe2
+        }
+        titre3
+        paragraphe3 {
+          paragraphe3
+        }
+        adresse
+        mail
+      }
+    }
+  `)
+
+  const {
+    titre1,
+    titre2,
+    titre3,
+    paragraphe1,
+    paragraphe2,
+    paragraphe3,
+    adresse,
+    mail,
+  } = data.contentfulVolta
 
   useEffect(() => {
     anime(
@@ -46,43 +77,23 @@ const Content = () => {
       </div>
       <div className="content">
         <div className="content__blk mbl">
-          <h1 className="anime-text">L'agence</h1>
-          <p className="fs-lg anime-text">
-            Volta est une agence exerçant dans les domaines de l’architecture et
-            l’architecture d’intérieur. Créée en 2016 par Agathe Lavaud, elle
-            articule son travail autour du soucis du détail et d'un tandem entre
-            contemporanéité et tradition.
-          </p>
+          <h1 className="anime-text">{titre1}</h1>
+          <p className="fs-lg anime-text">{paragraphe1.paragraphe1}</p>
         </div>
         <div className="content__blk">
-          <h2 className="anime-text">Agathe Lavaud</h2>
-          <p className="anime-text mbm">
-            Curieuse de découvrir les différentes pratiques de l’Architecture et
-            du projet, Agathe Lavaud commence ses études à l’ESAG Penninghen et
-            obtient son diplôme d’architecte d’intérieur en 2014. Elle poursuit
-            par la suite son parcours à l’Ecole Nationale Supérieure
-            d’Architecture de Marne-la-Vallée, expériences entrecoupées par un
-            semestre d’étude en Italie. Par la suite, elle intègre l’agence
-            Renzo Piano Building Workshop, où elle reçoit son Habilitation à la
-            Maîtrise d’Œuvre en son Nom Propre. Après plusieurs expériences en
-            agence (Wilmotte & Associés, Vidalenc Architectes, Thierry Lemaire
-            Architecture), elle décide de monter sa propre structure en se
-            spécialisant dans la commande privée.
-          </p>
-          <h2 className="anime-text">Collaboration</h2>
-          <p className="mbl anime-text">
-            Elodie Biehlmann, architecte diplômée d’Etat de l’Ecole Nationale de
-            Marne-la-Vallée
-          </p>
+          <h2 className="anime-text">{titre2}</h2>
+          <p className="anime-text mbm">{paragraphe2.paragraphe2}</p>
+          <h2 className="anime-text">{titre3}</h2>
+          <p className="mbl anime-text">{paragraphe3.paragraphe3}</p>
         </div>
       </div>
       <div className="content content__sm--pb mbm">
         <div className="content__blk">
           <p className="fs-sm anime-text">
             Contact <br />
-            3, rue de l’Asile Popincourt 75011 Paris
+            {adresse}
             <br />
-            contact@volta-architecture.com
+            {mail}
           </p>
         </div>
       </div>

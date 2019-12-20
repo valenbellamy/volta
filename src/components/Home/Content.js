@@ -22,14 +22,42 @@ const Content = () => {
                 ...GatsbyContentfulFluid
               }
             }
+            couvertureSmartphone {
+              id
+              description
+              fluid {
+                ...GatsbyContentfulFluid
+              }
+            }
+          }
+        }
+      }
+      contentfulDiaporama(titre: { eq: "Diaporama" }) {
+        ordinateur {
+          id
+          title
+          description
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
+        smartphone {
+          id
+          title
+          description
+          fluid {
+            ...GatsbyContentfulFluid
           }
         }
       }
     }
   `)
 
+  const lengthDiapo = data.contentfulDiaporama.ordinateur.length
+  const lengthProjet = data.allContentfulProjet.edges.length
+
   useEffect(() => {
-    const limit = 8
+    const limit = lengthDiapo + lengthProjet
     const timer = setTimeout(() => {
       if (index === limit - 1) {
         setIndex(0)
@@ -77,6 +105,16 @@ const Content = () => {
               fluid={edge.node.couverture.fluid}
               alt={edge.node.couverture.description}
             />
+          </div>
+        ))}
+        {data.contentfulDiaporama.ordinateur.map((photo, i) => (
+          <div
+            key={photo.id}
+            className={`bg-image__wrapper ${
+              index === i + lengthProjet ? "active" : ""
+            }`}
+          >
+            <Img fluid={photo.fluid} alt={photo.description} />
           </div>
         ))}
 

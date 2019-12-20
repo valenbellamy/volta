@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "Volta Architecture",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Volta est une agence exerçant dans les domaines de l’architecture et l’architecture d’intérieur.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Valentin Bellamy <bellamyvalentin@gmail.com>",
   "dependencies": {
     "animejs": "^3.1.0",
     "gatsby": "^2.17.11",
@@ -18,6 +18,7 @@
     "gatsby-source-filesystem": "^2.1.36",
     "gatsby-transformer-sharp": "^2.3.3",
     "node-sass": "^4.13.0",
+    "normalize-wheel": "^1.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",

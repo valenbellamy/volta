@@ -4,6 +4,7 @@ import Img from "gatsby-image"
 import "./slider.scss"
 import anime from "animejs/lib/anime.es.js"
 import { animated, useTrail } from "react-spring"
+import normalizeWheel from "normalize-wheel"
 
 const fast = { tension: 600, friction: 100 }
 const trans = x => `translate3d(-${x}px,0,0)`
@@ -37,7 +38,7 @@ const Slider = ({ photos }) => {
 
   useLayoutEffect(() => {
     if (typeof window.orientation !== "undefined") {
-      setSlideWidth(window.innerWidth - 16)
+      setSlideWidth(window.innerWidth - 0)
       setDesktop(false)
     } else {
       setDesktop(true)
@@ -68,6 +69,7 @@ const Slider = ({ photos }) => {
   }
 
   const mouseDown = e => {
+    if (!desktop) return
     e.preventDefault()
     setDown(true)
     setStartX(e.pageX)
@@ -75,15 +77,18 @@ const Slider = ({ photos }) => {
   }
 
   const mouseLeave = e => {
+    if (!desktop) return
     setDown(false)
   }
 
   const mouseUp = e => {
+    if (!desktop) return
     setDown(false)
   }
 
   let dragSpeed = 1.8
   const mouseMove = e => {
+    if (!desktop) return
     if (!down) return
     e.preventDefault()
     let x = e.pageX
@@ -95,10 +100,15 @@ const Slider = ({ photos }) => {
     set({ x: translateHorizontal })
   }
 
-  const isFirefox = typeof InstallTrigger !== "undefined"
-  let scrollSpeed = isFirefox ? 40 * 1.8 : 1 * 1.8
+  // const isFirefox = typeof InstallTrigger !== "undefined"
+  // let scrollSpeed = isFirefox ? 40 * 1.8 : 1 * 1.8
+  let scrollSpeed = 1.8
   const scrollUpdate = e => {
-    let delta = e.deltaY ? Math.floor(e.deltaY) : Math.floor(e.deltaX)
+    if (!desktop) return
+    const normalized = normalizeWheel(e)
+    // console.log(normalized.pixelX, normalized.pixelY)
+    //let delta = e.deltaY ? Math.floor(e.deltaY) : Math.floor(e.deltaX)
+    let delta = normalized.pixelY ? normalized.pixelY : normalized.pixelX
     setCurrentTranslate(translateHorizontal)
     let current = currentTranslate + delta * scrollSpeed
     current = Math.min(rightLimit, current)
