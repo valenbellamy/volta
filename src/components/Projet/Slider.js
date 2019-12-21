@@ -22,18 +22,22 @@ const Slider = ({ photos }) => {
   const [slideWidth, setSlideWidth] = useState("auto")
   const [desktop, setDesktop] = useState(null)
 
+  const [imgloaded, setImgloaded] = useState(0)
+
   useEffect(() => {
-    anime(
-      {
-        targets: ".gatsby-image-wrapper",
-        opacity: [0, 1],
-        easing: "easeOutExpo",
-        duration: 1200,
-        delay: (el, i) => 100 * i,
-      },
-      500
-    )
-  }, [])
+    if (imgloaded == photos.length) {
+      anime(
+        {
+          targets: ".gatsby-image-wrapper",
+          opacity: [0, 1],
+          easing: "easeOutExpo",
+          duration: 1200,
+          delay: (el, i) => 100 * i,
+        },
+        0
+      )
+    }
+  }, [imgloaded])
 
   useLayoutEffect(() => {
     if (typeof window.orientation !== "undefined") {
@@ -142,7 +146,7 @@ const Slider = ({ photos }) => {
                 placeholderStyle={{ width: "100%", position: "absolute" }}
                 fluid={photo.fluid}
                 backgroundColor="#eeeeee"
-                //placeholderClassName={myClass}
+                onLoad={() => setImgloaded(imgloaded + 1)}
                 loading="eager"
               />
             ))}
