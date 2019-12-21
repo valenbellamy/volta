@@ -23,7 +23,7 @@ export const query = graphql`
         title
         description
         fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
     }

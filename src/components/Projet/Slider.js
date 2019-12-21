@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useLayoutEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import "./slider.scss"
 import anime from "animejs/lib/anime.es.js"
@@ -32,7 +31,7 @@ const Slider = ({ photos }) => {
         duration: 1200,
         delay: (el, i) => 100 * i,
       },
-      0
+      500
     )
   }, [])
 
@@ -117,6 +116,8 @@ const Slider = ({ photos }) => {
     set({ x: translateHorizontal })
   }
 
+  const myClass = "rezrezrezrez"
+
   return (
     <animated.div
       className={`slider ${down ? "active" : ""}`}
@@ -140,6 +141,8 @@ const Slider = ({ photos }) => {
                 imgStyle={{ width: "auto", position: "relative" }}
                 placeholderStyle={{ width: "100%", position: "absolute" }}
                 fluid={photo.fluid}
+                backgroundColor="#eeeeee"
+                //placeholderClassName={myClass}
                 loading="eager"
               />
             ))}

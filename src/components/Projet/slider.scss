@@ -29,8 +29,8 @@
     height: 100%;
     margin: 0rem 0.25rem;
     overflow: visible !important;
-    opacity: 0;
-    > div {
+    //opacity: 0;
+    div:first-child {
       display: none;
     }
   }

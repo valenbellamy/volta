@@ -54,6 +54,7 @@ const Content = () => {
       }
     }
   `)
+  console.log(data)
 
   const lengthDiapo = data.contentfulDiaporama.ordinateur.length
   const lengthProjet = data.allContentfulProjet.edges.length
