@@ -4,8 +4,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Volta`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Volta Architecture`,
+    description: `Volta est une agence créée en 2016 par Agathe Lavaud exerçant dans les domaines de l’architecture et l’architecture d’intérieur.`,
     author: `@valentinbellamy`,
   },
   plugins: [
