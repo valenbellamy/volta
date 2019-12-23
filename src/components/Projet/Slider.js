@@ -28,7 +28,7 @@ const Slider = ({ photos }) => {
       anime(
         {
           targets: ".gatsby-image-wrapper",
-          opacity: [0, 1],
+          opacity: 1,
           easing: "linear",
           duration: 300,
           delay: (el, i) => 100 * i,
