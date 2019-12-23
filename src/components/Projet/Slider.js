@@ -22,9 +22,11 @@ const Slider = ({ photos }) => {
   const [slideWidth, setSlideWidth] = useState("auto")
   const [desktop, setDesktop] = useState(null)
 
+  const [pictures, setPictures] = useState(photos.length)
   const [itemloaded, setItemloaded] = useState(0)
+
   useEffect(() => {
-    if (itemloaded === photos.length) {
+    if (itemloaded === pictures) {
       anime(
         {
           targets: ".gatsby-image-wrapper",
@@ -143,7 +145,9 @@ const Slider = ({ photos }) => {
                 placeholderStyle={{ width: "100%", position: "absolute" }}
                 fluid={photo.fluid}
                 //backgroundColor="#eeeeee"
-                onLoad={() => setItemloaded(itemloaded + 1)}
+                onLoad={() => {
+                  setItemloaded(itemloaded => itemloaded + 1)
+                }}
                 loading="eager"
               />
             ))}
