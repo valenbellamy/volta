@@ -130,11 +130,6 @@ const Content = () => {
                   ? edge.node.couverture.fluid
                   : edge.node.couvertureSmartphone.fluid
               }
-              // alt={
-              //   landscape
-              //     ? edge.node.couverture.description
-              //     : edge.node.couvertureSmartphone.description
-              // }
             />
           </div>
         ))}
