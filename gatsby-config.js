@@ -38,8 +38,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Volta Architecture`,
+        short_name: `Volta`,
         start_url: `/`,
         background_color: `#000000`,
         theme_color: `#000000`,
