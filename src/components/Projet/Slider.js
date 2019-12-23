@@ -30,7 +30,7 @@ const Slider = ({ photos }) => {
           targets: ".photo",
           opacity: [0, 1],
           easing: "linear",
-          duration: 150,
+          duration: 300,
           delay: (el, i) => 100 * i,
         },
         0
@@ -119,8 +119,6 @@ const Slider = ({ photos }) => {
     set({ x: translateHorizontal })
   }
 
-  const myClass = "rezrezrezrez"
-
   return (
     <animated.div
       className={`slider ${down ? "active" : ""}`}
@@ -138,9 +136,8 @@ const Slider = ({ photos }) => {
         >
           {photos &&
             photos.map(photo => (
-              <div className="photo">
+              <div className="photo" key={photo.id}>
                 <Img
-                  key={photo.id}
                   alt={photo.description}
                   imgStyle={{ width: "auto", position: "relative" }}
                   placeholderStyle={{ width: "100%", position: "absolute" }}

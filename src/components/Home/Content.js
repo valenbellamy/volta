@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
+import BackgroundImage from "gatsby-background-image"
 import "./content.scss"
 
 const Content = () => {
   const [index, setIndex] = useState(0)
+  const [landscape, setLandscape] = useState()
   // const [hover, setHover] = useState(false)
   // const [clicked, setClicked] = useState(false)
   const [open, setOpen] = useState(false)
@@ -59,6 +61,16 @@ const Content = () => {
   const lengthProjet = data.allContentfulProjet.edges.length
 
   useEffect(() => {
+    if (typeof window.orientation === "undefined") {
+      setLandscape(true)
+    } else if (window.orientation === 0) {
+      setLandscape(false)
+    } else {
+      setLandscape(true)
+    }
+  }, [])
+
+  useEffect(() => {
     const limit = lengthDiapo + lengthProjet
     const timer = setTimeout(() => {
       if (index === limit - 1) {
@@ -111,22 +123,42 @@ const Content = () => {
             key={edge.node.id}
             className={`bg-image__wrapper ${index === i ? "active" : ""}`}
           >
-            <Img
-              fluid={edge.node.couverture.fluid}
-              alt={edge.node.couverture.description}
+            <BackgroundImage
+              className="default-bg"
+              fluid={
+                landscape
+                  ? edge.node.couverture.fluid
+                  : edge.node.couvertureSmartphone.fluid
+              }
+              // alt={
+              //   landscape
+              //     ? edge.node.couverture.description
+              //     : edge.node.couvertureSmartphone.description
+              // }
             />
           </div>
         ))}
-        {data.contentfulDiaporama.ordinateur.map((photo, i) => (
-          <div
-            key={photo.id}
-            className={`bg-image__wrapper ${
-              index === i + lengthProjet ? "active" : ""
-            }`}
-          >
-            <Img fluid={photo.fluid} alt={photo.description} />
-          </div>
-        ))}
+        {landscape
+          ? data.contentfulDiaporama.ordinateur.map((photo, i) => (
+              <div
+                key={photo.id}
+                className={`bg-image__wrapper ${
+                  index === i + lengthProjet ? "active" : ""
+                }`}
+              >
+                <BackgroundImage className="default-bg" fluid={photo.fluid} />
+              </div>
+            ))
+          : data.contentfulDiaporama.smartphone.map((photo, i) => (
+              <div
+                key={photo.id}
+                className={`bg-image__wrapper ${
+                  index === i + lengthProjet ? "active" : ""
+                }`}
+              >
+                <BackgroundImage className="default-bg" fluid={photo.fluid} />
+              </div>
+            ))}
 
         <div className="bg"></div>
       </div>
