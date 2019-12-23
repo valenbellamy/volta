@@ -24,35 +24,35 @@
   background-color: white;
   padding: 1rem 0rem;
   transform: scale(1, 1);
-  .photo {
-    margin-right: 0.5rem;
-    width: auto;
-    height: 100%;
-    opacity: 0;
-    &:first-child {
-      margin-left: 1rem;
-    }
-    &:last-child {
-      margin-right: 1rem;
-    }
-  }
+  // .photo {
+  //   margin-right: 0.5rem;
+  //   width: auto;
+  //   height: 100%;
+  //   opacity: 0;
+  //   &:first-child {
+  //     margin-left: 1rem;
+  //   }
+  //   &:last-child {
+  //     margin-right: 1rem;
+  //   }
+  // }
   .gatsby-image-wrapper {
     position: relative;
     height: 100%;
     //margin: 0rem 0.25rem;
-    // margin-right: 0.5rem;
-    // overflow: visible !important;
-    //opacity: 0;
+    margin-right: 0.5rem;
+    overflow: visible !important;
+    opacity: 0;
     div:first-child {
       display: none;
     }
   }
-  // .gatsby-image-wrapper:first-child {
-  //   margin-left: 1rem;
-  // }
-  // .gatsby-image-wrapper:last-child {
-  //   margin-right: 1rem;
-  // }
+  .gatsby-image-wrapper:first-child {
+    margin-left: 1rem;
+  }
+  .gatsby-image-wrapper:last-child {
+    margin-right: 1rem;
+  }
   &.not-desktop {
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;

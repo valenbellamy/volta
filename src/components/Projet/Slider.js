@@ -27,7 +27,7 @@ const Slider = ({ photos }) => {
     if (itemloaded === photos.length) {
       anime(
         {
-          targets: ".photo",
+          targets: ".gatsby-image-wrapper",
           opacity: [0, 1],
           easing: "linear",
           duration: 300,
@@ -136,17 +136,16 @@ const Slider = ({ photos }) => {
         >
           {photos &&
             photos.map(photo => (
-              <div className="photo" key={photo.id}>
-                <Img
-                  alt={photo.description}
-                  imgStyle={{ width: "auto", position: "relative" }}
-                  placeholderStyle={{ width: "100%", position: "absolute" }}
-                  fluid={photo.fluid}
-                  //backgroundColor="#eeeeee"
-                  onLoad={() => setItemloaded(itemloaded + 1)}
-                  loading="eager"
-                />
-              </div>
+              <Img
+                key={photo.id}
+                alt={photo.description}
+                imgStyle={{ width: "auto", position: "relative" }}
+                placeholderStyle={{ width: "100%", position: "absolute" }}
+                fluid={photo.fluid}
+                //backgroundColor="#eeeeee"
+                onLoad={() => setItemloaded(itemloaded + 1)}
+                loading="eager"
+              />
             ))}
         </animated.div>
       ))}
