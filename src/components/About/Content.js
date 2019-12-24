@@ -100,6 +100,7 @@ const Content = () => {
               href="https://www.instagram.com/volta.archi/"
               target="_blank"
               className="fs-sm"
+              rel="noreferrer noopener"
             >
               <svg
                 x="0px"

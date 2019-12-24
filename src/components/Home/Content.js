@@ -3,6 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import "./content.scss"
+import anime from "animejs/lib/anime.es.js"
 
 const Content = () => {
   const [index, setIndex] = useState(0)
@@ -68,6 +69,18 @@ const Content = () => {
     } else {
       setLandscape(true)
     }
+  }, [])
+
+  useEffect(() => {
+    anime(
+      {
+        targets: ".bg-image",
+        opacity: 1,
+        easing: "linear",
+        duration: 600,
+      },
+      0
+    )
   }, [])
 
   useEffect(() => {
