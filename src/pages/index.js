@@ -8,7 +8,7 @@ import Anim from "../components/Home/Anim"
 const IndexPage = () => (
   <Layout>
     <SEO title="Volta Architecture" />
-    <Anim />
+    {/* <Anim /> */}
     <Content />
   </Layout>
 )

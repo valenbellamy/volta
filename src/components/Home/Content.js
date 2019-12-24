@@ -12,6 +12,24 @@ const Content = () => {
   const [open, setOpen] = useState(false)
   const data = useStaticQuery(graphql`
     query {
+      contentfulDiaporama(titre: { eq: "Diaporama" }) {
+        ordinateur {
+          id
+          title
+          description
+          fluid(maxWidth: 2000) {
+            ...GatsbyContentfulFluid_withWebp
+          }
+        }
+        smartphone {
+          id
+          title
+          description
+          fluid(maxWidth: 1000) {
+            ...GatsbyContentfulFluid_withWebp
+          }
+        }
+      }
       allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 12) {
         edges {
           node {
@@ -22,35 +40,17 @@ const Content = () => {
             couverture {
               id
               description
-              fluid {
-                ...GatsbyContentfulFluid
+              fluid(maxWidth: 2000) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             couvertureSmartphone {
               id
               description
-              fluid {
-                ...GatsbyContentfulFluid
+              fluid(maxWidth: 1000) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
-          }
-        }
-      }
-      contentfulDiaporama(titre: { eq: "Diaporama" }) {
-        ordinateur {
-          id
-          title
-          description
-          fluid {
-            ...GatsbyContentfulFluid
-          }
-        }
-        smartphone {
-          id
-          title
-          description
-          fluid {
-            ...GatsbyContentfulFluid
           }
         }
       }
@@ -76,7 +76,7 @@ const Content = () => {
       if (index === limit - 1) {
         setIndex(0)
       } else {
-        setIndex(index + 1)
+        setIndex(index => index + 1)
       }
     }, 4000)
     return () => clearTimeout(timer)
@@ -118,10 +118,29 @@ const Content = () => {
         </Link>
       </div>
       <div className="bg-image">
+        {landscape
+          ? data.contentfulDiaporama.ordinateur.map((photo, i) => (
+              <div
+                key={photo.id}
+                className={`bg-image__wrapper ${index === i ? "active" : ""}`}
+              >
+                <BackgroundImage className="default-bg" fluid={photo.fluid} />
+              </div>
+            ))
+          : data.contentfulDiaporama.smartphone.map((photo, i) => (
+              <div
+                key={photo.id}
+                className={`bg-image__wrapper ${index === i ? "active" : ""}`}
+              >
+                <BackgroundImage className="default-bg" fluid={photo.fluid} />
+              </div>
+            ))}
         {data.allContentfulProjet.edges.map((edge, i) => (
           <div
             key={edge.node.id}
-            className={`bg-image__wrapper ${index === i ? "active" : ""}`}
+            className={`bg-image__wrapper ${
+              index === i + lengthDiapo ? "active" : ""
+            }`}
           >
             <BackgroundImage
               className="default-bg"
@@ -133,27 +152,6 @@ const Content = () => {
             />
           </div>
         ))}
-        {landscape
-          ? data.contentfulDiaporama.ordinateur.map((photo, i) => (
-              <div
-                key={photo.id}
-                className={`bg-image__wrapper ${
-                  index === i + lengthProjet ? "active" : ""
-                }`}
-              >
-                <BackgroundImage className="default-bg" fluid={photo.fluid} />
-              </div>
-            ))
-          : data.contentfulDiaporama.smartphone.map((photo, i) => (
-              <div
-                key={photo.id}
-                className={`bg-image__wrapper ${
-                  index === i + lengthProjet ? "active" : ""
-                }`}
-              >
-                <BackgroundImage className="default-bg" fluid={photo.fluid} />
-              </div>
-            ))}
 
         <div className="bg"></div>
       </div>
@@ -175,7 +173,7 @@ const Content = () => {
                   key={edge.node.id}
                   to={`/${edge.node.slug}`}
                   className="dropdown__item"
-                  onMouseEnter={() => setActiveItem(i)}
+                  onMouseEnter={() => setActiveItem(i + lengthDiapo)}
                 >
                   <span className="dropdown__item__title">
                     {edge.node.titre}

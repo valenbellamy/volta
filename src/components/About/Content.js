@@ -77,17 +77,17 @@ const Content = () => {
       </div>
       <div className="content">
         <div className="content__blk mbl">
-          <h1 className="anime-text">{titre1}</h1>
-          <p className="fs-lg anime-text">{paragraphe1.paragraphe1}</p>
+          <h1>{titre1}</h1>
+          <p className="fs-lg">{paragraphe1.paragraphe1}</p>
         </div>
         <div className="content__blk">
-          <h2 className="anime-text">{titre2}</h2>
-          <p className="anime-text mbm">{paragraphe2.paragraphe2}</p>
-          <h2 className="anime-text">{titre3}</h2>
-          <p className="mbl anime-text">{paragraphe3.paragraphe3}</p>
+          <h2>{titre2}</h2>
+          <p className="mbm">{paragraphe2.paragraphe2}</p>
+          <h2>{titre3}</h2>
+          <p className="mbl">{paragraphe3.paragraphe3}</p>
         </div>
       </div>
-      <div className="content content__sm--pb mbm anime-text">
+      <div className="content content__sm--pb mbm">
         <div className="content__blk">
           <p className="fs-sm ">
             Contact <br />
@@ -96,7 +96,11 @@ const Content = () => {
             {mail}
           </p>
           <div>
-            <a href="#" target="_blank" className="fs-sm">
+            <a
+              href="https://www.instagram.com/volta.archi/"
+              target="_blank"
+              className="fs-sm"
+            >
               <svg
                 x="0px"
                 y="0px"
