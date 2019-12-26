@@ -5,6 +5,9 @@ import anime from "animejs/lib/anime.es.js"
 import { animated, useTrail } from "react-spring"
 import normalizeWheel from "normalize-wheel"
 
+import Modal from "../Modal/Modal"
+import useModal from "../Hooks/useModal"
+
 const fast = { tension: 600, friction: 100 }
 const trans = x => `translate3d(-${x}px,0,0)`
 
@@ -13,6 +16,12 @@ const Slider = ({ photos }) => {
     x: 0,
     config: fast,
   }))
+
+  // Modal hooks
+  const { isShowing, toggle } = useModal()
+  const [imgModal, setImgModal] = useState(null)
+
+  // Scroll and drag hooks
   const [down, setDown] = useState(false)
   const [startX, setStartX] = useState(0)
   const [rightLimit, setRightLimit] = useState(0)
@@ -22,6 +31,7 @@ const Slider = ({ photos }) => {
   const [slideWidth, setSlideWidth] = useState("auto")
   const [desktop, setDesktop] = useState(null)
 
+  // Images load hooks
   const [pictures, setPictures] = useState(photos.length)
   const [itemloaded, setItemloaded] = useState(0)
 
@@ -39,6 +49,11 @@ const Slider = ({ photos }) => {
       )
     }
   }, [itemloaded])
+
+  useEffect(() => {
+    window.addEventListener("contextmenu", disableRight)
+    return () => window.removeEventListener("resize", disableRight)
+  })
 
   useLayoutEffect(() => {
     if (typeof window.orientation !== "undefined") {
@@ -110,8 +125,6 @@ const Slider = ({ photos }) => {
   const scrollUpdate = e => {
     if (!desktop) return
     const normalized = normalizeWheel(e)
-    // console.log(normalized.pixelX, normalized.pixelY)
-    //let delta = e.deltaY ? Math.floor(e.deltaY) : Math.floor(e.deltaX)
     let delta = normalized.pixelY ? normalized.pixelY : normalized.pixelX
     setCurrentTranslate(translateHorizontal)
     let current = currentTranslate + delta * scrollSpeed
@@ -121,39 +134,51 @@ const Slider = ({ photos }) => {
     set({ x: translateHorizontal })
   }
 
+  const disableRight = e => {
+    e.preventDefault()
+  }
+
   return (
-    <animated.div
-      className={`slider ${down ? "active" : ""}`}
-      onMouseDown={mouseDown}
-      onMouseLeave={mouseLeave}
-      onMouseUp={mouseUp}
-      onMouseMove={mouseMove}
-      onWheel={scrollUpdate}
-    >
-      {trail.map((props, index) => (
-        <animated.div
-          key={index}
-          className={`slider__inner ${desktop ? "" : "not-desktop"}`}
-          style={{ transform: props.x.interpolate(trans), width: slideWidth }}
-        >
-          {photos &&
-            photos.map(photo => (
-              <Img
-                key={photo.id}
-                alt={photo.description}
-                imgStyle={{ width: "auto", position: "relative" }}
-                placeholderStyle={{ width: "100%", position: "absolute" }}
-                fluid={photo.fluid}
-                //backgroundColor="#eeeeee"
-                onLoad={() => {
-                  setItemloaded(itemloaded => itemloaded + 1)
-                }}
-                loading="eager"
-              />
-            ))}
-        </animated.div>
-      ))}
-    </animated.div>
+    <>
+      <animated.div
+        className={`slider ${down ? "active" : ""}`}
+        onMouseDown={mouseDown}
+        onMouseLeave={mouseLeave}
+        onMouseUp={mouseUp}
+        onMouseMove={mouseMove}
+        onWheel={scrollUpdate}
+      >
+        {trail.map((props, index) => (
+          <animated.div
+            key={index}
+            className={`slider__inner ${desktop ? "" : "not-desktop"}`}
+            style={{ transform: props.x.interpolate(trans), width: slideWidth }}
+          >
+            {photos &&
+              photos.map(photo => (
+                <Img
+                  key={photo.id}
+                  alt={photo.description}
+                  imgStyle={{ width: "auto", position: "relative" }}
+                  placeholderStyle={{ width: "100%", position: "absolute" }}
+                  fluid={photo.fluid}
+                  onLoad={() => {
+                    setItemloaded(itemloaded => itemloaded + 1)
+                  }}
+                  onClick={() => {
+                    if (window.innerWidth > 768) {
+                      toggle()
+                      setImgModal(photo.fluid)
+                    }
+                  }}
+                  loading="eager"
+                />
+              ))}
+          </animated.div>
+        ))}
+      </animated.div>
+      <Modal isShowing={isShowing} hide={toggle} content={imgModal} />
+    </>
   )
 }
 
