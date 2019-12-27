@@ -133,18 +133,18 @@ const Content = () => {
           </div>
         </div>
       </div>
-      <nav className="navbar">
-        <ul className="navbar__nav">
+      <nav className="navbar navbar--fixed bg--sm">
+        <ul className={`navbar__nav ${open ? "bg-white" : ""}`}>
           <li
             className={`navbar__link navbar__link--dark navbar__link--dropdown ${
               open ? "open" : ""
             }`}
             onClick={() => setOpen(!open)}
           >
-            réalisations
+            <span>réalisations</span>
             <Dropdown />
           </li>
-          <li className="navbar__link navbar__link--dark is-active">
+          <li className="navbar__link navbar__link--dark">
             <Link to="/a-propos">à propos</Link>
           </li>
         </ul>

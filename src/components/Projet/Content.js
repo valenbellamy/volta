@@ -36,7 +36,7 @@ const Content = ({ info }) => {
             className={`info__link info__link--dropdown ${open ? "open" : ""}`}
             onClick={() => setOpen(!open)}
           >
-            réalisations
+            <span>réalisations</span>
             <Dropdown />
           </div>
         </div>

@@ -58,4 +58,8 @@
   z-index: 100;
   background-color: transparent;
   color: #000;
+  transition: color 0.3s;
+  &:hover {
+    color: #ccc;
+  }
 }

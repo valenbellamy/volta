@@ -3,15 +3,15 @@
   height: calc(100vh - 258px);
   overflow-x: hidden;
   //height: calc(var(--vh, 1vh) * 100);
-  cursor: grab;
-  cursor: -webkit-grab;
+  // cursor: grab;
+  // cursor: -webkit-grab;
   @media (max-width: 768px) {
     height: calc(100vh - 229px);
   }
-  &.active {
-    cursor: grabbing;
-    cursor: -webkit-grabbing;
-  }
+  // &.active {
+  //   cursor: grabbing;
+  //   cursor: -webkit-grabbing;
+  // }
 }
 
 .slider__inner {
@@ -43,6 +43,7 @@
     margin-right: 0.5rem;
     overflow: visible !important;
     opacity: 0;
+    cursor: pointer;
     div:first-child {
       display: none;
     }

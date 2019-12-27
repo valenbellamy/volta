@@ -43,6 +43,10 @@ p {
   font-weight: 400;
 }
 
+.bg-white {
+  background-color: white;
+}
+
 .logo--dark {
   position: relative;
   padding: 2vw 0rem 0rem 2vw;
@@ -55,6 +59,14 @@ p {
     polygon,
     path {
       fill: black;
+      transition: fill 0.3s ease;
+    }
+    &:hover {
+      rect,
+      polygon,
+      path {
+        fill: #ccc;
+      }
     }
   }
   @media (max-width: 767.98px) {
@@ -79,7 +91,9 @@ p {
     bottom: 0;
     left: 0;
     z-index: 2;
-    background-color: white;
+    &.bg--sm {
+      background-color: white;
+    }
   }
 }
 
@@ -119,7 +133,7 @@ p {
     color: white;
     font-size: 1.3rem;
     line-height: 1;
-    transition: all 0.4s ease;
+    transition: color 0.3s ease;
     @media (max-width: 1199.98px) {
       font-size: 1.1rem;
     }
@@ -127,17 +141,19 @@ p {
       font-size: 1.3rem;
     }
     &:hover {
-      color: #cccccc;
+      color: #ccc;
     }
   }
-  &.is-active {
-    a {
+  span {
+    transition: color 0.3s ease;
+    &:hover {
       color: #ccc;
     }
   }
 }
 
-.navbar__link--dark {
+.navbar__link--dark,
+.navbar__link--dark a {
   color: black;
 }
 

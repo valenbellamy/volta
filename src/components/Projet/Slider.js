@@ -23,7 +23,7 @@ const Slider = ({ photos }) => {
 
   // Scroll and drag hooks
   const [down, setDown] = useState(false)
-  const [startX, setStartX] = useState(0)
+  //const [startX, setStartX] = useState(0)
   const [rightLimit, setRightLimit] = useState(0)
   const [translateHorizontal, setTranslateHorizontal] = useState(0)
   const [currentTranslate, setCurrentTranslate] = useState(0)
@@ -32,11 +32,11 @@ const Slider = ({ photos }) => {
   const [desktop, setDesktop] = useState(null)
 
   // Images load hooks
-  const [pictures, setPictures] = useState(photos.length)
+  // const [pictures, setPictures] = useState(photos.length)
   const [itemloaded, setItemloaded] = useState(0)
 
   useEffect(() => {
-    if (itemloaded === pictures) {
+    if (itemloaded === photos.length) {
       anime(
         {
           targets: ".gatsby-image-wrapper",
@@ -87,37 +87,37 @@ const Slider = ({ photos }) => {
     setRightLimit(acc)
   }
 
-  const mouseDown = e => {
-    if (!desktop) return
-    e.preventDefault()
-    setDown(true)
-    setStartX(e.pageX)
-    setCurrentTranslate(translateHorizontal)
-  }
+  // const mouseDown = e => {
+  //   if (!desktop) return
+  //   e.preventDefault()
+  //   setDown(true)
+  //   setStartX(e.pageX)
+  //   setCurrentTranslate(translateHorizontal)
+  // }
 
-  const mouseLeave = e => {
-    if (!desktop) return
-    setDown(false)
-  }
+  // const mouseLeave = e => {
+  //   if (!desktop) return
+  //   setDown(false)
+  // }
 
-  const mouseUp = e => {
-    if (!desktop) return
-    setDown(false)
-  }
+  // const mouseUp = e => {
+  //   if (!desktop) return
+  //   setDown(false)
+  // }
 
-  let dragSpeed = 1.8
-  const mouseMove = e => {
-    if (!desktop) return
-    if (!down) return
-    e.preventDefault()
-    let x = e.pageX
-    let walk = x - startX
-    let current = currentTranslate - walk * dragSpeed
-    current = Math.min(rightLimit, current)
-    current = Math.max(0, current)
-    setTranslateHorizontal(Math.floor(current))
-    set({ x: translateHorizontal })
-  }
+  // let dragSpeed = 1.8
+  // const mouseMove = e => {
+  //   if (!desktop) return
+  //   if (!down) return
+  //   e.preventDefault()
+  //   let x = e.pageX
+  //   let walk = x - startX
+  //   let current = currentTranslate - walk * dragSpeed
+  //   current = Math.min(rightLimit, current)
+  //   current = Math.max(0, current)
+  //   setTranslateHorizontal(Math.floor(current))
+  //   set({ x: translateHorizontal })
+  // }
 
   // const isFirefox = typeof InstallTrigger !== "undefined"
   // let scrollSpeed = isFirefox ? 40 * 1.8 : 1 * 1.8
@@ -142,10 +142,10 @@ const Slider = ({ photos }) => {
     <>
       <animated.div
         className={`slider ${down ? "active" : ""}`}
-        onMouseDown={mouseDown}
-        onMouseLeave={mouseLeave}
-        onMouseUp={mouseUp}
-        onMouseMove={mouseMove}
+        // onMouseDown={mouseDown}
+        // onMouseLeave={mouseLeave}
+        // onMouseUp={mouseUp}
+        // onMouseMove={mouseMove}
         onWheel={scrollUpdate}
       >
         {trail.map((props, index) => (
@@ -167,6 +167,7 @@ const Slider = ({ photos }) => {
                   }}
                   onClick={() => {
                     if (window.innerWidth > 768) {
+                      if (down) return
                       toggle()
                       setImgModal(photo.fluid)
                     }
