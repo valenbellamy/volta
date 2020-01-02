@@ -38,15 +38,21 @@ const Slider = ({ photos }) => {
 
   // Scroll
 
+  const isFirefox = React.useRef(typeof InstallTrigger !== "undefined")
+
   const domTarget = React.useRef(null)
-  const [{ x }, set] = useSpring(() => ({
+  const [{ x, arrowOpacity }, set] = useSpring(() => ({
     x: 0,
+    arrowOpacity: 1,
   }))
 
   let wheelOffset = React.useRef(0)
-
+  let opacity
   const bind = useWheel(
     ({ delta: [, dy] }) => {
+      if (isFirefox.current) {
+        dy *= 20
+      }
       wheelOffset.current -= dy
       if (wheelOffset.current > 0) {
         wheelOffset.current = 0
@@ -54,7 +60,14 @@ const Slider = ({ photos }) => {
       if (wheelOffset.current < -rightLimit) {
         wheelOffset.current = -rightLimit
       }
-      set({ x: wheelOffset.current })
+      opacity = 1 + wheelOffset.current / 400
+      if (opacity < 0) {
+        opacity = 0
+      }
+      set({
+        x: wheelOffset.current,
+        arrowOpacity: opacity,
+      })
     },
     {
       domTarget,
@@ -93,8 +106,8 @@ const Slider = ({ photos }) => {
   useEffect(bind, [bind])
 
   useEffect(() => {
-    window.addEventListener("contextmenu", disableRight)
-    return () => window.removeEventListener("resize", disableRight)
+    // window.addEventListener("contextmenu", disableRight)
+    // return () => window.removeEventListener("resize", disableRight)
   })
 
   useLayoutEffect(() => {
@@ -136,6 +149,23 @@ const Slider = ({ photos }) => {
                 loading="eager"
               />
             ))}
+        </animated.div>
+        <animated.div
+          className={`scroll__arrow ${desktop ? "" : "not-desktop"}`}
+          style={{ opacity: arrowOpacity }}
+        >
+          <svg
+            width="19"
+            height="16"
+            viewBox="0 0 19 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M-4.62073e-08 6.7801V8.73967H14.1339L7.65586 14.1285L9.32837 15.5198L18.6567 7.75989L9.32837 0L7.65586 1.39129L14.1339 6.7801H-4.62073e-08Z"
+              fill="#000"
+            />
+          </svg>
         </animated.div>
       </animated.div>
       <Modal isShowing={isShowing} hide={toggle} content={imgModal} />

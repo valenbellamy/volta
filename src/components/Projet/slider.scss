@@ -2,16 +2,9 @@
   width: 100%;
   height: calc(100vh - 258px);
   overflow-x: hidden;
-  //height: calc(var(--vh, 1vh) * 100);
-  // cursor: grab;
-  // cursor: -webkit-grab;
   @media (max-width: 768px) {
     height: calc(100vh - 229px);
   }
-  // &.active {
-  //   cursor: grabbing;
-  //   cursor: -webkit-grabbing;
-  // }
 }
 
 .slider__inner {
@@ -75,4 +68,25 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
+}
+
+.scroll__arrow {
+  position: fixed;
+  right: 2vw;
+  top: 2rem;
+  z-index: 10;
+  background-color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 12px;
+    height: auto;
+  }
+  &.not-desktop {
+    display: none;
+  }
 }
