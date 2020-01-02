@@ -2,37 +2,23 @@ import React, { useState, useEffect, useLayoutEffect } from "react"
 import Img from "gatsby-image"
 import "./slider.scss"
 import anime from "animejs/lib/anime.es.js"
-import { animated, useTrail } from "react-spring"
-import normalizeWheel from "normalize-wheel"
+import { animated, useSpring } from "react-spring"
+import { useWheel } from "react-use-gesture"
 
 import Modal from "../Modal/Modal"
 import useModal from "../Hooks/useModal"
 
-const fast = { tension: 600, friction: 100 }
-const trans = x => `translate3d(-${x}px,0,0)`
-
 const Slider = ({ photos }) => {
-  const [trail, set] = useTrail(1, () => ({
-    x: 0,
-    config: fast,
-  }))
-
   // Modal hooks
   const { isShowing, toggle } = useModal()
   const [imgModal, setImgModal] = useState(null)
 
   // Scroll and drag hooks
-  const [down, setDown] = useState(false)
-  //const [startX, setStartX] = useState(0)
   const [rightLimit, setRightLimit] = useState(0)
-  const [translateHorizontal, setTranslateHorizontal] = useState(0)
-  const [currentTranslate, setCurrentTranslate] = useState(0)
 
   const [slideWidth, setSlideWidth] = useState("auto")
   const [desktop, setDesktop] = useState(null)
 
-  // Images load hooks
-  // const [pictures, setPictures] = useState(photos.length)
   const [itemloaded, setItemloaded] = useState(0)
 
   useEffect(() => {
@@ -50,22 +36,33 @@ const Slider = ({ photos }) => {
     }
   }, [itemloaded])
 
-  useEffect(() => {
-    window.addEventListener("contextmenu", disableRight)
-    return () => window.removeEventListener("resize", disableRight)
-  })
+  // Scroll
 
-  useLayoutEffect(() => {
-    if (typeof window.orientation !== "undefined") {
-      setSlideWidth(window.innerWidth - 0)
-      setDesktop(false)
-    } else {
-      setDesktop(true)
-      computeWidth()
-      window.addEventListener("resize", computeWidth)
-      return () => window.removeEventListener("resize", computeWidth)
+  const domTarget = React.useRef(null)
+  const [{ x }, set] = useSpring(() => ({
+    x: 0,
+  }))
+
+  let wheelOffset = React.useRef(0)
+
+  const bind = useWheel(
+    ({ delta: [, dy] }) => {
+      wheelOffset.current -= dy
+      if (wheelOffset.current > 0) {
+        wheelOffset.current = 0
+      }
+      if (wheelOffset.current < -rightLimit) {
+        wheelOffset.current = -rightLimit
+      }
+      set({ x: wheelOffset.current })
+    },
+    {
+      domTarget,
+      event: { passive: false },
     }
-  }, [])
+  )
+
+  // to set scroll limit
 
   const computeWidth = () => {
     let windowHeight = window.innerHeight
@@ -87,96 +84,59 @@ const Slider = ({ photos }) => {
     setRightLimit(acc)
   }
 
-  // const mouseDown = e => {
-  //   if (!desktop) return
-  //   e.preventDefault()
-  //   setDown(true)
-  //   setStartX(e.pageX)
-  //   setCurrentTranslate(translateHorizontal)
-  // }
-
-  // const mouseLeave = e => {
-  //   if (!desktop) return
-  //   setDown(false)
-  // }
-
-  // const mouseUp = e => {
-  //   if (!desktop) return
-  //   setDown(false)
-  // }
-
-  // let dragSpeed = 1.8
-  // const mouseMove = e => {
-  //   if (!desktop) return
-  //   if (!down) return
-  //   e.preventDefault()
-  //   let x = e.pageX
-  //   let walk = x - startX
-  //   let current = currentTranslate - walk * dragSpeed
-  //   current = Math.min(rightLimit, current)
-  //   current = Math.max(0, current)
-  //   setTranslateHorizontal(Math.floor(current))
-  //   set({ x: translateHorizontal })
-  // }
-
-  // const isFirefox = typeof InstallTrigger !== "undefined"
-  // let scrollSpeed = isFirefox ? 40 * 1.8 : 1 * 1.8
-  let scrollSpeed = 1.8
-  const scrollUpdate = e => {
-    if (!desktop) return
-    const normalized = normalizeWheel(e)
-    let delta = normalized.pixelY ? normalized.pixelY : normalized.pixelX
-    setCurrentTranslate(translateHorizontal)
-    let current = currentTranslate + delta * scrollSpeed
-    current = Math.min(rightLimit, current)
-    current = Math.max(0, current)
-    setTranslateHorizontal(Math.floor(current))
-    set({ x: translateHorizontal })
-  }
+  // to disable right click
 
   const disableRight = e => {
     e.preventDefault()
   }
 
+  useEffect(bind, [bind])
+
+  useEffect(() => {
+    window.addEventListener("contextmenu", disableRight)
+    return () => window.removeEventListener("resize", disableRight)
+  })
+
+  useLayoutEffect(() => {
+    if (typeof window.orientation !== "undefined") {
+      setSlideWidth(window.innerWidth - 0)
+      setDesktop(false)
+    } else {
+      setDesktop(true)
+      computeWidth()
+      window.addEventListener("resize", computeWidth)
+      return () => window.removeEventListener("resize", computeWidth)
+    }
+  }, [])
+
   return (
     <>
-      <animated.div
-        className={`slider ${down ? "active" : ""}`}
-        // onMouseDown={mouseDown}
-        // onMouseLeave={mouseLeave}
-        // onMouseUp={mouseUp}
-        // onMouseMove={mouseMove}
-        onWheel={scrollUpdate}
-      >
-        {trail.map((props, index) => (
-          <animated.div
-            key={index}
-            className={`slider__inner ${desktop ? "" : "not-desktop"}`}
-            style={{ transform: props.x.interpolate(trans), width: slideWidth }}
-          >
-            {photos &&
-              photos.map(photo => (
-                <Img
-                  key={photo.id}
-                  alt={photo.description}
-                  imgStyle={{ width: "auto", position: "relative" }}
-                  placeholderStyle={{ width: "100%", position: "absolute" }}
-                  fluid={photo.fluid}
-                  onLoad={() => {
-                    setItemloaded(itemloaded => itemloaded + 1)
-                  }}
-                  onClick={() => {
-                    if (window.innerWidth > 768) {
-                      if (down) return
-                      toggle()
-                      setImgModal(photo.fluid)
-                    }
-                  }}
-                  loading="eager"
-                />
-              ))}
-          </animated.div>
-        ))}
+      <animated.div ref={domTarget} className="slider">
+        <animated.div
+          className={`slider__inner ${desktop ? "" : "not-desktop"}`}
+          style={{ x, width: slideWidth }}
+        >
+          {photos &&
+            photos.map(photo => (
+              <Img
+                key={photo.id}
+                alt={photo.description}
+                imgStyle={{ width: "auto", position: "relative" }}
+                placeholderStyle={{ width: "100%", position: "absolute" }}
+                fluid={photo.fluid}
+                onLoad={() => {
+                  setItemloaded(itemloaded => itemloaded + 1)
+                }}
+                onClick={() => {
+                  if (window.innerWidth > 768) {
+                    toggle()
+                    setImgModal(photo.fluid)
+                  }
+                }}
+                loading="eager"
+              />
+            ))}
+        </animated.div>
       </animated.div>
       <Modal isShowing={isShowing} hide={toggle} content={imgModal} />
     </>
