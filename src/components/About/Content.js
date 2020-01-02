@@ -76,7 +76,7 @@ const Content = () => {
         </Link>
       </div>
       <div className="content">
-        <div className="content__blk mbl">
+        <div className="content__blk mbm">
           <h1>{titre1}</h1>
           <p className="fs-lg">{paragraphe1.paragraphe1}</p>
         </div>
@@ -84,7 +84,7 @@ const Content = () => {
           <h2>{titre2}</h2>
           <p className="mbm">{paragraphe2.paragraphe2}</p>
           <h2>{titre3}</h2>
-          <p className="mbl">{paragraphe3.paragraphe3}</p>
+          <p>{paragraphe3.paragraphe3}</p>
         </div>
       </div>
       <div className="content content__sm--pb mbm">
