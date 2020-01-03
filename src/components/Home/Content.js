@@ -63,6 +63,9 @@ const Content = () => {
   const lengthDiapo = data.contentfulDiaporama.ordinateur.length
   const lengthProjet = data.allContentfulProjet.edges.length
 
+  // const lengthDiapo = 6
+  // const lengthProjet = 11
+
   useEffect(() => {
     if (typeof window.orientation === "undefined") {
       setLandscape(true)

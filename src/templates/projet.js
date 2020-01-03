@@ -8,6 +8,27 @@ import Smartphone from "../components/Projet/Smartphone"
 
 import Slider from "../components/Projet/Slider"
 
+// query($slug: String!) {
+//   contentfulProjet(slug: { eq: $slug }) {
+//     titre
+//     date
+//     description
+//     maitrise
+//     surface
+//     lieu
+//     mission
+//     photos {
+//       id
+//       title
+//       description
+//       fluid {
+//         ...GatsbyContentfulFluid_withWebp_noBase64
+//       }
+//     }
+//   }
+// }
+// `
+
 export const query = graphql`
   query($slug: String!) {
     contentfulProjet(slug: { eq: $slug }) {
