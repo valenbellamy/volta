@@ -106,8 +106,8 @@ const Slider = ({ photos }) => {
   useEffect(bind, [bind])
 
   useEffect(() => {
-    // window.addEventListener("contextmenu", disableRight)
-    // return () => window.removeEventListener("resize", disableRight)
+    window.addEventListener("contextmenu", disableRight)
+    return () => window.removeEventListener("resize", disableRight)
   })
 
   useLayoutEffect(() => {
