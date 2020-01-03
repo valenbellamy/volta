@@ -208,6 +208,12 @@ p {
         .dropdown__item__category {
           color: black;
         }
+        &:hover {
+          .dropdown__item__title,
+          .dropdown__item__category {
+            color: #ccc;
+          }
+        }
       }
     }
   }
