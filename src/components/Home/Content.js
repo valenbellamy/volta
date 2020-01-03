@@ -136,7 +136,7 @@ const Content = () => {
         </Link>
       </div>
       <div className="bg-image">
-        {/* {landscape
+        {landscape
           ? data.contentfulDiaporama.ordinateur.map((photo, i) => (
               <div
                 key={photo.id}
@@ -152,8 +152,8 @@ const Content = () => {
               >
                 <BackgroundImage className="default-bg" fluid={photo.fluid} />
               </div>
-            ))} */}
-        {/* {data.allContentfulProjet.edges.map((edge, i) => (
+            ))}
+        {data.allContentfulProjet.edges.map((edge, i) => (
           <div
             key={edge.node.id}
             className={`bg-image__wrapper ${
@@ -169,7 +169,7 @@ const Content = () => {
               }
             />
           </div>
-        ))} */}
+        ))}
 
         <div className="bg"></div>
       </div>
