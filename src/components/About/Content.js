@@ -35,6 +35,7 @@ const Content = () => {
     paragraphe1,
     paragraphe2,
     paragraphe3,
+    paragraphe4,
     adresse,
     mail,
   } = data.contentfulVolta
