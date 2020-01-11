@@ -100,7 +100,7 @@ const Slider = ({ photos }) => {
   // to disable right click
 
   const disableRight = e => {
-    e.preventDefault()
+    // e.preventDefault()
   }
 
   useEffect(bind, [bind])
