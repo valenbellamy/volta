@@ -1,9 +1,10 @@
 .content {
   display: flex;
   justify-content: space-between;
-  padding: 0rem 2vw;
-  margin-top: 2rem;
+  padding: 0rem 6vw 0rem 2vw;
+  margin-top: 3.5rem;
   @media (max-width: 767.98px) {
+    margin-top: 2rem;
     display: block;
     padding: 0rem 1rem;
   }
