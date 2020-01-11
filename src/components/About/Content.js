@@ -21,6 +21,7 @@ const Content = () => {
         paragraphe3 {
           paragraphe3
         }
+        paragraphe4
         adresse
         mail
       }
@@ -85,6 +86,7 @@ const Content = () => {
           <p className="mbm">{paragraphe2.paragraphe2}</p>
           <h2>{titre3}</h2>
           <p>{paragraphe3.paragraphe3}</p>
+          <p>{paragraphe4}</p>
         </div>
       </div>
       <div className="content content__sm--pb mbm">

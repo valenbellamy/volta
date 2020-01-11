@@ -155,6 +155,18 @@ const Slider = ({ photos }) => {
           style={{ opacity: arrowOpacity }}
         >
           <svg
+            width="118"
+            height="119"
+            viewBox="0 0 118 119"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 61.3897V57.5082H110.631L55.8786 2.55365L58.6418 0L118 59.6532L58.4371 119L55.8786 116.242L110.631 61.3897H0Z"
+              fill="white"
+            />
+          </svg>
+          {/* <svg
             width="19"
             height="16"
             viewBox="0 0 19 16"
@@ -165,7 +177,7 @@ const Slider = ({ photos }) => {
               d="M-4.62073e-08 6.7801V8.73967H14.1339L7.65586 14.1285L9.32837 15.5198L18.6567 7.75989L9.32837 0L7.65586 1.39129L14.1339 6.7801H-4.62073e-08Z"
               fill="#000"
             />
-          </svg>
+          </svg> */}
         </animated.div>
       </animated.div>
       <Modal isShowing={isShowing} hide={toggle} content={imgModal} />
