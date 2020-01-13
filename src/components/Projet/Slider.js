@@ -68,7 +68,6 @@ const Slider = ({ photos }) => {
         x: wheelOffset.current,
         arrowOpacity: opacity,
       })
-      console.log(x)
     },
     {
       domTarget,

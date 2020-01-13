@@ -14,8 +14,12 @@ body {
   height: 100vh;
   font-family: Lausanne;
   font-weight: 400;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @media (max-width: 767.98px) {
+    overflow: auto;
+  }
 }
 
 #___gatsby,
