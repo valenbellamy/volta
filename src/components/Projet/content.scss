@@ -45,6 +45,9 @@
       }
     }
   }
+  @media (max-width: 1199.98px) {
+    width: 12vw;
+  }
   @media (max-width: 767.98px) {
     width: auto;
     padding: 0rem;
@@ -58,6 +61,9 @@
   align-items: flex-end;
   width: 55vw;
   padding-right: 1.5rem;
+  @media (max-width: 1199.98px) {
+    width: 57vw;
+  }
   @media (max-width: 767.98px) {
     font-size: 1.3rem;
     display: block;
@@ -70,6 +76,9 @@
   flex-direction: column;
   justify-content: flex-start;
   width: 20vw;
+  @media (max-width: 1199.98px) {
+    width: 21vw;
+  }
   @media (max-width: 767.98px) {
     width: 100%;
     flex-direction: row;
