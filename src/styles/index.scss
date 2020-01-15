@@ -167,7 +167,8 @@ p {
 }
 
 .navbar__link--dropdown.open .dropdown {
-  transform: translate3d(0px, -100%, 0px);
+  // transform: translate3d(0px, -100%, 0px);
+  transform: translate3d(0px, -190px, 0px);
   @media (max-width: 767.98px) {
     transform: translate3d(0px, -100%, 0px);
   }
@@ -255,9 +256,9 @@ p {
     font-size: 1.3rem;
     transition: all 0.4s ease;
     text-transform: lowercase;
-    // @media (max-width: 1199.98px) {
-    //   font-size: 1.1rem;
-    // }
+    @media (max-width: 991.98px) {
+      font-size: 1.1rem;
+    }
     @media (max-width: 767.98px) {
       font-size: 1.3rem;
     }
