@@ -85,7 +85,7 @@ const Slider = ({ photos }) => {
     let margin = 8
     let gutter = 16
     let heightInfos
-    if (window.width > 1200) {
+    if (windowWidth > 1200) {
       heightInfos = 210
     } else {
       heightInfos = 225
