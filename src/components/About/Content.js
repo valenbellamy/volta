@@ -78,10 +78,13 @@ const Content = () => {
         </Link>
       </div>
       <div className="content">
-        <div className="content__blk mbm">
-          <h1>{titre1}</h1>
-          <p className="fs-lg">{paragraphe1.paragraphe1}</p>
-          <div className="content__blk--contact hidden--sm">
+        <div className="content__blk content__blk--flex">
+          <div>
+            <h1>{titre1}</h1>
+            <p className="fs-lg">{paragraphe1.paragraphe1}</p>
+          </div>
+
+          <div className="content__sm--pb hidden--sm">
             <p className="fs-sm ">
               Contact <br />
               {adresse}

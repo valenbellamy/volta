@@ -38,6 +38,15 @@
   @media (max-width: 767.98px) {
     width: 100%;
   }
+  &.content__blk--flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @media (max-width: 767.98px) {
+      display: block;
+      margin-bottom: 2rem;
+    }
+  }
 }
 
 .content h1 {
