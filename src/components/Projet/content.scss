@@ -28,6 +28,10 @@
   svg {
     // height: 2.5vw;
     width: 110px;
+    @media (max-width: 1199.98px) {
+      width: 100px;
+      height: auto;
+    }
     @media (max-width: 767.98px) {
       width: 110px;
       height: auto;
@@ -47,7 +51,7 @@
     }
   }
   @media (max-width: 1199.98px) {
-    width: 12vw;
+    width: 16vw;
   }
   @media (max-width: 767.98px) {
     width: auto;
@@ -63,7 +67,7 @@
   width: 60vw;
   padding-right: 1.5rem;
   @media (max-width: 1199.98px) {
-    width: 57vw;
+    width: 54vw;
   }
   @media (max-width: 767.98px) {
     font-size: 1.3rem;
@@ -78,7 +82,7 @@
   justify-content: flex-start;
   width: 17vw;
   @media (max-width: 1199.98px) {
-    width: 21vw;
+    width: 20vw;
   }
   @media (max-width: 767.98px) {
     width: 100%;
