@@ -5,7 +5,11 @@ import "./content.scss"
 
 const Content = ({ info }) => {
   const [open, setOpen] = useState(false)
-  console.log(info)
+  const [isjournal, setIsjournal] = useState(false)
+
+  if (info.titre === "Journal") {
+    setIsjournal(true)
+  }
   return (
     <>
       <div className="info anime-js">
@@ -53,15 +57,19 @@ const Content = ({ info }) => {
             <div>
               <span>Maîtrise d'ouvrage: {info.maitrise}</span>
             </div>
-            <div>
-              <span>Surface: {info.surface}</span>
-            </div>
-            <div>
-              <span>Lieu: {info.lieu}</span>
-            </div>
-            <div>
-              <span>Mission: {info.mission}</span>
-            </div>
+            {!isjournal && (
+              <>
+                <div>
+                  <span>Surface: {info.surface}</span>
+                </div>
+                <div>
+                  <span>Lieu: {info.lieu}</span>
+                </div>
+                <div>
+                  <span>Mission: {info.mission}</span>
+                </div>
+              </>
+            )}
           </div>
         </div>
 
