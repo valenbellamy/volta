@@ -167,8 +167,8 @@ p {
 }
 
 .navbar__link--dropdown.open .dropdown {
-  // transform: translate3d(0px, -100%, 0px);
-  transform: translate3d(0px, -190px, 0px);
+  transform: translate3d(0px, -100%, 0px);
+  // transform: translate3d(0px, -190px, 0px);
   @media (max-width: 767.98px) {
     transform: translate3d(0px, -100%, 0px);
   }
