@@ -5,11 +5,11 @@ import "./content.scss"
 
 const Content = ({ info }) => {
   const [open, setOpen] = useState(false)
-  const [isjournal, setIsjournal] = useState(false)
+  // const [isjournal, setIsjournal] = useState(false)
 
-  if (info.titre === "Journal") {
-    setIsjournal(true)
-  }
+  // if (info.titre === "Journal") {
+  //   setIsjournal(true)
+  // }
   return (
     <>
       <div className="info anime-js">
@@ -57,7 +57,7 @@ const Content = ({ info }) => {
             <div>
               <span>Maîtrise d'ouvrage: {info.maitrise}</span>
             </div>
-            {!isjournal && (
+            {info.titre !== "Journal" && (
               <>
                 <div>
                   <span>Surface: {info.surface}</span>
