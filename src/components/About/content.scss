@@ -41,7 +41,7 @@
   &.content__blk--flex {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     @media (max-width: 767.98px) {
       display: block;
       margin-bottom: 2rem;
