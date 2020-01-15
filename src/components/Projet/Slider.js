@@ -83,7 +83,13 @@ const Slider = ({ photos }) => {
     let acc = 0
     let margin = 8
     let gutter = 16
-    let heightInfos = 210
+    let heightInfos
+    if (window.width > 1200) {
+      heightInfos = 210
+    } else {
+      heightInfos = 225
+    }
+
     let blank = 48
     let size = photos.length
 
@@ -107,7 +113,7 @@ const Slider = ({ photos }) => {
 
   useEffect(() => {
     window.addEventListener("contextmenu", disableRight)
-    return () => window.removeEventListener("resize", disableRight)
+    return () => window.removeEventListener("contextmenu", disableRight)
   })
 
   useLayoutEffect(() => {

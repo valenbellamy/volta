@@ -2,7 +2,10 @@
   width: 100%;
   height: calc(100vh - 258px);
   overflow-x: hidden;
-  @media (max-width: 768px) {
+  @media (max-width: 1199.98px) {
+    height: calc(100vh - 273px);
+  }
+  @media (max-width: 767.98px) {
     height: calc(100vh - 229px);
   }
 }
