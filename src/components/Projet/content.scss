@@ -32,9 +32,11 @@
       width: 100px;
       height: auto;
     }
+    @media (max-width: 991.98px) {
+      width: 75px;
+    }
     @media (max-width: 767.98px) {
       width: 110px;
-      height: auto;
     }
     path,
     polygon,
@@ -53,6 +55,9 @@
   @media (max-width: 1199.98px) {
     width: 16vw;
   }
+  @media (max-width: 991.98px) {
+    width: 13vw;
+  }
   @media (max-width: 767.98px) {
     width: auto;
     padding: 0rem;
@@ -68,6 +73,10 @@
   padding-right: 1.5rem;
   @media (max-width: 1199.98px) {
     width: 54vw;
+  }
+  @media (max-width: 991.98px) {
+    width: 55vw;
+    padding-right: 1rem;
   }
   @media (max-width: 767.98px) {
     font-size: 1.3rem;
@@ -168,6 +177,9 @@
   width: 10vw;
   text-align: right;
   padding-right: 1rem;
+  @media (max-width: 991.98px) {
+    width: 12vw;
+  }
   @media (max-width: 767.98px) {
     display: block;
     width: auto;

@@ -191,10 +191,10 @@ p {
   @media (max-width: 1199.98px) {
     width: 54vw;
   }
-  // @media (max-width: 991.98px) {
-  //   padding-right: 0.5rem;
-  //   width: 60vw;
-  // }
+  @media (max-width: 991.98px) {
+    padding-right: 1rem;
+    width: 55vw;
+  }
   @media (max-width: 767.98px) {
     width: 100vw;
     max-height: 72vh;
@@ -255,9 +255,9 @@ p {
     font-size: 1.3rem;
     transition: all 0.4s ease;
     text-transform: lowercase;
-    @media (max-width: 1199.98px) {
-      font-size: 1.1rem;
-    }
+    // @media (max-width: 1199.98px) {
+    //   font-size: 1.1rem;
+    // }
     @media (max-width: 767.98px) {
       font-size: 1.3rem;
     }
