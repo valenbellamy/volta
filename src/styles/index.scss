@@ -122,6 +122,10 @@ p {
   padding-right: 1rem;
   @media (max-width: 1199.98px) {
     height: 260px;
+    padding-left: 16vw;
+  }
+  @media (max-width: 991.98px) {
+    padding-left: 13vw;
   }
   @media (max-width: 767.98px) {
     padding: 0rem 1rem;

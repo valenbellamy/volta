@@ -78,7 +78,6 @@ const Slider = ({ photos }) => {
   // to set scroll limit
 
   const computeWidth = () => {
-    console.log("compute width")
     let windowHeight = window.innerHeight
     let windowWidth = window.innerWidth
     let acc = 0
