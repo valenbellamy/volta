@@ -5,7 +5,7 @@ import "./content.scss"
 
 const Content = ({ info }) => {
   const [open, setOpen] = useState(false)
-
+  console.log(info)
   return (
     <>
       <div className="info anime-js">
