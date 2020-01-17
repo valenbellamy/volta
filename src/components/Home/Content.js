@@ -61,6 +61,7 @@ const Content = () => {
   //console.log(data)
 
   const lengthDiapo = data.contentfulDiaporama.ordinateur.length
+  const lengthDiapoSmartphone = data.contentfulDiaporama.smartphone.length
   const lengthProjet = data.allContentfulProjet.edges.length
 
   // const lengthDiapo = 6
@@ -69,10 +70,13 @@ const Content = () => {
   useEffect(() => {
     if (typeof window.orientation === "undefined") {
       setLandscape(true)
+      console.log(Math.floor(Math.random() * lengthDiapo))
     } else if (window.orientation === 0) {
       setLandscape(false)
+      console.log(Math.floor(Math.random() * lengthDiapoSmartphone))
     } else {
       setLandscape(true)
+      console.log(Math.floor(Math.random() * lengthDiapo))
     }
   }, [])
 
