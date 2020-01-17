@@ -54,11 +54,11 @@ const Content = ({ info }) => {
             <p>{info.description}</p>
           </div>
           <div>
-            <div>
-              <span>Maîtrise d'ouvrage: {info.maitrise}</span>
-            </div>
             {info.titre !== "Journal" && (
               <>
+                <div>
+                  <span>Maîtrise d'ouvrage: {info.maitrise}</span>
+                </div>
                 <div>
                   <span>Surface: {info.surface}</span>
                 </div>
