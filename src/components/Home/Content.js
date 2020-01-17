@@ -71,15 +71,17 @@ const Content = () => {
     if (typeof window.orientation === "undefined") {
       setLandscape(true)
       //console.log(Math.floor(Math.random() * lengthDiapo))
-      console.log(data.contentfulDiaporama.ordinateur[1])
+      console.log(data.contentfulDiaporama.ordinateur[0])
+      console.log(data.contentfulDiaporama.ordinateur[lengthDiapo])
     } else if (window.orientation === 0) {
       setLandscape(false)
       //console.log(Math.floor(Math.random() * lengthDiapoSmartphone))
-      console.log(data.contentfulDiaporama.smartphone[1])
+      console.log(data.contentfulDiaporama.smartphone[0])
     } else {
       setLandscape(true)
       //console.log(Math.floor(Math.random() * lengthDiapo))
-      console.log(data.contentfulDiaporama.ordinateur[1])
+      console.log(data.contentfulDiaporama.ordinateur[0])
+      console.log(data.contentfulDiaporama.ordinateur[lengthDiapo])
     }
   }, [])
 
