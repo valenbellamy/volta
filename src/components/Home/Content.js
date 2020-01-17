@@ -11,6 +11,7 @@ const Content = () => {
   // const [hover, setHover] = useState(false)
   // const [clicked, setClicked] = useState(false)
   const [open, setOpen] = useState(false)
+  const [randomvalue, setRandomvalue] = usestate(0)
   const data = useStaticQuery(graphql`
     query {
       contentfulDiaporama(titre: { eq: "Diaporama" }) {
@@ -70,21 +71,13 @@ const Content = () => {
   useEffect(() => {
     if (typeof window.orientation === "undefined") {
       setLandscape(true)
-      //console.log(Math.floor(Math.random() * lengthDiapo))
-      console.log(data.contentfulDiaporama.ordinateur[0])
-      console.log(data.contentfulDiaporama.ordinateur[lengthDiapo - 1])
+      setRandomvalue(Math.floor(Math.random() * (lengthDiapo - 1)))
     } else if (window.orientation === 0) {
       setLandscape(false)
-      //console.log(Math.floor(Math.random() * lengthDiapoSmartphone))
-      console.log(data.contentfulDiaporama.smartphone[0])
-      console.log(
-        data.contentfulDiaporama.smartphone[lengthDiapoSmartphone - 1]
-      )
+      setRandomvalue(Math.floor(Math.random() * (lengthDiapoSmartphone - 1)))
     } else {
       setLandscape(true)
-      //console.log(Math.floor(Math.random() * lengthDiapo))
-      console.log(data.contentfulDiaporama.ordinateur[0])
-      console.log(data.contentfulDiaporama.ordinateur[lengthDiapo - 1])
+      setRandomvalue(Math.floor(Math.random() * (lengthDiapo - 1)))
     }
   }, [])
 
