@@ -11,7 +11,7 @@ const Content = () => {
   // const [hover, setHover] = useState(false)
   // const [clicked, setClicked] = useState(false)
   const [open, setOpen] = useState(false)
-  const [randomvalue, setRandomvalue] = usestate(0)
+  const [randomvalue, setRandomvalue] = useState(0)
   const data = useStaticQuery(graphql`
     query {
       contentfulDiaporama(titre: { eq: "Diaporama" }) {
