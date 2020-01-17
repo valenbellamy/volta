@@ -105,14 +105,6 @@ const Content = () => {
     return () => clearTimeout(timer)
   }, [index])
 
-  // useEffect(() => {
-  //   if (clicked || hover) {
-  //     setOpen(true)
-  //   } else {
-  //     setOpen(false)
-  //   }
-  // }, [clicked, hover])
-
   const setActiveItem = item => {
     setIndex(item)
   }
