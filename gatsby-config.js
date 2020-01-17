@@ -7,6 +7,7 @@ module.exports = {
     title: `Volta Architecture`,
     description: `Volta est une agence créée en 2016 par Agathe Lavaud exerçant dans les domaines de l’architecture et l’architecture d’intérieur.`,
     author: `@valentinbellamy`,
+    siteUrl: `https://volta-architecture.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
