@@ -70,13 +70,16 @@ const Content = () => {
   useEffect(() => {
     if (typeof window.orientation === "undefined") {
       setLandscape(true)
-      console.log(Math.floor(Math.random() * lengthDiapo))
+      //console.log(Math.floor(Math.random() * lengthDiapo))
+      console.log(data.contentfulDiaporama.ordinateur[1])
     } else if (window.orientation === 0) {
       setLandscape(false)
-      console.log(Math.floor(Math.random() * lengthDiapoSmartphone))
+      //console.log(Math.floor(Math.random() * lengthDiapoSmartphone))
+      console.log(data.contentfulDiaporama.smartphone[1])
     } else {
       setLandscape(true)
-      console.log(Math.floor(Math.random() * lengthDiapo))
+      //console.log(Math.floor(Math.random() * lengthDiapo))
+      console.log(data.contentfulDiaporama.ordinateur[1])
     }
   }, [])
 
