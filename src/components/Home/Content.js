@@ -93,17 +93,17 @@ const Content = () => {
     )
   }, [])
 
-  useEffect(() => {
-    const limit = lengthDiapo + lengthProjet
-    const timer = setTimeout(() => {
-      if (index === limit - 1) {
-        setIndex(0)
-      } else {
-        setIndex(index => index + 1)
-      }
-    }, 4000)
-    return () => clearTimeout(timer)
-  }, [index])
+  // useEffect(() => {
+  //   const limit = lengthDiapo + lengthProjet
+  //   const timer = setTimeout(() => {
+  //     if (index === limit - 1) {
+  //       setIndex(0)
+  //     } else {
+  //       setIndex(index => index + 1)
+  //     }
+  //   }, 4000)
+  //   return () => clearTimeout(timer)
+  // }, [index])
 
   const setActiveItem = item => {
     setIndex(item)
@@ -133,7 +133,40 @@ const Content = () => {
         </Link>
       </div>
       <div className="bg-image">
-        {landscape
+        {landscape ? (
+          <div className={`bg-image__wrapper ${index === 0 ? "active" : ""}`}>
+            <BackgroundImage
+              className="default-bg"
+              fluid={data.contentfulDiaporama.ordinateur[randomvalue].fluid}
+            />
+          </div>
+        ) : (
+          <div
+            key={photo.id}
+            className={`bg-image__wrapper ${index === 0 ? "active" : ""}`}
+          >
+            <BackgroundImage
+              className="default-bg"
+              fluid={data.contentfulDiaporama.smartphone[randomvalue].fluid}
+            />
+          </div>
+        )}
+        {data.allContentfulProjet.edges.map((edge, i) => (
+          <div
+            key={edge.node.id}
+            className={`bg-image__wrapper ${index === i + 1 ? "active" : ""}`}
+          >
+            <BackgroundImage
+              className="default-bg"
+              fluid={
+                landscape
+                  ? edge.node.couverture.fluid
+                  : edge.node.couvertureSmartphone.fluid
+              }
+            />
+          </div>
+        ))}
+        {/* {landscape
           ? data.contentfulDiaporama.ordinateur.map((photo, i) => (
               <div
                 key={photo.id}
@@ -166,7 +199,7 @@ const Content = () => {
               }
             />
           </div>
-        ))}
+        ))} */}
 
         <div className="bg"></div>
       </div>
