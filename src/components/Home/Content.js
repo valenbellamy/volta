@@ -71,13 +71,13 @@ const Content = () => {
   useEffect(() => {
     if (typeof window.orientation === "undefined") {
       setLandscape(true)
-      setRandomvalue(Math.floor(Math.random() * (lengthDiapo - 1)))
+      setRandomvalue(Math.floor(Math.random() * lengthDiapo))
     } else if (window.orientation === 0) {
       setLandscape(false)
       setRandomvalue(Math.floor(Math.random() * (lengthDiapoSmartphone - 1)))
     } else {
       setLandscape(true)
-      setRandomvalue(Math.floor(Math.random() * (lengthDiapo - 1)))
+      setRandomvalue(Math.floor(Math.random() * lengthDiapo))
     }
   }, [])
 
