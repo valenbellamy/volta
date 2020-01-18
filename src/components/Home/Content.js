@@ -141,10 +141,7 @@ const Content = () => {
             />
           </div>
         ) : (
-          <div
-            key={photo.id}
-            className={`bg-image__wrapper ${index === 0 ? "active" : ""}`}
-          >
+          <div className={`bg-image__wrapper ${index === 0 ? "active" : ""}`}>
             <BackgroundImage
               className="default-bg"
               fluid={data.contentfulDiaporama.smartphone[randomvalue].fluid}
