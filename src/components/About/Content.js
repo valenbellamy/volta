@@ -137,7 +137,7 @@ const Content = () => {
           <p>{paragraphe4}</p>
         </div>
       </div>
-      <div className="content content__sm--pb visible--sm mbm">
+      <div className="content content__sm--pb visible--sm">
         <div className="content__blk">
           <p className="fs-sm ">
             Contact <br />
