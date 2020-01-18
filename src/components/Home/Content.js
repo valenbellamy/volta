@@ -105,6 +105,9 @@ const Content = () => {
   //   return () => clearTimeout(timer)
   // }, [index])
 
+  console.log(data.contentfulDiaporama.ordinateur[randomvalue])
+  console.log(data.allContentfulProjet)
+
   const setActiveItem = item => {
     setIndex(item)
   }
@@ -218,7 +221,7 @@ const Content = () => {
                   key={edge.node.id}
                   to={`/${edge.node.slug}`}
                   className="dropdown__item"
-                  onMouseEnter={() => setActiveItem(i + lengthDiapo)}
+                  onMouseEnter={() => setActiveItem(i + 1)}
                 >
                   <span className="dropdown__item__title">
                     {edge.node.titre}
