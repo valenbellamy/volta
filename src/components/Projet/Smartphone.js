@@ -38,18 +38,22 @@ const Smartphone = ({ info }) => {
             <p>{info.description}</p>
           </div>
           <div className="info__content--sm">
-            <div>
-              <span>Maîtrise d'ouvrage: {info.maitrise}</span>
-            </div>
-            <div>
-              <span>Surface: {info.surface}</span>
-            </div>
-            <div>
-              <span>Lieu: {info.lieu}</span>
-            </div>
-            <div>
-              <span>Mission: {info.mission}</span>
-            </div>
+            {info.titre !== "Journal" && (
+              <>
+                <div>
+                  <span>Maîtrise d'ouvrage: {info.maitrise}</span>
+                </div>
+                <div>
+                  <span>Surface: {info.surface}</span>
+                </div>
+                <div>
+                  <span>Lieu: {info.lieu}</span>
+                </div>
+                <div>
+                  <span>Mission: {info.mission}</span>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

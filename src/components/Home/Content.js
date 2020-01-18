@@ -105,9 +105,6 @@ const Content = () => {
   //   return () => clearTimeout(timer)
   // }, [index])
 
-  console.log(data.contentfulDiaporama.ordinateur[randomvalue])
-  console.log(data.allContentfulProjet)
-
   const setActiveItem = item => {
     setIndex(item)
   }
