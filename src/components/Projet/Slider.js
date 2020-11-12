@@ -86,8 +86,10 @@ const Slider = ({ photos }) => {
     let heightInfos
     if (windowWidth > 1200) {
       heightInfos = 210
-    } else {
+    } else if (windowWidth < 1200 && windowWidth > 768) {
       heightInfos = 225
+    } else {
+      heightInfos = 195
     }
 
     let blank = 48
