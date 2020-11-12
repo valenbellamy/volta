@@ -14,7 +14,7 @@ const Content = () => {
   const [randomvalue, setRandomvalue] = useState(0)
   const data = useStaticQuery(graphql`
     query {
-      contentfulDiaporama(titre: { eq: "Diaporama" }) {
+      contentfulDiaporama(titre: { eq: "diaporama" }) {
         ordinateur {
           id
           title
