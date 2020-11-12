@@ -195,7 +195,19 @@ const Content = () => {
             <Dropdown />
           </li>
           <li className="navbar__link navbar__link--dark">
-            <Link to="/a-propos">à propos</Link>
+            <Link
+              to="/journal"
+              style={{
+                display: "block",
+                marginBottom: "0.6rem",
+                textAlign: "right",
+              }}
+            >
+              presse
+            </Link>
+            <Link to="/a-propos" style={{ display: "block" }}>
+              à propos
+            </Link>
           </li>
         </ul>
       </nav>

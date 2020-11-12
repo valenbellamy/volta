@@ -50,31 +50,50 @@ const Content = ({ info }) => {
               {info.titre} <span>{info.date}</span>
             </h1>
           </div>
+          {info.description && (
+            <div>
+              <p>{info.description}</p>
+            </div>
+          )}
+
           <div>
-            <p>{info.description}</p>
-          </div>
-          <div>
-            {info.titre !== "Journal" && (
-              <>
-                <div>
-                  <span>Maîtrise d'ouvrage: {info.maitrise}</span>
-                </div>
-                <div>
-                  <span>Surface: {info.surface}</span>
-                </div>
-                <div>
-                  <span>Lieu: {info.lieu}</span>
-                </div>
-                <div>
-                  <span>Mission: {info.mission}</span>
-                </div>
-              </>
+            {info.maitrise && (
+              <div>
+                <span>Maîtrise d'ouvrage: {info.maitrise}</span>
+              </div>
+            )}
+            {info.surface && (
+              <div>
+                <span>Surface: {info.surface}</span>
+              </div>
+            )}
+            {info.lieu && (
+              <div>
+                <span>Lieu: {info.lieu}</span>
+              </div>
+            )}
+            {info.mission && (
+              <div>
+                <span>Mission: {info.mission}</span>
+              </div>
             )}
           </div>
         </div>
 
         <div className="info__link info__link--special">
-          <Link to="/a-propos">à propos</Link>
+          <Link
+            to="/journal"
+            style={{
+              display: "block",
+              marginBottom: "0.6rem",
+              textAlign: "right",
+            }}
+          >
+            presse
+          </Link>
+          <Link to="/a-propos" style={{ display: "block" }}>
+            à propos
+          </Link>
         </div>
       </div>
     </>

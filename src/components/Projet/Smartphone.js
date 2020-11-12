@@ -35,24 +35,28 @@ const Smartphone = ({ info }) => {
                 {info.titre} <span>{info.date}</span>
               </h1>
             </div>
-            <p>{info.description}</p>
+            {info.description && <p>{info.description}</p>}
           </div>
           <div className="info__content--sm">
-            {info.titre !== "Journal" && (
-              <>
-                <div>
-                  <span>Maîtrise d'ouvrage: {info.maitrise}</span>
-                </div>
-                <div>
-                  <span>Surface: {info.surface}</span>
-                </div>
-                <div>
-                  <span>Lieu: {info.lieu}</span>
-                </div>
-                <div>
-                  <span>Mission: {info.mission}</span>
-                </div>
-              </>
+            {info.maitrise && (
+              <div>
+                <span>Maîtrise d'ouvrage: {info.maitrise}</span>
+              </div>
+            )}
+            {info.surface && (
+              <div>
+                <span>Surface: {info.surface}</span>
+              </div>
+            )}
+            {info.lieu && (
+              <div>
+                <span>Lieu: {info.lieu}</span>
+              </div>
+            )}
+            {info.mission && (
+              <div>
+                <span>Mission: {info.mission}</span>
+              </div>
             )}
           </div>
         </div>

@@ -7,7 +7,6 @@
   display: flex;
   justify-content: flex-start;
   background-color: white;
-  //padding: 0rem;
   z-index: 3;
   @media (max-width: 1199.98px) {
     height: 240px;
@@ -20,6 +19,7 @@
     height: auto;
     width: 100%;
     justify-content: space-between;
+    align-items: flex-end;
     overflow: unset;
     z-index: 2;
   }

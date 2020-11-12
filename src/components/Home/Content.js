@@ -32,7 +32,11 @@ const Content = () => {
           }
         }
       }
-      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 14) {
+      allContentfulProjet(
+        sort: { fields: createdAt, order: DESC }
+        limit: 14
+        filter: { titre: { ne: "presse" } }
+      ) {
         edges {
           node {
             id
@@ -231,7 +235,19 @@ const Content = () => {
             </div>
           </li>
           <li className="navbar__link">
-            <Link to="/a-propos">à propos</Link>
+            <Link
+              to="/journal"
+              style={{
+                display: "block",
+                marginBottom: "0.6rem",
+                textAlign: "right",
+              }}
+            >
+              presse
+            </Link>
+            <Link to="/a-propos" style={{ display: "block" }}>
+              à propos
+            </Link>
           </li>
         </ul>
       </nav>

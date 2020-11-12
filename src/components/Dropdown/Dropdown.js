@@ -5,7 +5,11 @@ const Dropdown = () => {
   // const [visible, setVisible] = useState(false)
   const data = useStaticQuery(graphql`
     query {
-      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 14) {
+      allContentfulProjet(
+        sort: { fields: createdAt, order: DESC }
+        limit: 14
+        filter: { titre: { ne: "presse" } }
+      ) {
         edges {
           node {
             id
