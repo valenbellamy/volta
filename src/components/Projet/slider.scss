@@ -97,6 +97,13 @@
     &.not-desktop {
       overflow-x: scroll;
       -webkit-overflow-scrolling: touch;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      .gatsby-image-wrapper {
+        height: 100%;
+        overflow: visible !important;
+      }
     }
     .slider__item {
       display: inline-block;

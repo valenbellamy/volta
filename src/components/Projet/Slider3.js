@@ -87,12 +87,15 @@ const Slider = ({ actualites }) => {
     <animated.div ref={domTarget} className="test-slider">
       <animated.div
         className={`test-slider__inner ${desktop ? "" : "not-desktop"}`}
-        style={{ x, width: slideWidth }}
+        style={{
+          x,
+          //width: slideWidth
+        }}
       >
         {actualites &&
           actualites.map(actualite => (
             <a
-              href={actualite.link !== "" ? `${actualite.link}` : "#"}
+              href={actualite.lien !== "" ? `${actualite.lien}` : "#"}
               className="slider__item"
               key={actualite.id}
               style={{
