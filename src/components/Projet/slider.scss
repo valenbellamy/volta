@@ -83,6 +83,9 @@
   width: auto;
   overflow: hidden;
   position: relative;
+  &.not-desktop {
+    overflow-x: scroll;
+  }
   @media (max-width: 1199.98px) {
     height: calc(100vh - 273px);
   }
@@ -94,17 +97,6 @@
     height: 100%;
     width: auto;
     padding: 1rem 0rem;
-    &.not-desktop {
-      overflow-x: scroll;
-      -webkit-overflow-scrolling: touch;
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: nowrap;
-      .gatsby-image-wrapper {
-        height: 100%;
-        overflow: visible !important;
-      }
-    }
     .slider__item {
       display: inline-block;
       position: relative;
