@@ -75,3 +75,44 @@
     display: none;
   }
 }
+
+.test-slider {
+  display: block;
+  height: calc(100vh - 258px);
+  white-space: nowrap;
+  width: auto;
+  overflow: hidden;
+  position: relative;
+  @media (max-width: 1199.98px) {
+    height: calc(100vh - 273px);
+  }
+  @media (max-width: 767.98px) {
+    height: calc(100vh - 243px);
+  }
+  .test-slider__inner {
+    display: block;
+    height: 100%;
+    width: auto;
+    padding: 1rem 0rem;
+    &.not-desktop {
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    .slider__item {
+      display: inline-block;
+      position: relative;
+      width: auto;
+      height: 100%;
+      margin-right: 0.5rem;
+      &:first-child {
+        margin-left: 1rem;
+      }
+      &:last-child {
+        margin-right: 1rem;
+      }
+      .gatsby-image-wrapper {
+        cursor: pointer;
+      }
+    }
+  }
+}

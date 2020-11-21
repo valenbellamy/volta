@@ -1,28 +1,47 @@
 import React, { useState, useEffect, useLayoutEffect } from "react"
 import Img from "gatsby-image"
 import "./slider.scss"
-import anime from "animejs/lib/anime.es.js"
-import { animated, useSpring, config } from "react-spring"
+import { animated, useSpring } from "react-spring"
 import { useWheel } from "react-use-gesture"
 
-import Modal from "../Modal/Modal"
-import useModal from "../Hooks/useModal"
+const Slider = ({ actualites }) => {
+  const [rightLimit, setRightLimit] = useState(0)
+  const [desktop, setDesktop] = useState(null)
+  const [height, setHeight] = useState(null)
+  const [slideWidth, setSlideWidth] = useState("auto")
 
-const Slider3 = ({ photos }) => {
+  // Scroll
+
+  const isFirefox = React.useRef(typeof InstallTrigger !== "undefined")
+
   const domTarget = React.useRef(null)
+  const [{ x, arrowOpacity }, set] = useSpring(() => ({
+    x: 0,
+    arrowOpacity: 1,
+  }))
 
-  const [{ x }, set] = useSpring(() => ({ x: 0 }))
   let wheelOffset = React.useRef(0)
+  let opacity
   const bind = useWheel(
     ({ delta: [, dy] }) => {
-      wheelOffset.current += dy
+      if (isFirefox.current) {
+        dy *= 20
+      }
+      wheelOffset.current -= dy
       if (wheelOffset.current > 0) {
         wheelOffset.current = 0
       }
-      if (wheelOffset.current < -1200) {
-        wheelOffset.current = -1200
+      if (wheelOffset.current < -rightLimit) {
+        wheelOffset.current = -rightLimit
       }
-      set({ x: wheelOffset.current })
+      opacity = 1 + wheelOffset.current / 400
+      if (opacity < 0) {
+        opacity = 0
+      }
+      set({
+        x: wheelOffset.current,
+        arrowOpacity: opacity,
+      })
     },
     {
       domTarget,
@@ -30,18 +49,27 @@ const Slider3 = ({ photos }) => {
     }
   )
 
+  // to set scroll limit
+
+  const computeSize = () => {
+    let sliderHeight = domTarget.current.clientHeight
+    setHeight(sliderHeight)
+    let windowWidth = window.innerWidth
+    let acc = 0
+    let margin = 8
+    let gutter = 16
+    let size = actualites.length
+
+    actualites.map(actualite => {
+      var currentWidth
+      currentWidth = actualite.image.fluid.aspectRatio * sliderHeight
+      return (acc += currentWidth)
+    })
+    acc += -windowWidth + (size - 1) * margin + 2 * gutter
+    setRightLimit(acc)
+  }
+
   useEffect(bind, [bind])
-
-  // Modal hooks
-  const { isShowing, toggle } = useModal()
-  const [imgModal, setImgModal] = useState(null)
-
-  // Scroll and drag hooks
-  const [down, setDown] = useState(false)
-  const [desktop, setDesktop] = useState(null)
-  const [slideWidth, setSlideWidth] = useState("auto")
-
-  const [itemloaded, setItemloaded] = useState(0)
 
   useLayoutEffect(() => {
     if (typeof window.orientation !== "undefined") {
@@ -49,59 +77,56 @@ const Slider3 = ({ photos }) => {
       setDesktop(false)
     } else {
       setDesktop(true)
-      // computeWidth()
-      // window.addEventListener("resize", computeWidth)
-      // return () => window.removeEventListener("resize", computeWidth)
+      computeSize()
+      window.addEventListener("resize", computeSize)
+      return () => window.removeEventListener("resize", computeSize)
     }
   }, [])
 
-  useEffect(() => {
-    if (itemloaded === photos.length) {
-      anime(
-        {
-          targets: ".gatsby-image-wrapper",
-          opacity: 1,
-          easing: "linear",
-          duration: 300,
-          delay: (el, i) => 100 * i,
-        },
-        0
-      )
-    }
-  }, [itemloaded])
-
   return (
-    <>
-      <div ref={domTarget} className={`slider ${down ? "active" : ""}`}>
-        <animated.div
-          className={`slider__inner ${desktop ? "" : "not-desktop"}`}
-          style={{ x, width: slideWidth }}
-        >
-          {photos &&
-            photos.map(photo => (
+    <animated.div ref={domTarget} className="test-slider">
+      <animated.div
+        className={`test-slider__inner ${desktop ? "" : "not-desktop"}`}
+        style={{ x, width: slideWidth }}
+      >
+        {actualites &&
+          actualites.map(actualite => (
+            <a
+              href={actualite.link !== "" ? `${actualite.link}` : "#"}
+              className="slider__item"
+              key={actualite.id}
+              style={{
+                width: `${height * actualite.image.fluid.aspectRatio}px`,
+              }}
+            >
               <Img
-                key={photo.id}
-                alt={photo.description}
-                imgStyle={{ width: "auto", position: "relative" }}
-                placeholderStyle={{ width: "100%", position: "absolute" }}
-                fluid={photo.fluid}
-                onLoad={() => {
-                  setItemloaded(itemloaded => itemloaded + 1)
-                }}
-                onClick={() => {
-                  if (window.innerWidth > 768) {
-                    toggle()
-                    setImgModal(photo.fluid)
-                  }
-                }}
-                loading="eager"
+                fluid={actualite.image.fluid}
+                alt={actualite.image.description}
+                backgroundColor="#ccc"
               />
-            ))}
-        </animated.div>
-      </div>
-      <Modal isShowing={isShowing} hide={toggle} content={imgModal} />
-    </>
+            </a>
+          ))}
+      </animated.div>
+      <animated.div
+        className={`scroll__arrow ${desktop ? "" : "not-desktop"}`}
+        style={{ opacity: arrowOpacity }}
+      >
+        <svg
+          width="118"
+          height="119"
+          viewBox="0 0 118 119"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 61.3897V57.5082H110.631L55.8786 2.55365L58.6418 0L118 59.6532L58.4371 119L55.8786 116.242L110.631 61.3897H0Z"
+            fill="white"
+            stroke="white"
+          />
+        </svg>
+      </animated.div>
+    </animated.div>
   )
 }
 
-export default Slider3
+export default Slider

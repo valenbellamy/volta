@@ -82,7 +82,7 @@ const Content = ({ info }) => {
 
         <div className="info__link info__link--special">
           <Link
-            to="/journal"
+            to="/presse"
             style={{
               display: "block",
               marginBottom: "0.6rem",

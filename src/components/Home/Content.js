@@ -236,7 +236,7 @@ const Content = () => {
           </li>
           <li className="navbar__link">
             <Link
-              to="/journal"
+              to="/presse"
               style={{
                 display: "block",
                 marginBottom: "0.6rem",
