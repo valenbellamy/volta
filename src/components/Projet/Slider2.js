@@ -138,11 +138,14 @@ const Slider = ({ photos }) => {
 
   return (
     <>
-      <animated.div ref={domTarget} className="test-slider">
+      <animated.div
+        ref={domTarget}
+        className={`test-slider ${desktop ? "" : "not-desktop"}`}
+      >
         <animated.div
-          className={`test-slider__inner ${desktop ? "" : "not-desktop"}`}
+          className="test-slider__inner"
           style={{
-            transform: x.interpolate(x => `translateX(${x}px)`),
+            x,
           }}
         >
           {photos &&

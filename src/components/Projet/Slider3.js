@@ -92,7 +92,6 @@ const Slider = ({ actualites }) => {
         className="test-slider__inner"
         style={{
           x,
-          //width: slideWidth
         }}
       >
         {actualites &&
