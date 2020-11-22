@@ -51,13 +51,13 @@ const Slider = ({ actualites }) => {
 
   // to set scroll limit
 
-  const computeSize = () => {
+  const computeSize = isDesktop => {
     let sliderHeight = domTarget.current.clientHeight
     setHeight(sliderHeight)
     let windowWidth = window.innerWidth
     let acc = 0
     let margin = 8
-    let gutter = 16
+    let gutter = isDesktop ? 16 : 0
     let size = actualites.length
 
     actualites.map(actualite => {
@@ -74,14 +74,15 @@ const Slider = ({ actualites }) => {
   useLayoutEffect(() => {
     if (typeof window.orientation !== "undefined") {
       setSlideWidth(window.innerWidth - 0)
-      computeSize()
+      // computeSize()
       setDesktop(false)
     } else {
       setDesktop(true)
-      computeSize()
-      window.addEventListener("resize", computeSize)
-      return () => window.removeEventListener("resize", computeSize)
+      // computeSize()
     }
+    computeSize(desktop)
+    window.addEventListener("resize", computeSize)
+    return () => window.removeEventListener("resize", computeSize)
   }, [])
 
   return (
