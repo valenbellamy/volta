@@ -74,6 +74,7 @@ const Slider = ({ actualites }) => {
   useLayoutEffect(() => {
     if (typeof window.orientation !== "undefined") {
       setSlideWidth(window.innerWidth - 0)
+      computeSize()
       setDesktop(false)
     } else {
       setDesktop(true)
@@ -90,9 +91,9 @@ const Slider = ({ actualites }) => {
     >
       <animated.div
         className="test-slider__inner"
-        // style={{
-        //   x,
-        // }}
+        style={{
+          x,
+        }}
       >
         {actualites &&
           actualites.map(actualite => (
