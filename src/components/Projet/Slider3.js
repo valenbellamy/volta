@@ -86,13 +86,13 @@ const Slider = ({ actualites }) => {
   return (
     <animated.div
       ref={domTarget}
-      className={`test-slider not-desktop ${desktop ? "" : "not-desktop"}`}
+      className={`test-slider ${desktop ? "" : "not-desktop"}`}
     >
       <animated.div
         className="test-slider__inner"
-        style={{
-          x,
-        }}
+        // style={{
+        //   x,
+        // }}
       >
         {actualites &&
           actualites.map(actualite => (

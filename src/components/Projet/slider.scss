@@ -91,6 +91,11 @@
       padding: 0rem;
       .gatsby-image-wrapper {
         height: 100%;
+        picture {
+          img {
+            opacity: 1;
+          }
+        }
       }
     }
   }
