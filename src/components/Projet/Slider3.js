@@ -8,7 +8,6 @@ const Slider = ({ actualites }) => {
   const [rightLimit, setRightLimit] = useState(0)
   const [desktop, setDesktop] = useState(null)
   const [height, setHeight] = useState(null)
-  const [slideWidth, setSlideWidth] = useState("auto")
 
   // Scroll
 
@@ -52,14 +51,12 @@ const Slider = ({ actualites }) => {
   // to set scroll limit
 
   const computeSize = isDesktop => {
-    console.log(isDesktop)
     let sliderHeight = domTarget.current.clientHeight
     setHeight(sliderHeight)
     let windowWidth = window.innerWidth
     let acc = 0
     let margin = 8
-    //let gutter = isDesktop ? 16 : 0
-    let gutter = 16
+    let gutter = isDesktop ? 16 : 0
     let size = actualites.length
 
     actualites.map(actualite => {
@@ -75,7 +72,6 @@ const Slider = ({ actualites }) => {
 
   useLayoutEffect(() => {
     if (typeof window.orientation !== "undefined") {
-      setSlideWidth(window.innerWidth - 0)
       setDesktop(false)
       computeSize(false)
     } else {

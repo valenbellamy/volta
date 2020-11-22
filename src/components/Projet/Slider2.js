@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from "react"
 import Img from "gatsby-image"
 import "./slider.scss"
-import anime from "animejs/lib/anime.es.js"
 import { animated, useSpring } from "react-spring"
 import { useWheel } from "react-use-gesture"
 
@@ -15,27 +14,8 @@ const Slider = ({ photos }) => {
 
   // Scroll and drag hooks
   const [rightLimit, setRightLimit] = useState(0)
-
-  const [slideWidth, setSlideWidth] = useState("auto")
   const [desktop, setDesktop] = useState(null)
-
-  const [itemloaded, setItemloaded] = useState(0)
   const [height, setHeight] = useState(null)
-
-  // useEffect(() => {
-  //   if (itemloaded === photos.length) {
-  //     anime(
-  //       {
-  //         targets: ".gatsby-image-wrapper",
-  //         opacity: 1,
-  //         easing: "linear",
-  //         duration: 300,
-  //         delay: (el, i) => 100 * i,
-  //       },
-  //       0
-  //     )
-  //   }
-  // }, [itemloaded])
 
   // Scroll
 
@@ -78,43 +58,27 @@ const Slider = ({ photos }) => {
 
   // to set scroll limit
 
-  const computeSize = () => {
+  const computeSize = isDesktop => {
     let sliderHeight = domTarget.current.clientHeight
     setHeight(sliderHeight)
-    // let windowHeight = window.innerHeight
     let windowWidth = window.innerWidth
     let acc = 0
     let margin = 8
-    let gutter = 16
-    // let heightInfos
-    // if (windowWidth > 1200) {
-    //   heightInfos = 210
-    // } else if (windowWidth < 1200 && windowWidth > 768) {
-    //   heightInfos = 225
-    // } else {
-    //   heightInfos = 195
-    // }
-
-    // let blank = 48
+    let gutter = isDesktop ? 16 : 0
     let size = photos.length
 
     photos.map(photo => {
       var currentWidth
-      // var currentWidth =
-      //   photo.fluid.aspectRatio *
-      //   (windowHeight - heightInfos - blank - gutter * 2)
-      // acc += currentWidth
       currentWidth = photo.fluid.aspectRatio * sliderHeight
       return (acc += currentWidth)
     })
-    // acc = acc - windowWidth + (size - 1) * margin + 2 * gutter
     acc += -windowWidth + (size - 1) * margin + 2 * gutter
     setRightLimit(acc)
   }
 
   // to disable right click
   const disableRight = e => {
-    //   e.preventDefault()
+    e.preventDefault()
   }
 
   useEffect(bind, [bind])
@@ -126,11 +90,11 @@ const Slider = ({ photos }) => {
 
   useLayoutEffect(() => {
     if (typeof window.orientation !== "undefined") {
-      setSlideWidth(window.innerWidth - 0)
       setDesktop(false)
+      computeSize(false)
     } else {
       setDesktop(true)
-      computeSize()
+      computeSize(true)
       window.addEventListener("resize", computeSize)
       return () => window.removeEventListener("resize", computeSize)
     }
