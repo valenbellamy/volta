@@ -86,7 +86,7 @@ const Slider = ({ actualites }) => {
   return (
     <animated.div
       ref={domTarget}
-      className={`test-slider ${desktop ? "" : "not-desktop"}`}
+      className={`test-slider not-desktop ${desktop ? "" : "not-desktop"}`}
     >
       <animated.div
         className="test-slider__inner"

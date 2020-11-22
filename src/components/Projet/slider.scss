@@ -86,12 +86,19 @@
   &.not-desktop {
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
+    .test-slider__inner {
+      width: 100%;
+      padding: 0rem;
+      .gatsby-image-wrapper {
+        height: 100%;
+      }
+    }
   }
   @media (max-width: 1199.98px) {
     height: calc(100vh - 273px);
   }
   @media (max-width: 767.98px) {
-    height: calc(100vh - 243px);
+    height: calc(100vh - 259px);
   }
   .test-slider__inner {
     display: block;
