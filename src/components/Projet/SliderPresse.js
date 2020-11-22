@@ -4,7 +4,7 @@ import "./slider.scss"
 import { animated, useSpring } from "react-spring"
 import { useWheel } from "react-use-gesture"
 
-const Slider = ({ actualites }) => {
+const SliderPresse = ({ actualites }) => {
   const [rightLimit, setRightLimit] = useState(0)
   const [desktop, setDesktop] = useState(null)
   const [height, setHeight] = useState(null)
@@ -133,4 +133,4 @@ const Slider = ({ actualites }) => {
   )
 }
 
-export default Slider
+export default SliderPresse

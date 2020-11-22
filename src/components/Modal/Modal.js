@@ -26,9 +26,6 @@ const Modal = ({ isShowing, hide, content }) =>
                 }}
               />
             </div>
-            {/* <div className="modal-header"> */}
-
-            {/* </div> */}
           </div>
           <button
             type="button"

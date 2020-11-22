@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Content from "../components/Projet/Content"
 import Smartphone from "../components/Projet/Smartphone"
 
-import Slider2 from "../components/Projet/Slider2"
+import SliderProjet from "../components/Projet/SliderProjet"
 
 export const query = graphql`
   query($slug: String!) {
@@ -36,7 +36,7 @@ const Projet = ({ data }) => {
       <SEO title={data.contentfulProjet.titre} />
       <main className="project">
         <Smartphone info={data.contentfulProjet} />
-        <Slider2 photos={data.contentfulProjet.photos} />
+        <SliderProjet photos={data.contentfulProjet.photos} />
         <Content info={data.contentfulProjet} />
       </main>
     </Layout>

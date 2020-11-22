@@ -7,7 +7,7 @@ import { useWheel } from "react-use-gesture"
 import Modal from "../Modal/Modal"
 import useModal from "../Hooks/useModal"
 
-const Slider = ({ photos }) => {
+const SliderProjet = ({ photos }) => {
   // Modal hooks
   const { isShowing, toggle } = useModal()
   const [imgModal, setImgModal] = useState(null)
@@ -159,4 +159,4 @@ const Slider = ({ photos }) => {
   )
 }
 
-export default Slider
+export default SliderProjet

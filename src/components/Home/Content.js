@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from "gatsby-image"
 import BackgroundImage from "gatsby-background-image"
 import "./content.scss"
 import anime from "animejs/lib/anime.es.js"
@@ -8,8 +7,6 @@ import anime from "animejs/lib/anime.es.js"
 const Content = () => {
   const [index, setIndex] = useState(0)
   const [landscape, setLandscape] = useState()
-  // const [hover, setHover] = useState(false)
-  // const [clicked, setClicked] = useState(false)
   const [open, setOpen] = useState(false)
   const [randomvalue, setRandomvalue] = useState(0)
   const data = useStaticQuery(graphql`
@@ -32,11 +29,7 @@ const Content = () => {
           }
         }
       }
-      allContentfulProjet(
-        sort: { fields: createdAt, order: DESC }
-        limit: 14
-        filter: { titre: { ne: "presse" } }
-      ) {
+      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 14) {
         edges {
           node {
             id
@@ -63,14 +56,8 @@ const Content = () => {
     }
   `)
 
-  //console.log(data)
-
   const lengthDiapo = data.contentfulDiaporama.ordinateur.length
   const lengthDiapoSmartphone = data.contentfulDiaporama.smartphone.length
-  const lengthProjet = data.allContentfulProjet.edges.length
-
-  // const lengthDiapo = 6
-  // const lengthProjet = 11
 
   useEffect(() => {
     if (typeof window.orientation === "undefined") {
@@ -96,18 +83,6 @@ const Content = () => {
       0
     )
   }, [])
-
-  // useEffect(() => {
-  //   const limit = lengthDiapo + lengthProjet
-  //   const timer = setTimeout(() => {
-  //     if (index === limit - 1) {
-  //       setIndex(0)
-  //     } else {
-  //       setIndex(index => index + 1)
-  //     }
-  //   }, 4000)
-  //   return () => clearTimeout(timer)
-  // }, [index])
 
   const setActiveItem = item => {
     setIndex(item)
@@ -167,40 +142,6 @@ const Content = () => {
             />
           </div>
         ))}
-        {/* {landscape
-          ? data.contentfulDiaporama.ordinateur.map((photo, i) => (
-              <div
-                key={photo.id}
-                className={`bg-image__wrapper ${index === i ? "active" : ""}`}
-              >
-                <BackgroundImage className="default-bg" fluid={photo.fluid} />
-              </div>
-            ))
-          : data.contentfulDiaporama.smartphone.map((photo, i) => (
-              <div
-                key={photo.id}
-                className={`bg-image__wrapper ${index === i ? "active" : ""}`}
-              >
-                <BackgroundImage className="default-bg" fluid={photo.fluid} />
-              </div>
-            ))}
-        {data.allContentfulProjet.edges.map((edge, i) => (
-          <div
-            key={edge.node.id}
-            className={`bg-image__wrapper ${
-              index === i + lengthDiapo ? "active" : ""
-            }`}
-          >
-            <BackgroundImage
-              className="default-bg"
-              fluid={
-                landscape
-                  ? edge.node.couverture.fluid
-                  : edge.node.couvertureSmartphone.fluid
-              }
-            />
-          </div>
-        ))} */}
 
         <div className="bg"></div>
       </div>
@@ -210,9 +151,6 @@ const Content = () => {
             className={`navbar__link navbar__link--dropdown ${
               open ? "open" : ""
             }`}
-            // onMouseEnter={() => setHover(true)}
-            // onMouseLeave={() => setHover(false)}
-            // onClick={() => setClicked(!clicked)}
             onClick={() => setOpen(!open)}
           >
             <span>réalisations</span>
