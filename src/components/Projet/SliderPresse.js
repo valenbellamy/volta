@@ -98,6 +98,8 @@ const SliderPresse = ({ actualites }) => {
             <a
               href={actualite.lien !== "" ? `${actualite.lien}` : "#"}
               className="slider__item"
+              target="_blank"
+              rel="noreferrer noopener"
               key={actualite.id}
               style={{
                 width: `${height * actualite.image.fluid.aspectRatio}px`,
