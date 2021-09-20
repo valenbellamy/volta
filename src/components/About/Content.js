@@ -134,7 +134,7 @@ const Content = () => {
           <p className="mbm">{paragraphe2.paragraphe2}</p>
           <h2>{titre3}</h2>
           <p>{paragraphe3.paragraphe3}</p>
-          <p>{paragraphe4}</p>
+          {paragraphe4 && <p>{paragraphe4}</p>}
         </div>
       </div>
       <div className="content content__sm--pb visible--sm">

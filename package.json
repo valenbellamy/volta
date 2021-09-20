@@ -19,7 +19,7 @@
     "gatsby-source-contentful": "^2.1.69",
     "gatsby-source-filesystem": "^2.1.36",
     "gatsby-transformer-sharp": "^2.3.3",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.1",
     "normalize-wheel": "^1.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
