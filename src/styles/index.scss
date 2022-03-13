@@ -84,11 +84,11 @@ p {
 
 .navbar {
   position: relative;
-  height: 210px;
+  height: 260px;
   width: 100%;
   overflow: hidden;
   @media (max-width: 1199.98px) {
-    height: 260px;
+    height: 350px;
   }
   @media (max-width: 767.98px) {
     height: auto;
@@ -115,12 +115,12 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  height: 210px;
+  height: 260px;
   padding-left: 13vw;
   padding-bottom: 1rem;
   padding-right: 1rem;
   @media (max-width: 1199.98px) {
-    height: 260px;
+    height: 350px;
     padding-left: 16vw;
   }
   @media (max-width: 991.98px) {
@@ -213,9 +213,11 @@ p {
     left: -1rem;
     transform: translate3d(-100%, -100%, 0%);
   }
-  &.dropdown__bg--sm {
-    @media (max-width: 767.98px) {
+  &.dropdown__bg--lg {
+    @media (max-width: 1199.98px) {
+      width: 100vw;
       background-color: rgba(255, 255, 255, 0.95);
+      padding-top: 0.5rem;
     }
   }
 }
@@ -228,6 +230,9 @@ p {
   will-change: opacity;
   text-decoration: none;
   max-width: 270px;
+  @media (max-width: 1350.98px) {
+    padding: 0.2rem 0.5rem 0.2rem 0rem;
+  }
   @media (max-width: 1199.98px) {
     flex: 0 50%;
   }
@@ -249,7 +254,7 @@ p {
     font-size: 1.3rem;
     transition: all 0.4s ease;
     //text-transform: lowercase;
-    @media (max-width: 991.98px) {
+    @media (max-width: 1350.98px) {
       font-size: 1.1rem;
     }
     @media (max-width: 767.98px) {

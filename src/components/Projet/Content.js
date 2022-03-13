@@ -13,7 +13,7 @@ const Content = ({ info }) => {
   return (
     <>
       <div className="info anime-js">
-        <div className="info__logo hidden--sm-block">
+        <div className="info__logo hidden--lg-block">
           <Link to="/">
             <svg x="0px" y="0px" viewBox="300 450 3800 1250">
               <polygon points="767.3,1482.39 510.3,836.39 330.3,836.39 650.3,1628.39 884.3,1628.39 1204.3,836.39 1024.3,836.39 " />
@@ -44,7 +44,7 @@ const Content = ({ info }) => {
             <Dropdown />
           </div>
         </div>
-        <div className="info__content hidden--sm-flex">
+        <div className="info__content hidden--lg-flex">
           <div className="info__content__title">
             <h1>
               {info.titre} <span>{info.date}</span>

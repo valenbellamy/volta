@@ -29,7 +29,7 @@ const Content = () => {
           }
         }
       }
-      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 14) {
+      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 21) {
         edges {
           node {
             id

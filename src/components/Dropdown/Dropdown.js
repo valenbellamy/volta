@@ -4,7 +4,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 const Dropdown = () => {
   const data = useStaticQuery(graphql`
     query {
-      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 14) {
+      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 21) {
         edges {
           node {
             id
@@ -19,7 +19,7 @@ const Dropdown = () => {
 
   return (
     <>
-      <div className="dropdown dropdown__bg--sm" id="dropdown">
+      <div className="dropdown dropdown__bg--lg" id="dropdown">
         {data.allContentfulProjet.edges.map((edge, i) => (
           <Link
             key={edge.node.id}

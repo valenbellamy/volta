@@ -5,7 +5,7 @@ import "./smartphone.scss"
 const Smartphone = ({ info }) => {
   return (
     <>
-      <div className="info--sm info--visible-sm">
+      <div className="info--lg info--visible-lg">
         <div className="info__logo">
           <Link to="/">
             <svg x="0px" y="0px" viewBox="300 450 3800 1250">
@@ -37,7 +37,7 @@ const Smartphone = ({ info }) => {
             </div>
             {info.description && <p>{info.description}</p>}
           </div>
-          <div className="info__content--sm">
+          <div className="info__content--md">
             {info.maitrise && (
               <div>
                 <span>Maîtrise d'ouvrage: {info.maitrise}</span>
