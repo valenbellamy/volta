@@ -8,6 +8,7 @@ const Content = () => {
   const [index, setIndex] = useState(0)
   const [landscape, setLandscape] = useState()
   const [open, setOpen] = useState(false)
+  const [openMobilier, setOpenMobilier] = useState(false)
   const [randomvalue, setRandomvalue] = useState(0)
   const data = useStaticQuery(graphql`
     query {
@@ -50,6 +51,18 @@ const Content = () => {
                 ...GatsbyContentfulFluid_withWebp
               }
             }
+          }
+        }
+      }
+      allContentfulMobilier(
+        sort: { fields: createdAt, order: DESC }
+        limit: 21
+      ) {
+        edges {
+          node {
+            id
+            titre
+            slug
           }
         }
       }
@@ -147,31 +160,60 @@ const Content = () => {
       </div>
       <nav className="navbar navbar--fixed">
         <ul className="navbar__nav">
-          <li
-            className={`navbar__link navbar__link--dropdown ${
-              open ? "open" : ""
-            }`}
-            onClick={() => setOpen(!open)}
-          >
-            <span>réalisations</span>
-            <div className="dropdown dropdown__home" id="dropdown">
-              {data.allContentfulProjet.edges.map((edge, i) => (
-                <Link
-                  key={edge.node.id}
-                  to={`/${edge.node.slug}`}
-                  className="dropdown__item"
-                  onMouseEnter={() => setActiveItem(i + 1)}
-                >
-                  <span className="dropdown__item__title">
-                    {edge.node.titre}
-                  </span>
-                  <span className="dropdown__item__category">
-                    {edge.node.catgorie}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </li>
+          <div>
+            <li
+              className={`navbar__link navbar__link--dropdown ${
+                open ? "open" : ""
+              }`}
+              onClick={() => {
+                setOpenMobilier(false)
+                setOpen(!open)
+              }}
+            >
+              <span>réalisations</span>
+              <div className="dropdown dropdown--project" id="dropdown">
+                {data.allContentfulProjet.edges.map((edge, i) => (
+                  <Link
+                    key={edge.node.id}
+                    to={`/${edge.node.slug}`}
+                    className="dropdown__item"
+                    onMouseEnter={() => setActiveItem(i + 1)}
+                  >
+                    <span className="dropdown__item__title">
+                      {edge.node.titre}
+                    </span>
+                    <span className="dropdown__item__category">
+                      {edge.node.catgorie}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </li>
+            <li
+              className={`navbar__link navbar__link--dropdown ${
+                openMobilier ? "open" : ""
+              }`}
+              onClick={() => {
+                setOpen(false)
+                setOpenMobilier(!openMobilier)
+              }}
+            >
+              <span>mobilier</span>
+              <div className="dropdown dropdown--home-mobilier" id="dropdown">
+                {data.allContentfulMobilier.edges.map((edge, i) => (
+                  <Link
+                    key={edge.node.id}
+                    to={`/${edge.node.slug}`}
+                    className="dropdown__item"
+                  >
+                    <span className="dropdown__item__title">
+                      {edge.node.titre}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </li>
+          </div>
           <li className="navbar__link">
             <Link
               to="/presse"

@@ -122,8 +122,14 @@
   }
 }
 
-.info__content div span {
-  font-size: 0.8rem;
+.info__content div {
+  span {
+    font-size: 0.8rem;
+  }
+  &.mobilier-info {
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
 }
 
 .info__content__title {

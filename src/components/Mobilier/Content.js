@@ -63,37 +63,36 @@ const Content = ({ info }) => {
         </div>
         <div className="info__content hidden--lg-flex">
           <div className="info__content__title">
-            <h1>
-              {info.titre} <span>{info.date}</span>
-            </h1>
+            <h1>{info.titre}</h1>
           </div>
-          {info.description && (
-            <div>
-              <p>{info.description}</p>
-            </div>
-          )}
 
           <div>
-            {info.maitrise && (
+            {info.collection && (
               <div>
-                <span>Maîtrise d'ouvrage: {info.maitrise}</span>
+                <span>Collection: {info.collection}</span>
               </div>
             )}
-            {info.surface && (
+            {info.objet && (
               <div>
-                <span>Surface: {info.surface}</span>
+                <span>Objet: {info.objet}</span>
               </div>
             )}
-            {info.lieu && (
+            {info.materiaux && (
               <div>
-                <span>Lieu: {info.lieu}</span>
+                <span>Matériaux: {info.materiaux}</span>
               </div>
             )}
-            {info.mission && (
+            {info.dimensions && (
               <div>
-                <span>Mission: {info.mission}</span>
+                <span>Dimensions: {info.dimensions}</span>
               </div>
             )}
+            <div className="mobilier-info">
+              <span>
+                Édition limitée, signée, numéro de série et certificat
+                d'authenticité
+              </span>
+            </div>
           </div>
         </div>
 

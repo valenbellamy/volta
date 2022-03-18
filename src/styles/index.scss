@@ -119,6 +119,18 @@ p {
   padding-left: 13vw;
   padding-bottom: 1rem;
   padding-right: 1rem;
+  > div {
+    display: flex;
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+    }
+    > li:last-child {
+      margin-left: 1rem;
+      @media (max-width: 767.98px) {
+        margin-left: 0px;
+      }
+    }
+  }
   @media (max-width: 1199.98px) {
     height: 350px;
     padding-left: 16vw;
@@ -140,7 +152,7 @@ p {
   }
   @media (max-width: 767.98px) {
     font-size: 1.3rem;
-    padding: 1.5rem 0rem 1rem 0rem;
+    padding: 0.3rem 0rem;
   }
   a {
     color: white;
@@ -198,13 +210,24 @@ p {
   padding-bottom: 0.5rem;
   padding-right: 1.5rem;
   will-change: transform;
+  &.dropdown--mobilier,
+  &.dropdown--home-mobilier {
+    left: -7.55rem;
+  }
   @media (max-width: 1199.98px) {
     width: 54vw;
   }
   @media (max-width: 991.98px) {
     padding-right: 1rem;
     width: 55vw;
+    &.dropdown--mobilier {
+      left: -7.55rem;
+    }
+    &.dropdown--home-mobilier {
+      left: -6.55rem;
+    }
   }
+
   @media (max-width: 767.98px) {
     width: 100vw;
     max-height: 72vh;
@@ -212,6 +235,14 @@ p {
     padding: 1rem 0rem 0rem 1rem;
     left: -1rem;
     transform: translate3d(-100%, -100%, 0%);
+    &.dropdown--project {
+      top: -0.6rem;
+    }
+    &.dropdown--mobilier,
+    &.dropdown--home-mobilier {
+      top: -2.5rem;
+      left: -1rem;
+    }
   }
   &.dropdown__bg--lg {
     @media (max-width: 1199.98px) {
