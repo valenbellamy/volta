@@ -227,15 +227,15 @@
   opacity: 1;
 }
 
-.info__link--dropdown.open .dropdown .dropdown__item:nth-child(odd) {
-  padding-left: 0rem;
-  @media (max-width: 1199.98px) {
-    padding-left: 1rem;
-  }
-  @media (max-width: 767.98px) {
-    padding-left: 0rem;
-  }
-}
+// .info__link--dropdown.open .dropdown .dropdown__item:nth-child(odd) {
+//   padding-left: 0rem;
+//   @media (max-width: 1199.98px) {
+//     padding-left: 1rem;
+//   }
+//   @media (max-width: 767.98px) {
+//     padding-left: 0rem;
+//   }
+// }
 
 .hidden--lg-flex {
   display: none;

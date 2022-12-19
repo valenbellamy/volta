@@ -212,6 +212,7 @@ p {
   width: 60vw;
   padding-bottom: 0.5rem;
   padding-right: 1.5rem;
+  padding-left: 0rem;
   will-change: transform;
   &.dropdown--mobilier,
   &.dropdown--home-mobilier {
@@ -223,9 +224,11 @@ p {
   }
   @media (max-width: 1199.98px) {
     width: 54vw;
+    padding-left: 1rem;
   }
   @media (max-width: 991.98px) {
     padding-right: 1rem;
+    padding-left: 0rem;
     width: 55vw;
     // &.dropdown--mobilier {
     //   left: -7.55rem;
