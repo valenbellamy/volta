@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-import "./content.scss"
 import anime from "animejs/lib/anime.es.js"
+import { LIMIT } from "../../constants/projects"
+import "./content.scss"
 
 const Content = () => {
   const [index, setIndex] = useState(0)
   const [landscape, setLandscape] = useState()
   const [open, setOpen] = useState(false)
   const [openMobilier, setOpenMobilier] = useState(false)
+  const [openArchive, setOpenArchive] = useState(false)
   const [randomvalue, setRandomvalue] = useState(0)
   const data = useStaticQuery(graphql`
     query {
@@ -30,7 +32,7 @@ const Content = () => {
           }
         }
       }
-      allContentfulProjet(sort: { fields: createdAt, order: DESC }, limit: 21) {
+      allContentfulProjet(sort: { fields: createdAt, order: DESC }) {
         edges {
           node {
             id
@@ -51,6 +53,7 @@ const Content = () => {
                 ...GatsbyContentfulFluid_withWebp
               }
             }
+            archive
           }
         }
       }
@@ -100,6 +103,10 @@ const Content = () => {
   const setActiveItem = item => {
     setIndex(item)
   }
+
+  const projects = data.allContentfulProjet.edges.filter(d => !d.node.archive)
+  const archives = data.allContentfulProjet.edges.filter(d => d.node.archive)
+
   return (
     <main>
       <div className="logo">
@@ -140,7 +147,7 @@ const Content = () => {
             />
           </div>
         )}
-        {data.allContentfulProjet.edges.map((edge, i) => (
+        {projects.map((edge, i) => (
           <div
             key={edge.node.id}
             className={`bg-image__wrapper ${index === i + 1 ? "active" : ""}`}
@@ -167,26 +174,30 @@ const Content = () => {
               }`}
               onClick={() => {
                 setOpenMobilier(false)
+                setOpenArchive(false)
                 setOpen(!open)
               }}
             >
               <span>réalisations</span>
               <div className="dropdown dropdown--project" id="dropdown">
-                {data.allContentfulProjet.edges.map((edge, i) => (
-                  <Link
-                    key={edge.node.id}
-                    to={`/${edge.node.slug}`}
-                    className="dropdown__item"
-                    onMouseEnter={() => setActiveItem(i + 1)}
-                  >
-                    <span className="dropdown__item__title">
-                      {edge.node.titre}
-                    </span>
-                    <span className="dropdown__item__category">
-                      {edge.node.catgorie}
-                    </span>
-                  </Link>
-                ))}
+                {projects.map((edge, i) => {
+                  if (i > LIMIT) return null
+                  return (
+                    <Link
+                      key={edge.node.id}
+                      to={`/${edge.node.slug}`}
+                      className="dropdown__item"
+                      onMouseEnter={() => setActiveItem(i + 1)}
+                    >
+                      <span className="dropdown__item__title">
+                        {edge.node.titre}
+                      </span>
+                      <span className="dropdown__item__category">
+                        {edge.node.catgorie}
+                      </span>
+                    </Link>
+                  )
+                })}
               </div>
             </li>
             <li
@@ -196,11 +207,12 @@ const Content = () => {
               onClick={() => {
                 setOpen(false)
                 setOpenMobilier(!openMobilier)
+                setOpenArchive(false)
               }}
             >
               <span>mobilier</span>
               <div className="dropdown dropdown--home-mobilier" id="dropdown">
-                {data.allContentfulMobilier.edges.map((edge, i) => (
+                {data.allContentfulMobilier.edges.map(edge => (
                   <Link
                     key={edge.node.id}
                     to={`/${edge.node.slug}`}
@@ -208,6 +220,34 @@ const Content = () => {
                   >
                     <span className="dropdown__item__title">
                       {edge.node.titre}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </li>
+            <li
+              className={`navbar__link navbar__link--dropdown ${
+                openArchive ? "open" : ""
+              }`}
+              onClick={() => {
+                setOpen(false)
+                setOpenMobilier(false)
+                setOpenArchive(!openArchive)
+              }}
+            >
+              <span>archives</span>
+              <div className="dropdown dropdown--home-archive" id="dropdown">
+                {archives.map(edge => (
+                  <Link
+                    key={edge.node.id}
+                    to={`/${edge.node.slug}`}
+                    className="dropdown__item"
+                  >
+                    <span className="dropdown__item__title">
+                      {edge.node.titre}
+                    </span>
+                    <span className="dropdown__item__category">
+                      {edge.node.catgorie}
                     </span>
                   </Link>
                 ))}

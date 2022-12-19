@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Dropdown from "../Dropdown/Dropdown"
-import "./content.scss"
 import anime from "animejs/lib/anime.es.js"
+import Dropdown from "../Dropdown/Dropdown"
+import DropdownMobilier from "../Dropdown/DropdownMobilier"
+import DropdownArchive from "../Dropdown/DropdownArchive"
+import "./content.scss"
 
 const Content = () => {
   const [open, setOpen] = useState(false)
+  const [openMobilier, setOpenMobilier] = useState(false)
+  const [openArchives, setOpenArchives] = useState(false)
   const data = useStaticQuery(graphql`
     query {
       contentfulVolta {
@@ -185,15 +189,47 @@ const Content = () => {
       </div>
       <nav className="navbar navbar--fixed bg--sm">
         <ul className={`navbar__nav ${open ? "bg-white" : ""}`}>
-          <li
-            className={`navbar__link navbar__link--dark navbar__link--dropdown ${
-              open ? "open" : ""
-            }`}
-            onClick={() => setOpen(!open)}
-          >
-            <span>réalisations</span>
-            <Dropdown />
-          </li>
+          <div>
+            <li
+              className={`navbar__link navbar__link--dark navbar__link--dropdown ${
+                open ? "open" : ""
+              }`}
+              onClick={() => {
+                setOpenMobilier(false)
+                setOpenArchives(false)
+                setOpen(!open)
+              }}
+            >
+              <span>réalisations</span>
+              <Dropdown className="dropdown--home-project" />
+            </li>
+            <li
+              className={`navbar__link navbar__link--dark navbar__link--dropdown ${
+                openMobilier ? "open" : ""
+              }`}
+              onClick={() => {
+                setOpen(false)
+                setOpenMobilier(!openMobilier)
+                setOpenArchives(false)
+              }}
+            >
+              <span>mobilier</span>
+              <DropdownMobilier className="dropdown--home-mobilier" />
+            </li>
+            <li
+              className={`navbar__link navbar__link--dark navbar__link--dropdown ${
+                openArchives ? "open" : ""
+              }`}
+              onClick={() => {
+                setOpen(false)
+                setOpenMobilier(false)
+                setOpenArchives(!openArchives)
+              }}
+            >
+              <span>archives</span>
+              <DropdownArchive className="dropdown--home-archive" />
+            </li>
+          </div>
           <li className="navbar__link navbar__link--dark">
             <Link
               to="/presse"

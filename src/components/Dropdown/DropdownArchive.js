@@ -1,12 +1,12 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
-const Dropdown = ({ className }) => {
+const DropdownArchives = ({ className }) => {
   const classname = className || ""
   const data = useStaticQuery(graphql`
     query {
       allContentfulProjet(
-        filter: { archive: { eq: false } }
+        filter: { archive: { eq: true } }
         sort: { fields: createdAt, order: DESC }
         limit: 21
       ) {
@@ -25,7 +25,7 @@ const Dropdown = ({ className }) => {
   return (
     <>
       <div
-        className={`dropdown dropdown__bg--lg dropdown--project ${classname}`}
+        className={`dropdown dropdown__bg--lg dropdown--archive ${classname}`}
         id="dropdown"
       >
         {data.allContentfulProjet.edges.map((edge, i) => (
@@ -45,4 +45,4 @@ const Dropdown = ({ className }) => {
   )
 }
 
-export default Dropdown
+export default DropdownArchives

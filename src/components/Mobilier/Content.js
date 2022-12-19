@@ -2,16 +2,14 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 import Dropdown from "../Dropdown/Dropdown"
 import DropdownMobilier from "../Dropdown/DropdownMobilier"
+import DropdownArchive from "../Dropdown/DropdownArchive"
 import "./content.scss"
 
 const Content = ({ info }) => {
   const [open, setOpen] = useState(false)
   const [openMobilier, setOpenMobilier] = useState(false)
-  // const [isjournal, setIsjournal] = useState(false)
+  const [openArchive, setOpenArchive] = useState(false)
 
-  // if (info.titre === "Journal") {
-  //   setIsjournal(true)
-  // }
   return (
     <>
       <div className="info anime-js">
@@ -42,6 +40,7 @@ const Content = ({ info }) => {
             className={`info__link info__link--dropdown ${open ? "open" : ""}`}
             onClick={() => {
               setOpenMobilier(false)
+              setOpenArchive(false)
               setOpen(!open)
             }}
           >
@@ -55,10 +54,24 @@ const Content = ({ info }) => {
             onClick={() => {
               setOpen(false)
               setOpenMobilier(!openMobilier)
+              setOpenArchive(false)
             }}
           >
             <span>mobilier</span>
             <DropdownMobilier />
+          </div>
+          <div
+            className={`info__link info__link--dropdown ${
+              openArchive ? "open" : ""
+            }`}
+            onClick={() => {
+              setOpen(false)
+              setOpenArchive(!openArchive)
+              setOpenMobilier(false)
+            }}
+          >
+            <span>archives</span>
+            <DropdownArchive />
           </div>
         </div>
         <div className="info__content hidden--lg-flex">

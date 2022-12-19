@@ -159,16 +159,13 @@
   font-size: 1.3rem;
 
   span {
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
     &:hover {
       color: #cccccc;
     }
   }
-  // @media (max-width: 991.98px) {
-  //   font-size: 1.1rem;
-  // }
   @media (max-width: 1199.98px) {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     padding: 1rem 0rem;
   }
   @media (max-width: 767.98px) {
@@ -177,12 +174,9 @@
   a {
     color: black;
     font-size: 1.3rem;
-    transition: all 0.3s ease;
-    @media (max-width: 991.98px) {
-      font-size: 1.1rem;
-    }
+    transition: color 0.3s ease;
     @media (max-width: 1199.98px) {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
     &:hover {
       color: #cccccc;
@@ -221,7 +215,8 @@
   //   transform: translate3d(0px, -225px, 0px);
   // }
   @media (max-width: 1199.98px) {
-    transform: translate3d(0px, -100%, 0px);
+    transform: translate3d(-16px, -100%, 0px);
+    transition: transform 0s;
   }
 }
 

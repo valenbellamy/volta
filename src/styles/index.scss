@@ -124,11 +124,14 @@ p {
     @media (max-width: 767.98px) {
       flex-direction: column;
     }
-    > li:last-child {
+    > li {
       margin-left: 1rem;
       @media (max-width: 767.98px) {
         margin-left: 0px;
       }
+    }
+    > li:first-child {
+      margin-left: 0rem;
     }
   }
   @media (max-width: 1199.98px) {
@@ -151,7 +154,7 @@ p {
     font-size: 1.1rem;
   }
   @media (max-width: 767.98px) {
-    font-size: 1.3rem;
+    // font-size: 1.3rem;
     padding: 0.3rem 0rem;
   }
   a {
@@ -162,9 +165,9 @@ p {
     @media (max-width: 991.98px) {
       font-size: 1.1rem;
     }
-    @media (max-width: 767.98px) {
-      font-size: 1.3rem;
-    }
+    // @media (max-width: 767.98px) {
+    //   font-size: 1.3rem;
+    // }
     &:hover {
       color: #ccc;
     }
@@ -214,17 +217,26 @@ p {
   &.dropdown--home-mobilier {
     left: -7.55rem;
   }
+  &.dropdown--archive,
+  &.dropdown--home-archive {
+    left: -13.17rem;
+  }
   @media (max-width: 1199.98px) {
     width: 54vw;
   }
   @media (max-width: 991.98px) {
     padding-right: 1rem;
     width: 55vw;
+    // &.dropdown--mobilier {
+    //   left: -7.55rem;
+    // }
+    &.dropdown--home-mobilier,
     &.dropdown--mobilier {
-      left: -7.55rem;
-    }
-    &.dropdown--home-mobilier {
       left: -6.55rem;
+    }
+    &.dropdown--home-archive,
+    &.dropdown--archive {
+      left: -11.45rem;
     }
   }
 
@@ -236,11 +248,16 @@ p {
     left: -1rem;
     transform: translate3d(-100%, -100%, 0%);
     &.dropdown--project {
-      top: -0.6rem;
+      top: 0rem;
     }
     &.dropdown--mobilier,
     &.dropdown--home-mobilier {
-      top: -2.5rem;
+      top: -1.7rem;
+      left: -1rem;
+    }
+    &.dropdown--archive,
+    &.dropdown--home-archive {
+      top: -3.4rem;
       left: -1rem;
     }
   }
@@ -288,9 +305,9 @@ p {
     @media (max-width: 1350.98px) {
       font-size: 1.1rem;
     }
-    @media (max-width: 767.98px) {
-      font-size: 1.3rem;
-    }
+    // @media (max-width: 767.98px) {
+    //   font-size: 1.3rem;
+    // }
   }
   .dropdown__item__category {
     color: white;

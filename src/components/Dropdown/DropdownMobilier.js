@@ -1,7 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
-const DropdownMobilier = () => {
+const DropdownMobilier = ({ className }) => {
+  const classname = className || ""
   const data = useStaticQuery(graphql`
     query {
       allContentfulMobilier(
@@ -22,7 +23,7 @@ const DropdownMobilier = () => {
   return (
     <>
       <div
-        className="dropdown dropdown__bg--lg dropdown--mobilier"
+        className={`dropdown dropdown__bg--lg dropdown--mobilier ${classname}`}
         id="dropdown mobilier"
       >
         {data.allContentfulMobilier.edges.map((edge, i) => (
