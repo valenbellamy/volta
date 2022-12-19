@@ -225,6 +225,14 @@ p {
   @media (max-width: 1199.98px) {
     width: 54vw;
     padding-left: 1rem;
+    &.dropdown--home-mobilier,
+    &.dropdown--mobilier {
+      left: -6.55rem;
+    }
+    &.dropdown--home-archive,
+    &.dropdown--archive {
+      left: -11.45rem;
+    }
   }
   @media (max-width: 991.98px) {
     padding-right: 1rem;
