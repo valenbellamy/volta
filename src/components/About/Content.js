@@ -201,7 +201,7 @@ const Content = () => {
               }}
             >
               <span>réalisations</span>
-              <Dropdown className="dropdown--home-project" />
+              <Dropdown className="dropdown--about-project" />
             </li>
             <li
               className={`navbar__link navbar__link--dark navbar__link--dropdown ${
@@ -214,7 +214,7 @@ const Content = () => {
               }}
             >
               <span>mobilier</span>
-              <DropdownMobilier className="dropdown--home-mobilier" />
+              <DropdownMobilier className="dropdown--about-mobilier" />
             </li>
             <li
               className={`navbar__link navbar__link--dark navbar__link--dropdown ${
@@ -227,7 +227,7 @@ const Content = () => {
               }}
             >
               <span>archives</span>
-              <DropdownArchive className="dropdown--home-archive" />
+              <DropdownArchive className="dropdown--about-archive" />
             </li>
           </div>
           <li className="navbar__link navbar__link--dark">

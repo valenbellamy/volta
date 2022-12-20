@@ -179,7 +179,7 @@ const Content = () => {
               }}
             >
               <span>réalisations</span>
-              <div className="dropdown dropdown--project" id="dropdown">
+              <div className="dropdown dropdown--home-project" id="dropdown">
                 {projects.map((edge, i) => {
                   if (i > LIMIT) return null
                   return (

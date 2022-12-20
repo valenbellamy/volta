@@ -225,28 +225,63 @@ p {
   @media (max-width: 1199.98px) {
     width: 54vw;
     padding-left: 1rem;
-    &.dropdown--home-mobilier,
+    &.dropdown--home-project {
+      left: -1rem;
+    }
+    &.dropdown--project {
+      left: 0rem;
+    }
+    &.dropdown--about-project {
+      left: -1rem;
+    }
+    &.dropdown--home-mobilier {
+      left: -8.55rem;
+    }
     &.dropdown--mobilier {
       left: -6.55rem;
     }
-    &.dropdown--home-archive,
+    &.dropdown--about-mobilier {
+      left: -8.55rem;
+    }
+    &.dropdown--home-archive {
+      left: -14.1rem;
+    }
     &.dropdown--archive {
-      left: -11.45rem;
+      left: -11.4rem;
+    }
+    &.dropdown--about-archive {
+      left: -14.1rem;
     }
   }
   @media (max-width: 991.98px) {
     padding-right: 1rem;
     padding-left: 0rem;
     width: 55vw;
-    // &.dropdown--mobilier {
-    //   left: -7.55rem;
-    // }
-    &.dropdown--home-mobilier,
-    &.dropdown--mobilier {
+    &.dropdown--home-project {
+      left: 0rem;
+    }
+    &.dropdown--project {
+      left: 1rem;
+    }
+    &.dropdown--about-project {
+      left: 0rem;
+    }
+    &.dropdown--home-mobilier {
       left: -6.55rem;
     }
-    &.dropdown--home-archive,
+    &.dropdown--mobilier {
+      left: -5.55rem;
+    }
+    &.dropdown--about-mobilier {
+      left: -6.55rem;
+    }
+    &.dropdown--home-archive {
+      left: -11.45rem;
+    }
     &.dropdown--archive {
+      left: -10.45rem;
+    }
+    &.dropdown--about-archive {
       left: -11.45rem;
     }
   }
@@ -258,7 +293,9 @@ p {
     padding: 1rem 0rem 0rem 1rem;
     left: -1rem;
     transform: translate3d(-100%, -100%, 0%);
+    &.dropdown--home-project,
     &.dropdown--project {
+      left: -1rem;
       top: 0rem;
     }
     &.dropdown--mobilier,
