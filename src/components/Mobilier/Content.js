@@ -100,12 +100,6 @@ const Content = ({ info }) => {
                 <span>Dimensions: {info.dimensions}</span>
               </div>
             )}
-            <div className="mobilier-info">
-              <span>
-                Édition limitée, signée, numéro de série et certificat
-                d'authenticité
-              </span>
-            </div>
           </div>
         </div>
 

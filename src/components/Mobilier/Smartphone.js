@@ -33,12 +33,6 @@ const Smartphone = ({ info }) => {
             <div className="info__content__title">
               <h1>{info.titre}</h1>
             </div>
-            <div className="mobilier-info">
-              <span>
-                Édition limitée, signée, numéro de série et certificat
-                d'authenticité
-              </span>
-            </div>
           </div>
           <div className="info__content--md">
             {info.collection && (
