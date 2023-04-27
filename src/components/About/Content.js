@@ -97,7 +97,7 @@ const Content = () => {
             </p>
             <div>
               <a
-                href="https://www.instagram.com/volta.archi/"
+                href="https://www.instagram.com/agence_volta/"
                 target="_blank"
                 className="fs-sm"
                 rel="noreferrer noopener"
@@ -128,7 +128,7 @@ const Content = () => {
                     />
                   </g>
                 </svg>
-                <span>volta.archi</span>
+                <span>agence_volta</span>
               </a>
             </div>
           </div>
@@ -151,7 +151,7 @@ const Content = () => {
           </p>
           <div>
             <a
-              href="https://www.instagram.com/volta.archi/"
+              href="https://www.instagram.com/agence_volta/"
               target="_blank"
               className="fs-sm"
               rel="noreferrer noopener"
@@ -182,7 +182,7 @@ const Content = () => {
                   />
                 </g>
               </svg>
-              <span>volta.archi</span>
+              <span>agence_volta</span>
             </a>
           </div>
         </div>
